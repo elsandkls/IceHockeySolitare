@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/acylic_blue.jpg-0af90d7933a09d00aaa1346352e0b31d.stex"
+path="res://.import/acylic_blue.jpg-ff027c6dbc7c043e1f17944d3325095e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Backgrounds/acylic_blue.jpg"
-dest_files=[ "res://.import/acylic_blue.jpg-0af90d7933a09d00aaa1346352e0b31d.stex" ]
+source_file="res://Resources/Background/acylic_blue.jpg"
+dest_files=[ "res://.import/acylic_blue.jpg-ff027c6dbc7c043e1f17944d3325095e.stex" ]
 
 [params]
 

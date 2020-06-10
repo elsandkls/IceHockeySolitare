@@ -1,0 +1,266 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Grid.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Background/Texture-176.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Cards/Blank_Blue.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Fonts/Kenney Blocks.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 4 )
+
+[node name="Game_Window" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = 2.70966
+margin_top = 1.74872
+margin_right = 3002.71
+margin_bottom = 3001.75
+rect_min_size = Vector2( 600, 600 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource( 1 )
+width = 7
+height = 7
+x_start = 600
+y_start = 1200
+offset = 125
+
+[node name="Stock" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Stock"]
+position = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+
+[node name="Stock_RTL" type="RichTextLabel" parent="Grid/Stock/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 90, 40 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "STOCK"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Talon" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Talon"]
+position = Vector2( 225, 100 )
+texture = ExtResource( 3 )
+
+[node name="Talon_RTL" type="RichTextLabel" parent="Grid/Talon/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TALON"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_1" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_1"]
+position = Vector2( 100, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL1" type="RichTextLabel" parent="Grid/Tableau_1/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 1"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_2" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_2"]
+position = Vector2( 225, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL2" type="RichTextLabel" parent="Grid/Tableau_2/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_3" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_3"]
+position = Vector2( 350, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL3" type="RichTextLabel" parent="Grid/Tableau_3/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 3"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_4" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_4"]
+position = Vector2( 475, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL4" type="RichTextLabel" parent="Grid/Tableau_4/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 4"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_5" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_5"]
+position = Vector2( 600, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL5" type="RichTextLabel" parent="Grid/Tableau_5/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 5"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_6" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_6"]
+position = Vector2( 725, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL6" type="RichTextLabel" parent="Grid/Tableau_6/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 6"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tableau_7" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_7"]
+position = Vector2( 850, 285 )
+texture = ExtResource( 3 )
+
+[node name="Tableau_RTL7" type="RichTextLabel" parent="Grid/Tableau_7/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "TAB 7"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foundation_1" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_1"]
+position = Vector2( 475, 100 )
+texture = ExtResource( 3 )
+
+[node name="Foundation_RTL1" type="RichTextLabel" parent="Grid/Foundation_1/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "FND 1"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foundation_2" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_2"]
+position = Vector2( 600, 100 )
+texture = ExtResource( 3 )
+
+[node name="Foundation_RTL2" type="RichTextLabel" parent="Grid/Foundation_2/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "FND 2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foundation_3" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_3"]
+position = Vector2( 725, 100 )
+texture = ExtResource( 3 )
+
+[node name="Foundation_RTL3" type="RichTextLabel" parent="Grid/Foundation_3/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "FND 3"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foundation_4" type="Node2D" parent="Grid"]
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_4"]
+position = Vector2( 850, 100 )
+texture = ExtResource( 3 )
+
+[node name="Foundation_RTL4" type="RichTextLabel" parent="Grid/Foundation_4/Sprite_Holder"]
+margin_left = -38.0
+margin_top = -30.0
+margin_right = 62.0
+margin_bottom = 10.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "FND 4"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

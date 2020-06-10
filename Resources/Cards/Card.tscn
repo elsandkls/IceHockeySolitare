@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources/Cards/Card.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Cards/Blank_Red.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Cards/acylic_blue.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Cards/Card_A.png" type="Texture" id=4]
+
+[node name="Card" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Move_Tween" type="Tween" parent="."]
+
+[node name="Sprite_Anim" type="Sprite" parent="."]
+
+[node name="Sprite_BG" type="Sprite" parent="."]
+position = Vector2( 3.41372, 3.41372 )
+scale = Vector2( 0.0892859, 0.179814 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Sprite_Front" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite_CardSpec" type="Sprite" parent="."]
+position = Vector2( 48.413, 72.799 )
+texture = ExtResource( 4 )
