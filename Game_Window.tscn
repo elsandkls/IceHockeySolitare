@@ -26,17 +26,17 @@ __meta__ = {
 script = ExtResource( 1 )
 width = 7
 height = 7
-x_start = 600
-y_start = 1200
-offset = 125
+offset = 25
 
-[node name="Stock" type="Node2D" parent="Grid"]
+[node name="YSort" type="YSort" parent="Grid"]
 
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Stock"]
+[node name="Stock" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 100, 100 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Stock"]
 texture = ExtResource( 3 )
 
-[node name="Stock_RTL" type="RichTextLabel" parent="Grid/Stock/Sprite_Holder"]
+[node name="Stock_RTL" type="RichTextLabel" parent="Grid/YSort/Stock/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -49,13 +49,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Talon" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Talon"]
+[node name="Talon" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 225, 100 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Talon"]
 texture = ExtResource( 3 )
 
-[node name="Talon_RTL" type="RichTextLabel" parent="Grid/Talon/Sprite_Holder"]
+[node name="Talon_RTL" type="RichTextLabel" parent="Grid/YSort/Talon/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -67,13 +67,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_1" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_1"]
+[node name="Tableau_1" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 100, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_1"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL1" type="RichTextLabel" parent="Grid/Tableau_1/Sprite_Holder"]
+[node name="Tableau_RTL1" type="RichTextLabel" parent="Grid/YSort/Tableau_1/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -85,13 +85,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_2" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_2"]
+[node name="Tableau_2" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 225, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_2"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL2" type="RichTextLabel" parent="Grid/Tableau_2/Sprite_Holder"]
+[node name="Tableau_RTL2" type="RichTextLabel" parent="Grid/YSort/Tableau_2/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -103,13 +103,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_3" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_3"]
+[node name="Tableau_3" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 350, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_3"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL3" type="RichTextLabel" parent="Grid/Tableau_3/Sprite_Holder"]
+[node name="Tableau_RTL3" type="RichTextLabel" parent="Grid/YSort/Tableau_3/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -121,13 +121,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_4" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_4"]
+[node name="Tableau_4" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 475, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_4"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL4" type="RichTextLabel" parent="Grid/Tableau_4/Sprite_Holder"]
+[node name="Tableau_RTL4" type="RichTextLabel" parent="Grid/YSort/Tableau_4/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -139,13 +139,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_5" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_5"]
+[node name="Tableau_5" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 600, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_5"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL5" type="RichTextLabel" parent="Grid/Tableau_5/Sprite_Holder"]
+[node name="Tableau_RTL5" type="RichTextLabel" parent="Grid/YSort/Tableau_5/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -157,13 +157,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_6" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_6"]
+[node name="Tableau_6" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 725, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_6"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL6" type="RichTextLabel" parent="Grid/Tableau_6/Sprite_Holder"]
+[node name="Tableau_RTL6" type="RichTextLabel" parent="Grid/YSort/Tableau_6/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -175,13 +175,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tableau_7" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Tableau_7"]
+[node name="Tableau_7" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 850, 285 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Tableau_7"]
 texture = ExtResource( 3 )
 
-[node name="Tableau_RTL7" type="RichTextLabel" parent="Grid/Tableau_7/Sprite_Holder"]
+[node name="Tableau_RTL7" type="RichTextLabel" parent="Grid/YSort/Tableau_7/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -193,13 +193,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Foundation_1" type="Node2D" parent="Grid"]
-
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_1"]
+[node name="Foundation_1" type="Node2D" parent="Grid/YSort"]
 position = Vector2( 475, 100 )
+
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_1"]
 texture = ExtResource( 3 )
 
-[node name="Foundation_RTL1" type="RichTextLabel" parent="Grid/Foundation_1/Sprite_Holder"]
+[node name="Foundation_RTL1" type="RichTextLabel" parent="Grid/YSort/Foundation_1/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -211,13 +211,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Foundation_2" type="Node2D" parent="Grid"]
+[node name="Foundation_2" type="Node2D" parent="Grid/YSort"]
 
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_2"]
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_2"]
 position = Vector2( 600, 100 )
 texture = ExtResource( 3 )
 
-[node name="Foundation_RTL2" type="RichTextLabel" parent="Grid/Foundation_2/Sprite_Holder"]
+[node name="Foundation_RTL2" type="RichTextLabel" parent="Grid/YSort/Foundation_2/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -229,13 +229,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Foundation_3" type="Node2D" parent="Grid"]
+[node name="Foundation_3" type="Node2D" parent="Grid/YSort"]
 
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_3"]
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_3"]
 position = Vector2( 725, 100 )
 texture = ExtResource( 3 )
 
-[node name="Foundation_RTL3" type="RichTextLabel" parent="Grid/Foundation_3/Sprite_Holder"]
+[node name="Foundation_RTL3" type="RichTextLabel" parent="Grid/YSort/Foundation_3/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
@@ -247,13 +247,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Foundation_4" type="Node2D" parent="Grid"]
+[node name="Foundation_4" type="Node2D" parent="Grid/YSort"]
 
-[node name="Sprite_Holder" type="Sprite" parent="Grid/Foundation_4"]
+[node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_4"]
 position = Vector2( 850, 100 )
 texture = ExtResource( 3 )
 
-[node name="Foundation_RTL4" type="RichTextLabel" parent="Grid/Foundation_4/Sprite_Holder"]
+[node name="Foundation_RTL4" type="RichTextLabel" parent="Grid/YSort/Foundation_4/Sprite_Holder"]
 margin_left = -38.0
 margin_top = -30.0
 margin_right = 62.0
