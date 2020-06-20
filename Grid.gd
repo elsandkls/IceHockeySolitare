@@ -60,7 +60,7 @@ func undo_move(column, row, direction):
 		print("Undo Move Function");
 		print(column, row, direction);  
 	var card = possible_cards[0];
-	card.move(pile_to_pixel(column,row)); 
+	card.move(pile_to_pixel(card)); 
 	pass;
 
 func clear_columns():
@@ -71,41 +71,50 @@ func clear_columns():
 #GUI Mechanics
 
 
-func pile_to_pixel( column, row):
+func pile_to_pixel( pile ): 
 	var upper_right_x = 0;
-	var lower_left_x = 0;
+	var center_left_x = 0;
 	var upper_right_y = 0;
-	var lower_left_y = 0;
+	var center_left_y = 0;
 	var size_x = 0;
-	var size_y = 0;  
-	return Vector2(new_x, new_y);
+	var size_y = 0; 
+	#
+	if(debug_level == 1):
+		print ("Pile to Pixel");   
+	upper_right_x = Vector2(pile.get_transform().get_origin()).x;
+	upper_right_y = Vector2(pile.get_transform().get_origin()).y;
+	size_x = pile.texture.get_size().x;
+	size_y = pile.texture.get_size().y;
+	center_left_x = upper_right_x + (size_x/2);
+	center_left_y = upper_right_y + (size_y/2); 
+	return Vector2(center_left_x, center_left_y);
 
-func pixel_to_pile(pixel_x, pixel_y): 
-	var card = possible_cards[0].instance();
+func pixel_to_pile(pixel_x, pixel_y):  
 	var upper_right_x = 0;
 	var lower_left_x = 0;
 	var upper_right_y = 0;
-	var lower_left_y = 0;
-	var size_x = 0;
-	var size_y = 0;
-	var column =0;
-	var row=0;
-	var position_frame = [];
+	var lower_left_y = 0;  
+	var column = 0;
+	var row = 0;
+	var card_size_x = 0;
+	var card_size_y = 0;
+	var position_origin = [];
 	var position_size = [];
 	var position_base = [];
-	var position_origin = [];
-	var gridposition = [];
-	var pilename = "";
+	var position_frame = []; 
+	var pile_name = "null";
+	var temp_grid = [];
+	var pile = "";
 	
 	for n in range (pile_locations.size()):
 		position_frame = pile_locations[n];
 		for m in range (position_frame.size()):
 			if m == 0:
-				pilename = position_frame[m];
+				pile_name = position_frame[m];				
 			if m == 1:
-				gridposition = position_frame[m];
-				column = gridposition[0];
-				row = gridposition[1];
+				temp_grid = position_frame[m];
+				column = temp_grid[0];
+				row = temp_grid[1];
 			if m == 2:
 				position_origin = position_frame[m];
 				upper_right_x = position_origin[0];
@@ -116,19 +125,21 @@ func pixel_to_pile(pixel_x, pixel_y):
 				lower_left_y = position_base[1];
 			if m == 4:
 				position_size = position_frame[m];  
-				size_x = position_size[0];
-				size_y = position_size[1];
+				card_size_x = position_size[0];
+				card_size_y = position_size[1];
 				
 		if pixel_x >= upper_right_x && pixel_x <= lower_left_x:
 			if(debug_level == 1):
-				print ("Pixel to Pile Function");
-				print (pixel_x);
+				print ("Pixel to Pile Function: ", pixel_x, " >= ", upper_right_x, " . ");
+				print ("Pixel to Pile Function: ", pixel_x, " <= ", lower_left_x, " . "); 
 				
 			if pixel_y <= upper_right_y  && pixel_y >= lower_left_y:
 				if(debug_level == 1):
-					print ("Pixel to Pile Function"); 
-					print (pixel_y);
-					return gridposition; 
+					print ("Pixel to Pile Function: ", pixel_y, " >= ", upper_right_y, " . ");
+					print ("Pixel to Pile Function: ", pixel_y, " <= ", lower_left_y, " . ");  
+					
+				pile = get_node(pile_name)
+				return pile;  
 
 func is_in_grid(column, row):
 	if column >=0 && column < width:
@@ -144,7 +155,7 @@ func is_in_grid_single(grid_position):
 			return true;
 	return false;
 
-func move_card(start_x, start_y, stop_x, stop_y):
+func move_card(pickup_x, pickup_y, drop_x, drop_y):
 	var _pickup_pile = [];
 	var _stop_pile = [];
 	var card = possible_cards[0];
@@ -152,11 +163,9 @@ func move_card(start_x, start_y, stop_x, stop_y):
 		print("Move Card Function",  ",", start_x, ",", start_y, ",", stop_x, ",", stop_y, ";" ); 
 		
 	# pickup card
-	_pickup_pile = pixel_to_pile( start_x, start_y );
-	_stop_pile = pixel_to_pile( stop_x, stop_y );
+	_pickup_pile = pixel_to_pile( pickup_x, pickup_y );
+	_stop_pile = pixel_to_pile( drop_x, drop_y );
 	
-	
-		
 	var position = 0; 
 	pass;
 
@@ -335,7 +344,7 @@ func spawn_cards(color, rank):
 	var rand = floor(rand_range(0,possible_cards.size()));
 	var card = possible_cards[rand].instance();
 	add_child(card);
-	card.position = pile_to_pixel(0,0); 
+	card.position = card_position(Vector2(0,0), 0,"noshift"); 
 	card.setTextureForground(rank);
 	card.setTextureBackground(color);
 	return(card);
@@ -371,7 +380,7 @@ func deal_game():
 				ActivePile_Container = get_parent().get_node("Grid/YSort/Tableau_1"); 
 				SpriteHolder_Container = get_parent().get_node("Grid/YSort/Tableau_1/Sprite_Holder"); 
 				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card);  
 				ActivePile_Container.add_child(card); 
 				pile_cards_tableau_1.append(card);
@@ -388,7 +397,7 @@ func deal_game():
 				SpriteHolder_Container = get_parent().get_node("Grid/YSort/Tableau_2/Sprite_Holder");  
 				card.position = SpriteHolder_Container.get_transform().get_origin();
 				#move_child
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card);  
 				SpriteHolder_Container.add_child(card); 
 				pile_cards_tableau_2.append(card);
@@ -404,7 +413,7 @@ func deal_game():
 				ActivePile_Container = get_parent().get_node("Grid/YSort/Tableau_3"); 
 				SpriteHolder_Container = get_parent().get_node("Grid/YSort/Tableau_3/Sprite_Holder");  
 				card.position = get_parent().get_node("Grid/YSort/Tableau_3/Sprite_Holder").get_transform().get_origin();
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card); 
 				#Grid_Container.queue_free();
 				get_parent().get_node("Grid/YSort/Tableau_3/Sprite_Holder").add_child(card);
@@ -419,7 +428,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				card.position = get_parent().get_node("Grid/YSort/Tableau_4/Sprite_Holder").get_transform().get_origin();
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card); 
 				#Grid_Container.queue_free();
 				get_parent().get_node("Grid/YSort/Tableau_4/Sprite_Holder").add_child(card);
@@ -434,7 +443,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				card.position = get_parent().get_node("Grid/YSort/Tableau_5/Sprite_Holder").get_transform().get_origin();
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card); 
 				#Grid_Container.queue_free();
 				get_parent().get_node("Grid/YSort/Tableau_5/Sprite_Holder").add_child(card);
@@ -449,7 +458,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				card.position = get_parent().get_node("Grid/YSort/Tableau_6/Sprite_Holder").get_transform().get_origin();
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card); 
 				#Grid_Container.queue_free();
 				get_parent().get_node("Grid/YSort/Tableau_6/Sprite_Holder").add_child(card);
@@ -464,7 +473,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int; 
 				card = my_deck[c]; 
 				card.position = get_parent().get_node("Grid/YSort/Tableau_7/Sprite_Holder").get_transform().get_origin(); 
-				card.position = pile_to_position(card.position, offset, "vshift"); 
+				card.position = card_position(card.position, offset, "vshift"); 
 				Grid_Container.remove_child(card); 
 				#Grid_Container.queue_free();
 				get_parent().get_node("Grid/YSort/Tableau_7/Sprite_Holder").add_child(card); 
@@ -480,7 +489,7 @@ func deal_game():
 		c = rand_range(0, my_deck.size()) as int;
 		card = my_deck[c]; 
 		card.position = get_parent().get_node("Grid/YSort/Talon/Sprite_Holder").get_transform().get_origin();
-		card.position = pile_to_position(card.position, offset, "hshift");
+		card.position = card_position(card.position, offset, "hshift");
 		Grid_Container.remove_child(card); 
 		#Grid_Container.queue_free();
 		get_parent().get_node("Grid/YSort/Talon/Sprite_Holder").add_child(card);
@@ -497,7 +506,7 @@ func deal_game():
 		c = rand_range(0, my_deck.size()) as int;
 		card = my_deck[c]; 
 		card.position = get_parent().get_node("Grid/YSort/Stock/Sprite_Holder").get_transform().get_origin();
-		card.position = pile_to_position(card.position, offset, "noshift");
+		card.position = card_position(card.position, offset, "noshift");
 		Grid_Container.remove_child(card); 
 		#Grid_Container.queue_free();
 		get_parent().get_node("Grid/YSort/Stock/Sprite_Holder").add_child(card);
@@ -510,7 +519,8 @@ func deal_game():
 		print("pile stock");
 	
 	
-func pile_to_position( NewPosition, Shift_Me, Shift_Type):
+func card_position( NewPosition, Shift_Me, Shift_Type):
+	#control display of cards.
 	if Shift_Type == "vshift":
 		start_x = Vector2(NewPosition).x -50;
 		start_y = Vector2(NewPosition).y -70;
