@@ -24,9 +24,10 @@ __meta__ = {
 
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource( 1 )
-width = 7
-height = 7
+width = 1000
+height = 800
 offset = 25
+debug_level = 1
 
 [node name="YSort" type="YSort" parent="Grid"]
 
@@ -212,9 +213,9 @@ __meta__ = {
 }
 
 [node name="Foundation_2" type="Node2D" parent="Grid/YSort"]
+position = Vector2( 600, 100 )
 
 [node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_2"]
-position = Vector2( 600, 100 )
 texture = ExtResource( 3 )
 
 [node name="Foundation_RTL2" type="RichTextLabel" parent="Grid/YSort/Foundation_2/Sprite_Holder"]
@@ -230,9 +231,9 @@ __meta__ = {
 }
 
 [node name="Foundation_3" type="Node2D" parent="Grid/YSort"]
+position = Vector2( 725, 100 )
 
 [node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_3"]
-position = Vector2( 725, 100 )
 texture = ExtResource( 3 )
 
 [node name="Foundation_RTL3" type="RichTextLabel" parent="Grid/YSort/Foundation_3/Sprite_Holder"]
@@ -248,9 +249,9 @@ __meta__ = {
 }
 
 [node name="Foundation_4" type="Node2D" parent="Grid/YSort"]
+position = Vector2( 850, 100 )
 
 [node name="Sprite_Holder" type="Sprite" parent="Grid/YSort/Foundation_4"]
-position = Vector2( 850, 100 )
 texture = ExtResource( 3 )
 
 [node name="Foundation_RTL4" type="RichTextLabel" parent="Grid/YSort/Foundation_4/Sprite_Holder"]
