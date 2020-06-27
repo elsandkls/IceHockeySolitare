@@ -1,12 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Grid.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Background/Texture-176.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Cards/Blank_Blue.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Fonts/Kenney Blocks.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Resources/Background/acylic_blue_menu_400_600.jpg" type="Texture" id=5]
+[ext_resource path="res://Resources/Background/blue_button_template.jpg" type="Texture" id=6]
+[ext_resource path="res://Resources/Background/blue_button_pressed_template.jpg" type="Texture" id=7]
+[ext_resource path="res://Resources/Background/purple_button_hover_template.jpg" type="Texture" id=8]
+[ext_resource path="res://GUI.gd" type="Script" id=9]
+[ext_resource path="res://ScoreGUI.gd" type="Script" id=10]
+[ext_resource path="res://OptionsGUI.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 46
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
 font_data = ExtResource( 4 )
 
 [node name="Game_Window" type="Node2D"]
@@ -265,3 +284,234 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameMenu" type="Control" parent="."]
+margin_left = 250.0
+margin_top = 75.0
+margin_right = 625.0
+margin_bottom = 675.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GameMenu"]
+margin_right = 375.0
+margin_bottom = 600.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 351.0
+margin_bottom = 565.0
+custom_constants/separation = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer"]
+margin_right = 311.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 2 )
+text = "Game Menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="GameMenu/VBoxContainer"]
+margin_top = 82.0
+margin_right = 311.0
+margin_bottom = 82.0
+
+[node name="PlayButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+margin_top = 94.0
+margin_right = 311.0
+margin_bottom = 144.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/PlayButton"]
+margin_left = 100.0
+margin_right = 200.0
+margin_bottom = 59.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "PLAY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoresButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+margin_top = 156.0
+margin_right = 311.0
+margin_bottom = 206.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/ScoresButton"]
+margin_left = 90.0
+margin_right = 203.0
+margin_bottom = 59.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+margin_top = 218.0
+margin_right = 311.0
+margin_bottom = 268.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/SettingsButton"]
+margin_left = 60.0
+margin_right = 243.0
+margin_bottom = 59.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitGameButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+margin_top = 280.0
+margin_right = 311.0
+margin_bottom = 330.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/ExitGameButton"]
+margin_left = 100.0
+margin_right = 283.0
+margin_bottom = 59.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsGUI" type="Control" parent="."]
+margin_left = 250.0
+margin_top = 75.0
+margin_right = 625.0
+margin_bottom = 675.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="OptionsGUI"]
+margin_right = 375.0
+margin_bottom = 600.0
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsGUI"]
+margin_right = 375.0
+margin_bottom = 600.0
+grow_horizontal = 2
+
+[node name="ScoreGUI" type="Control" parent="."]
+visible = false
+margin_left = 250.0
+margin_top = 75.0
+margin_right = 625.0
+margin_bottom = 675.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScoreGUI"]
+margin_right = 375.0
+margin_bottom = 600.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreGUI"]
+margin_right = 375.0
+margin_bottom = 600.0
+custom_constants/separation = 19
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScoreGUI/VBoxContainer"]
+margin_right = 375.0
+margin_bottom = 64.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "High Scores"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ScoreGUI/VBoxContainer"]
+margin_top = 83.0
+margin_right = 375.0
+margin_bottom = 83.0
+
+[node name="Label2" type="Label" parent="ScoreGUI/VBoxContainer"]
+margin_top = 102.0
+margin_right = 375.0
+margin_bottom = 166.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Score 1"
+align = 1
+
+[node name="Label3" type="Label" parent="ScoreGUI/VBoxContainer"]
+margin_top = 185.0
+margin_right = 375.0
+margin_bottom = 249.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Score 2"
+align = 1
+
+[node name="Label4" type="Label" parent="ScoreGUI/VBoxContainer"]
+margin_top = 268.0
+margin_right = 375.0
+margin_bottom = 332.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Score 3"
+align = 1
+
+[node name="Label5" type="Label" parent="ScoreGUI/VBoxContainer"]
+margin_top = 351.0
+margin_right = 375.0
+margin_bottom = 415.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Score 4"
+align = 1
+
+[node name="Label6" type="Label" parent="ScoreGUI/VBoxContainer"]
+margin_top = 434.0
+margin_right = 375.0
+margin_bottom = 565.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 4 )
+text = "Score 5
+"
+align = 1
+[connection signal="pressed" from="GameMenu/VBoxContainer/ScoresButton" to="GUI" method="_on_ScoresButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/SettingsButton" to="GUI" method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/ExitGameButton" to="GUI" method="_on_ExitGameButton_pressed"]

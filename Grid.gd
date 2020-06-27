@@ -117,6 +117,11 @@ func is_in_grid_single(grid_position):
 	return false;
 
 func touch_input(): 
+	pass;
+	
+func mouse_input(event): 
+	if event == null:
+		event = "No Event";
 	var grid_position = [];  
 	var change = false;
 	var start_on_grid = false;
@@ -128,9 +133,26 @@ func touch_input():
 	if(debug_level == 0):
 		print("Input Check: initial touch");
 	#if Input.is_action_just_pressed("ui_touch")
-	if Input.is_mouse_button_pressed(1):  
-		active_x = get_global_mouse_position().x ;
-		active_y = get_global_mouse_position().y ; 
+	
+# InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(481, 307), button_mask=1, doubleclick=false
+# InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(480, 304), relative=(-1, -3), speed=(0.806163, 106.197388) 
+# InputEventMouseMotion : button_mask=0, position=(866, 304), relative=(1, 0), speed=(-0.004776, 0.498934)
+# InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(866, 304), button_mask=1, doubleclick=false
+	if (event.as_text()): 
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT:
+				if event.pressed:
+					print("Left button was clicked at ", event.position) 
+					active_x = Vector2(event.position).x ;
+					active_y = Vector2(event.position).y ; 
+				else:
+					print("Left button was released")  
+			if event.button_mask == BUTTON_MASK_LEFT:
+				print("Left Button Remains pressed down")
+	
+	#if Input.is_mouse_button_pressed(1):  
+			active_x = get_global_mouse_position().x ;
+			active_y = get_global_mouse_position().y ; 
 		
 		if last_x == active_x && last_y == active_y :
 			start_x = active_x;
@@ -143,7 +165,7 @@ func touch_input():
 			stop_x = active_x;
 			stop_y = active_y;
 			change = true;  
-			if(debug_level == 1):
+			if(debug_level == 0):
 				print("Mouse position change detected.");
 			# If change is true, check to see if start position is on the grid. 
 			grid_position.append(start_x); 
@@ -166,7 +188,7 @@ func touch_input():
 				print("Grid Check: No, Stop is not in the grid."); 
 				
 		if start_on_grid == true && stop_on_grid == true && change == true:  
-			if(debug_level == 1):
+			if(debug_level == 0):
 				print(abs(start_x - stop_x), " > ", card_width);
 				print(abs(start_y - stop_y), " > ", card_height);
 			if( abs(start_x - stop_x) > card_width && abs(start_y - stop_y) > card_height ):
@@ -373,7 +395,7 @@ func build_pile_grid_array():
 
 
 func make_a_deck(): 
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print("function: make deck");
 	var array = [];
 	# 7 colors
@@ -401,7 +423,7 @@ func spawn_card(color, rank):
 	return(card);
 
 func shuffle_the_deck(): 
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print("function: shuffle deck");
 	my_deck.shuffle();
 	pass;
@@ -723,7 +745,7 @@ func move_card(pickup_x, pickup_y, drop_x, drop_y):
 								print("Height: ", position_size_height ); 
 							
 				# is this the right pile?
-			if(debug_level == 1):
+			if(debug_level == 0):
 				print ("P to p: Overlap Check: Pile: ", p, " Pixel X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " Pixel Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . ")	
 			if pixel_x >= position_origin_x && pixel_x <= position_base_x:
 				if(debug_level == 0):
@@ -978,3 +1000,11 @@ func move_card(pickup_x, pickup_y, drop_x, drop_y):
 								if(debug_level == 1):
 									print("Moved to: ", piles_name_string);
 	pass;
+
+func _input(event):
+	print(event.as_text())
+	mouse_input(event);
+
+
+func _on_SettingsButton_pressed():
+	pass # Replace with function body.
