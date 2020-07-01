@@ -16,23 +16,23 @@
 size = 22
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=4]
 size = 42
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 30
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 42
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 46
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 4 )
 
@@ -340,7 +340,7 @@ margin_top = 43.0
 margin_right = 375.0
 margin_bottom = 107.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "High Scores"
 align = 1
 
@@ -354,7 +354,7 @@ margin_top = 127.0
 margin_right = 375.0
 margin_bottom = 191.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Score 1"
 align = 1
 
@@ -363,7 +363,7 @@ margin_top = 201.0
 margin_right = 375.0
 margin_bottom = 265.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Score 2"
 align = 1
 
@@ -372,7 +372,7 @@ margin_top = 275.0
 margin_right = 375.0
 margin_bottom = 339.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Score 3"
 align = 1
 
@@ -381,7 +381,7 @@ margin_top = 349.0
 margin_right = 375.0
 margin_bottom = 413.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Score 4"
 align = 1
 
@@ -390,7 +390,7 @@ margin_top = 423.0
 margin_right = 375.0
 margin_bottom = 487.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Score 5"
 align = 1
 
@@ -420,7 +420,7 @@ texture_hover = ExtResource( 8 )
 [node name="Label" type="Label" parent="YSort/GUI/YSort/ScoreGUI/VBoxContainer/VBoxContainer/ReturnToMenuButton"]
 margin_right = 300.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "MAIN MENU"
 align = 1
 __meta__ = {
@@ -456,7 +456,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="YSort/GUI/YSort/OptionsGUI/VBoxContainer"]
 margin_right = 375.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Options"
 align = 1
 
@@ -482,7 +482,7 @@ __meta__ = {
 margin_right = 300.0
 margin_bottom = 30.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "MAIN MENU"
 align = 1
 __meta__ = {
@@ -519,7 +519,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
 margin_right = 311.0
 margin_bottom = 70.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Game Menu"
 
 [node name="MarginContainer" type="MarginContainer" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
@@ -540,7 +540,7 @@ margin_left = 100.0
 margin_right = 200.0
 margin_bottom = 59.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 text = "PLAY"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -559,7 +559,7 @@ margin_left = 90.0
 margin_right = 203.0
 margin_bottom = 59.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 text = "SCORE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -578,7 +578,7 @@ margin_left = 60.0
 margin_right = 243.0
 margin_bottom = 59.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 text = "Settings"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -597,7 +597,7 @@ margin_left = 100.0
 margin_right = 283.0
 margin_bottom = 59.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false

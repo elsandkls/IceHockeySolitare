@@ -117,24 +117,40 @@ func is_in_grid_single(grid_position):
 			return true;
 	return false;
 
-func touch_input(): 
+func touch_input(event): 
+	print(event.as_text()); 
+	if(debug_level == 0):
+		print("Input Check: initial touch");  
+	# InputEventScreenTouch
+	#if Input.is_action_just_pressed("ui_touch")	
 	pass;
 	
-func mouse_input(event): 
+func key_input(event): 
+	print(   event.as_text()           ); 
+	if(debug_level == 0):
+		print("Input Check: key pressed"); 
+	# InputEventScreenTouch
+	#if Input.is_action_just_pressed("ui_touch")	
+	pass;
+	
+	
+func mouse_input(event): 	
+	print(event.as_text());
 	
 	var card = possible_cards[0].instance();
 	if event == null:
 		event = "No Event";
 	var grid_position = [];  
 	var change = false;
+	if (debug_level == 0):
+		print(change);
 	var start_on_grid = false;
 	var stop_on_grid = false;
-	var transverse_on_grid = false; 
-
+	var transverse_on_grid = false;
+	if (debug_level == 0):
+		print( transverse_on_grid);
 	if(debug_level == 0):
-		print("Input Check: initial touch");
-	#if Input.is_action_just_pressed("ui_touch")
-	
+		print("Input Check: initial touch"); 
 # InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(481, 307), button_mask=1, doubleclick=false
 # InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(480, 304), relative=(-1, -3), speed=(0.806163, 106.197388) 
 # InputEventMouseMotion : button_mask=0, position=(866, 304), relative=(1, 0), speed=(-0.004776, 0.498934) 
@@ -198,10 +214,6 @@ func mouse_input(event):
 				#indicate motion has stopped.
 				change = false;  
 
-func _process(_delta):
-	if(debug_level == 0):
-		print("touch input");
-	touch_input();
 
 func _on_MatchCheck_Timer_timeout():
 	pass; 
@@ -368,16 +380,7 @@ func build_pile_grid_array():
 		if(debug_level == 0):
 			print(position_size);
 		position_frame.append(piles_names[n]);
-		position_frame.append(piles_grids[n].
-		
-		
-		
-		
-		
-		
-		
-		
-		());
+		position_frame.append(piles_grids[n].duplicate());
 		position_frame.append(position_origin.duplicate());
 		position_frame.append(position_base.duplicate());
 		position_frame.append(position_size.duplicate());
@@ -628,6 +631,8 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	# pick up card clicked on 
 	var return_vars = [];
 	var pile = []; 
+	if (debug_level == 0):
+		print (pile);
 	var position = 0;
 	if(debug_level == 0):
 		print(position);
@@ -880,3 +885,37 @@ func StartMenuVisibility():
 		get_parent().get_node("GUI/YSort/ScoreGUI").hide();	
 	if(get_parent().get_node("GUI/YSort/OptionsGUI").visible):
 		get_parent().get_node("GUI/YSort/OptionsGUI").hide();
+		
+func _process(delta):
+	pass; 
+	
+func _input(event):	 
+	pass;
+	
+	
+func _unhandled_input(event: InputEvent): 
+	if event is InputEvent: 
+		print("InputEvent Recognized")
+		if event is InputEventAction: 
+			print("InputEventAction Recognized");			
+			if event is InputEventMouse: 
+				print("mouse input")
+				#mouse_input(InputEventMouse); 
+				if event is InputEventMouseButton: 
+					print("InputEventMouseButton Recognized");
+					if event.button_index == BUTTON_LEFT: 
+						print("InputEventMouseButton Left Button Recognized");
+						if event.pressed:
+							print("Left button was clicked at ", event.position);
+							#mouse_input(InputEventMouse); 
+						else:
+							print("Left button was released")
+							#mouse_input(InputEventMouse); 
+					if event.button_index == BUTTON_WHEEL_DOWN:
+						print("Wheel down") 
+			if event is InputEventScreenTouch:
+				print("touch input");
+				#touch_input(InputEventScreenTouch);
+			if event is InputEventKey:
+				print("key input");
+				#key_input(InputEventKey);  
