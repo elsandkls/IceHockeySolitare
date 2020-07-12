@@ -11,6 +11,7 @@ export (int) var offset;
 export (int) var debug_level;
 export (int) var card_width;
 export (int) var card_height;
+ 
 
 # variables for pieces
 var possible_cards = [
@@ -97,36 +98,41 @@ func pile_to_pixel( pile ):
 
 
 func is_in_grid(column, row):
-	if column >=0 && column < width:
-		if row >= 0 && row < height:
+	if column >=0 and column < width:
+		if row >= 0 and row < height:
 			return true;
-	return false;
+		else:
+			return false;
+	else:
+		return false;
 
 func is_in_grid_single(grid_position):
 	var position_x_coord = grid_position[0];
 	var position_y_coord  = grid_position[1];
-	if(debug_level == 0):
+	if(debug_level == 1):
 		print("Position X Coord: ", position_x_coord, " Max is: ", width);
 		print("Position Y Coord: ", position_y_coord, " Max is: ", height);
-	if position_x_coord >=0 && position_x_coord < width:
-		if(debug_level == 0):
-			print("Touch is inside width of grid: ", width);
-		if position_y_coord >= 0 && position_y_coord < height:
-			if(debug_level == 0):
-				print("Touch is inside height of grid: ", height);
+	if position_x_coord >= 0 and position_x_coord < width:
+		if(debug_level == 1):
+			print("Is inside width of grid: ", width);
+		if position_y_coord >= 0 and position_y_coord < height:
+			if(debug_level == 1):
+				print("Is inside height of grid: ", height);
 			return true;
+		else:
+			return false;
+	else:
+		return false;
 	return false;
 
-func touch_input(event): 
-	print(event.as_text()); 
+func touch_input():  
 	if(debug_level == 0):
 		print("Input Check: initial touch");  
 	# InputEventScreenTouch
 	#if Input.is_action_just_pressed("ui_touch")	
 	pass;
 	
-func key_input(event): 
-	print(   event.as_text()           ); 
+func key_input():  
 	if(debug_level == 0):
 		print("Input Check: key pressed"); 
 	# InputEventScreenTouch
@@ -134,12 +140,8 @@ func key_input(event):
 	pass;
 	
 	
-func mouse_input(event): 	
-	print(event.as_text());
-	
-	var card = possible_cards[0].instance();
-	if event == null:
-		event = "No Event";
+func mouse_input(): 		
+	var card = possible_cards[0].instance(); 
 	var grid_position = [];  
 	var change = false;
 	if (debug_level == 0):
@@ -148,72 +150,43 @@ func mouse_input(event):
 	var stop_on_grid = false;
 	var transverse_on_grid = false;
 	if (debug_level == 0):
-		print( transverse_on_grid);
+		print( transverse_on_grid );
 	if(debug_level == 0):
-		print("Input Check: initial touch"); 
-# InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(481, 307), button_mask=1, doubleclick=false
-# InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(480, 304), relative=(-1, -3), speed=(0.806163, 106.197388) 
-# InputEventMouseMotion : button_mask=0, position=(866, 304), relative=(1, 0), speed=(-0.004776, 0.498934) 
-	if (event.as_text()): 
-		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_LEFT:
-				if event.pressed:
-					print("Left button was clicked at ", event.position) 
-					#mouse left button clicked.
-					start_x = Vector2(event.position).x ;
-					start_y = Vector2(event.position).y ; 
-					#check to see if click is on grid.					
-					grid_position.append(start_x); 
-					grid_position.append(start_y); 
-					start_on_grid = is_in_grid_single(grid_position);
-					grid_position.clear();
-					if(debug_level == 0 && start_on_grid == true):
-						print("Grid Check: Yes, Start is in the grid.");
-					if(debug_level == 0  && start_on_grid == false):
-						print("Grid Check: No, Start is not in the grid."); 
-					#mouse selected a card, recognize and pick up the top visible card or stack at that position. 
-					card = pickup_card(start_x, start_y); 
-					if(debug_level == 0):
-						print("Mouse left button was clicked.");
-						
-			if event.button_mask == BUTTON_MASK_LEFT:
-				print("Left Button Remains pressed down")
-				#mouse left button held
-				active_x = Vector2(event.position).x ;
-				active_y = Vector2(event.position).y ;  
-				#check to see if mouse is in grid
-				grid_position.append(active_x); 
-				grid_position.append(active_y); 
-				transverse_on_grid = is_in_grid_single(grid_position);
-				grid_position.clear();
-				#mouse is moving, card should follow.
-				move_card(active_x, active_y, card); 
-				#track that a BUTTON_MASK_LEFT occured. position changes occuring.
-				change = true;
-				if(debug_level == 0):
-					print("Mouse position change detected.");
-					
-			if event.button_mask == 0:
-				# excute once, but only after a BUTTON_MASK_LEFT has occured.
-				if(debug_level == 0):
-					print("Left Button Released")
-				#mouse clicked
-				stop_x = Vector2(event.position).x ;
-				stop_y = Vector2(event.position).y ;  
-				#check to see if click is on the grid.				
-				grid_position.append(stop_x); 
-				grid_position.append(stop_y); 
-				stop_on_grid = is_in_grid_single(grid_position);
-				grid_position.clear();
-				if(debug_level == 0  && stop_on_grid == true):
-					print("Grid Check: Yes, Stop is in the grid."); 
-				if(debug_level == 0  && stop_on_grid == false):
-					print("Grid Check: No, Stop is not in the grid."); 
-				#card should drop on pile at this location.				
-				drop_card(stop_x, stop_y, card); 
-				#indicate motion has stopped.
-				change = false;  
-
+		print("Input Check: initial touch");    
+	start_x = get_global_mouse_position().x;
+	print("It is start_x: ", start_x);
+	start_y = get_global_mouse_position().y;  
+	print("It is start_y: ", start_y);
+	grid_position.append(start_x); 
+	grid_position.append(start_y); 
+	start_on_grid = is_in_grid_single(grid_position);
+	grid_position.clear();
+	if start_on_grid == true:
+		card = pickup_card(start_x, start_y);
+	else:
+		print("Not on grid");   
+			
+	print("Check for InputEventMouse");    
+	print("Check BUTTON_LEFT");   
+	start_x = get_global_mouse_position().x;
+	print("It is start_x: ", start_x);
+	start_y = get_global_mouse_position().y;  
+	print("It is start_y: ", start_y);
+	if start_x > 0:
+		grid_position.append(start_x); 
+		if start_y > 0:
+			grid_position.append(start_y); 
+			start_on_grid = is_in_grid_single(grid_position);
+			grid_position.clear();
+			if start_on_grid == true:
+				card = pickup_card(start_x, start_y);
+			else:
+				print("Not on grid");
+		else:
+			print ("Not on grid");
+	else:
+		print ("Not on grid");   
+			  
 
 func _on_MatchCheck_Timer_timeout():
 	pass; 
@@ -241,9 +214,7 @@ func build_pile_grid_array():
 	
 	var base_path = "YSort/"; 
 	var new_path = "";
-	  
-	# new_path = str(base_path +  "Sprite_Holder" );  
-	
+	   
 	new_path = "Stock/";
 	new_path = new_path.insert(0,base_path); 
 	piles_names.append(new_path);
@@ -350,9 +321,9 @@ func build_pile_grid_array():
 	 
 	for n in range(piles_names.size()):
 		var temp_node_name = str(piles_names[n] +  "Sprite_Holder" ); 
-		#
-		print(temp_node_name);
+		# 
 		if(debug_level == 0):
+			print(temp_node_name);
 			print (get_node(temp_node_name));
 			print (get_node(temp_node_name).get_position_in_parent());
 			
@@ -395,8 +366,9 @@ func build_pile_grid_array():
 		position_size.clear();
 		position_frame.clear();
 		
-	if(debug_level == 1):
+	if(debug_level == 0):
 		for l in range(pile_locations.size()):
+			print("pile location built");
 			print(pile_locations[l]);
 
 
@@ -669,7 +641,7 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	if(debug_level == 0):
 		print(position_size_height);
 	#Active Pile Variables
-	var active_pile_name = "String"; 	
+	var active_pile_name = "Grid/YSort/Stock"; 	
 	if(debug_level == 0):
 		print(active_pile_name);
 	var pixel_x = 0;
@@ -739,9 +711,12 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 						if(debug_level == 0):
 							print("Height: ", position_size_height ); 
 						
-	# is this the right pile?
+		# is this the right pile?
+		pixel_x = clicked_here_x;
+		pixel_y = clicked_here_y;
 		if(debug_level == 0):
 			print ("P to p: Overlap Check: Pile: ", p, " Pixel X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " Pixel Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . ")	
+
 		if pixel_x >= position_origin_x && pixel_x <= position_base_x:
 			if(debug_level == 0):
 				print ("Pixel to Pile Function X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " . ");
@@ -749,17 +724,18 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 			if pixel_y >= position_origin_y  && pixel_y <= position_base_y:
 				if(debug_level == 0):
 					print ("Pixel to Pile Function Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
-				# yes it is the right pile.					
-				# Identify which pile it is, and which array goes with it.
-				if(debug_level == 1):
 					print ("Confirmed pixel location matches a pile: ", piles_name_string);  
-				pickup_pile_true = true;
-				if(debug_level == 1):
 					print ("Pickup pile: ", piles_name_string); 
-				Active_Container = CheckPileName(piles_name_string); 
-				return_vars.append(Active_Container);
-				return_vars.append(piles_name_string);
-	return return_vars;  						
+				pickup_pile_true = true; 
+				return piles_name_string; 
+			else: 
+				if(debug_level == 0):
+					print ("Nope: failed test y: ", piles_name_string); 
+		else: 
+			if(debug_level == 0):
+				print ("Nope: failed test of x: ", piles_name_string); 
+	 
+	return "";  						
 						
 func CheckPileName(piles_name_string):	
 	var Active_Container = get_parent().get_node("Grid");
@@ -836,23 +812,38 @@ func GetPileArray(piles_name_string):
 func pickup_card(clicked_here_x, clicked_here_y):
 	var card = possible_cards[0].instance();
 	var Active_Container = get_parent().get_node("Grid");
-	var Grid_Container = get_parent().get_node("Grid");
-	var return_vars = [];
+	var Grid_Container = get_parent().get_node("Grid"); 
 	var piles_name_string = "";
-	var PileArray = [];
-	return_vars = pixel_to_pile(clicked_here_x, clicked_here_y);
-	Active_Container = return_vars[0];
-	piles_name_string = return_vars[1];
-	PileArray = GetPileArray(piles_name_string);
-	card = PileArray[PileArray.size()];
-	PileArray[PileArray.size()].remove();
-	Active_Container.remove_child(card); 
-	# to make it easier for the card to move visual attach to grid temporarily
-	Grid_Container.add_child(card);
-	if(debug_level == 1):
-		print("Picked up from: ", piles_name_string);  
-	return card;
+	var PileArray = [] ;
+	var set_number = 0;
+	piles_name_string = pixel_to_pile(clicked_here_x, clicked_here_y);
 	
+	if  piles_name_string != "":
+		Active_Container = get_parent().get_node(piles_name_string);
+		if(debug_level == 1):
+			print("Active_Container: ", Active_Container);  
+			print("piles_name_string: ", piles_name_string);  
+		PileArray = GetPileArray(piles_name_string);
+		if(debug_level == 1):
+			print("PileArray: ", PileArray);  
+		set_number = PileArray.size();
+		if(debug_level == 1):
+			print("set_number: ", set_number);  
+		if(set_number > 0):
+			card = PileArray[set_number].duplicate();
+			if(debug_level == 1):
+				print("card: ", card);  
+				print("PileArray: ", PileArray[set_number]); 
+			PileArray[set_number].remove(); 
+			Active_Container.remove_child(card);   
+			Grid_Container.add_child(card); 
+			return card;
+		else:
+			print("Pile is empty.")	   
+	else:
+		pass;
+
+
 func drop_card(clicked_here_x, clicked_here_y, card):
 	var Active_Container = get_parent().get_node("Grid");
 	var Grid_Container = get_parent().get_node("Grid");
@@ -890,32 +881,32 @@ func _process(delta):
 	pass; 
 	
 func _input(event):	 
+	if event is InputEventMouse: 
+		print("mouse input")
+		mouse_input();
 	pass;
 	
 	
 func _unhandled_input(event: InputEvent): 
-	if event is InputEvent: 
-		print("InputEvent Recognized")
-		if event is InputEventAction: 
-			print("InputEventAction Recognized");			
-			if event is InputEventMouse: 
-				print("mouse input")
-				#mouse_input(InputEventMouse); 
-				if event is InputEventMouseButton: 
-					print("InputEventMouseButton Recognized");
-					if event.button_index == BUTTON_LEFT: 
-						print("InputEventMouseButton Left Button Recognized");
-						if event.pressed:
-							print("Left button was clicked at ", event.position);
-							#mouse_input(InputEventMouse); 
-						else:
-							print("Left button was released")
-							#mouse_input(InputEventMouse); 
-					if event.button_index == BUTTON_WHEEL_DOWN:
-						print("Wheel down") 
-			if event is InputEventScreenTouch:
-				print("touch input");
-				#touch_input(InputEventScreenTouch);
-			if event is InputEventKey:
-				print("key input");
-				#key_input(InputEventKey);  
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if event.pressed:
+				print("Left button was clicked at ", event.position); 
+				print("InputEventMouseButton Recognized"); 
+				mouse_input();   
+
+	if event is InputEventMouseMotion: 
+		mouse_input();   
+		
+	if event is InputEventMouse: 
+		print("InputEventMouse Recognized")
+		mouse_input(); 
+		  
+	if event is InputEventScreenTouch:
+		print("InputEventScreenTouch Recognized");
+		touch_input();
+		
+	if event is InputEventKey:
+		print("InputEventKey Recognized");
+		key_input();  
+		

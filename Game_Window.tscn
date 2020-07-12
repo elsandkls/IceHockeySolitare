@@ -504,6 +504,7 @@ __meta__ = {
 }
 
 [node name="DraftCardsGUI" type="Control" parent="YSort/GUI/YSort"]
+visible = false
 margin_top = 75.0
 margin_right = 875.0
 margin_bottom = 525.0
