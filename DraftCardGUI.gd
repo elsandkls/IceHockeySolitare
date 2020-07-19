@@ -1,5 +1,7 @@
 extends Control
 
+onready var GF = preload("res://Resources/SharedDB/PlayerDB.gd").new();
+
 var PlayerDB_matrix = [];
 var temp_node_name = ""; 
 var PlayerCharacterCard = "object";
@@ -10,7 +12,7 @@ func _ready():
 	pass; # Replace with function body.
 
 func build_card():
-	PlayerDB_matrix = get_node("res://Resources/SharedDB/PlayerDB.gd").PlayerDB_matrix.duplicate();
+	#PlayerDB_matrix = get_node("res://Resources/SharedDB/PlayerDB.gd").PlayerDB_matrix.duplicate();
 	print("PlayerDB accessed in the DraftCardGui: " + String(PlayerDB_matrix.size() ));
 	
 	for l in range(PlayerDB_matrix.size()):  
