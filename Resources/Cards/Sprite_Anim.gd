@@ -1,4 +1,4 @@
-extends Control
+extends Sprite
 
 
 # Declare member variables here. Examples:
@@ -14,12 +14,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func make_visible(): 
-		self.show();	 
-		print("ScoreGUI should now be visible.");
-		
-func make_invisible(): 
-		self.hide();	
-		print("ScoreGUI should now be invisible.");

@@ -1,6 +1,6 @@
 extends Control
-
-onready var GF = preload("res://Resources/SharedDB/PlayerDB.gd").new();
+ 
+onready var PlayerDB = load("res://Resources/SharedDB/PlayerDB.gd").new();
 
 var PlayerDB_matrix = [];
 var temp_node_name = ""; 
@@ -13,11 +13,11 @@ func _ready():
 
 func build_card():
 	#PlayerDB_matrix = get_node("res://Resources/SharedDB/PlayerDB.gd").PlayerDB_matrix.duplicate();
-	print("PlayerDB accessed in the DraftCardGui: " + String(PlayerDB_matrix.size() ));
+	print("PlayerDB accessed in the DraftCardGui: " + String(PlayerDB.PlayerDB_matrix.size() ));
 	
-	for l in range(PlayerDB_matrix.size()):  
-		var PlayerDB_Array = PlayerDB_matrix[l].duplicate()
-		var PlayerDB_EntryCount = PlayerDB_Array.size()
+	for l in range(PlayerDB.PlayerDB_matrix.size()):  
+		var PlayerDB_Array = PlayerDB.PlayerDB_matrix[l].duplicate();
+		var PlayerDB_EntryCount = PlayerDB_Array.size();
 		for n in range(PlayerDB_EntryCount):
 			print(String(l) + ":" + String(n) + ":" + PlayerDB_Array[n]) # Prints n entry 
 			if n == 0:
@@ -54,13 +54,23 @@ func build_card():
 #	pass
 
 
-func _on_TextureButton3_pressed():
+func _on_TextureButton4_pressed():
 	pass # Replace with function body.
 
+func _on_TextureButton3_pressed():
+	pass # Replace with function body.
 
 func _on_TextureButton2_pressed():
 	pass # Replace with function body.
 
-
 func _on_TextureButton_pressed():
 	pass # Replace with function body.
+	
+	
+func make_visible(): 
+		self.show();	 
+		print("DraftCardGUI should now be visible.");
+		
+func make_invisible(): 
+		self.hide();	
+		print("DraftCardGUI should now be invisible.");

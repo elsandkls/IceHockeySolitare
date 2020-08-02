@@ -11,12 +11,30 @@ export (int) var offset;
 export (int) var debug_level;
 export (int) var card_width;
 export (int) var card_height;
- 
-# variables for pieces
+
+onready var STOCK = load("res://Stock.gd").new();
+onready var TALON = load("res://Talon.gd").new();
+onready var TABLEAU1 = load("res://Tableau_1.gd").new();
+onready var TABLEAU2 = load("res://Tableau_2.gd").new();
+onready var TABLEAU3 = load("res://Tableau_3.gd").new();
+onready var TABLEAU4 = load("res://Tableau_4.gd").new();
+onready var TABLEAU5 = load("res://Tableau_5.gd").new();
+onready var TABLEAU6 = load("res://Tableau_6.gd").new();
+onready var TABLEAU7 = load("res://Tableau_7.gd").new();
+onready var FOUNDATION1 = load("res://Foundation_1.gd").new();
+onready var FOUNDATION2 = load("res://Foundation_2.gd").new();
+onready var FOUNDATION3 = load("res://Foundation_3.gd").new();
+onready var FOUNDATION4 = load("res://Foundation_4.gd").new();
+
+# variables for cards  
 var possible_cards = [
 	preload("res://Resources/Cards/Card.tscn")
+	#preload("res://Resources/Cards/Card.gd")
 ];
 
+#Two dimensional array to hold coordinates x,y plane
+var all_pieces = [];
+ 
 #Two dimensional array to hold coordinates x,z plane 
 var my_deck = [];
 var pile_cards_stock = [];
@@ -24,6 +42,7 @@ var pile_cards_talon = [];
 var pile_cards_foundation1 = [];
 var pile_cards_foundation2 = [];
 var pile_cards_foundation3 = [];
+var pile_cards_foundation4 = [];
 var pile_cards_tableau_1 = [];
 var pile_cards_tableau_2 = [];
 var pile_cards_tableau_3 = [];
@@ -46,23 +65,25 @@ var last_y = 0;
 var active_x = 0;
 var active_y = 0;
  
-var grid_full_path = "Grid/";
+var grid_full_path = "./YSort/Grid/";
 var ysort_full_path = "YSort/";
 var sprite_full_path = "/Sprite_Holder";
 var Grid_Container = "Grid"; 
 var ActivePile_Container = "Active" 
 var SpriteHolder_Container = "Card";   
 
-
-
 func _ready(): 
-	StartMenuVisibility();
+	pass;
+
+func start(): 
 	debug_level = 1;
 	randomize();
-	my_deck = make_a_deck(); 
-	shuffle_the_deck();
-	build_pile_grid_array();
-	deal_game();
+
+func build_deck(): 
+		my_deck = make_a_deck(); 
+		shuffle_the_deck();
+		build_pile_grid_array();
+		deal_game();
 
 func move_check():
 	pass;
@@ -145,51 +166,56 @@ func key_input():
 	
 	
 func mouse_input(): 		
-	var card = possible_cards[0].instance(); 
+	var card = possible_cards[0]; 
 	var grid_position = [];  
 	var change = false;
 	if (debug_level == 0):
 		print(change);
+	
 	var start_on_grid = false;
 	var stop_on_grid = false;
 	var transverse_on_grid = false;
+	
 	if (debug_level == 0):
-		print( transverse_on_grid );
-	if(debug_level == 0):
-		print("Input Check: initial touch");    
-	start_x = get_global_mouse_position().x;
-	print("It is start_x: ", start_x);
-	start_y = get_global_mouse_position().y;  
-	print("It is start_y: ", start_y);
-	grid_position.append(start_x); 
-	grid_position.append(start_y); 
-	start_on_grid = is_in_grid_single(grid_position);
-	grid_position.clear();
-	if start_on_grid == true:
-		card = pickup_card(start_x, start_y);
-	else:
-		print("Not on grid");   
-			
-	print("Check for InputEventMouse");    
-	print("Check BUTTON_LEFT");   
-	start_x = get_global_mouse_position().x;
-	print("It is start_x: ", start_x);
-	start_y = get_global_mouse_position().y;  
-	print("It is start_y: ", start_y);
-	if start_x > 0:
+		if (debug_level == 0):
+			print( transverse_on_grid );
+		if(debug_level == 0):
+			print("Input Check: initial touch");    
+		start_x = get_global_mouse_position().x;
+		print("It is start_x: ", start_x);
+		start_y = get_global_mouse_position().y;  
+		print("It is start_y: ", start_y);
 		grid_position.append(start_x); 
-		if start_y > 0:
-			grid_position.append(start_y); 
-			start_on_grid = is_in_grid_single(grid_position);
-			grid_position.clear();
-			if start_on_grid == true:
-				card = pickup_card(start_x, start_y);
-			else:
-				print("Not on grid");
+		grid_position.append(start_y); 
+		start_on_grid = is_in_grid_single(grid_position);
+		grid_position.clear();
+		if start_on_grid == true:
+			card = pickup_card(start_x, start_y);
 		else:
-			print ("Not on grid");
-	else:
-		print ("Not on grid");   
+			print("Not on grid");   
+			
+	
+	if (debug_level == 0):
+		print("Check for InputEventMouse");    
+		print("Check BUTTON_LEFT");   
+		start_x = get_global_mouse_position().x;
+		print("It is start_x: ", start_x);
+		start_y = get_global_mouse_position().y;  
+		print("It is start_y: ", start_y);
+		if start_x > 0:
+			grid_position.append(start_x); 
+			if start_y > 0:
+				grid_position.append(start_y); 
+				start_on_grid = is_in_grid_single(grid_position);
+				grid_position.clear();
+				if start_on_grid == true:
+					card = pickup_card(start_x, start_y);
+				else:
+					print("Not on grid");
+			else:
+				print ("Not on grid");
+		else:
+			print ("Not on grid");   
 			  
 
 func _on_MatchCheck_Timer_timeout():
@@ -197,6 +223,18 @@ func _on_MatchCheck_Timer_timeout():
 
 func _on_UndoDriver_Timer_timeout(): 
 	pass;
+	
+ 
+
+func build_temp_path(base_path):
+	var new_path = build_path(base_path, "nogrid"); 
+	return(new_path)
+	
+func build_pile_on_grid(grid_var_x,grid_var_y):
+	var temp_grid = []; 
+	temp_grid.append(grid_var_x);
+	temp_grid.append(grid_var_y);
+	return temp_grid.duplicate(); 
 	
 	
 func build_pile_grid_array(): 
@@ -214,128 +252,92 @@ func build_pile_grid_array():
 	
 	var piles_grids = [];
 	var piles_names = [];
+	var piles_objects = [];
+	var piles_IDs = [];
 	var temp_grid = [];
 	
 	var base_path = ""; 
 	var new_path = ""; 
+ 
+	print(STOCK);
+	STOCK.start();
+	piles_names.append( "Stock" );
+	piles_grids.append( build_pile_on_grid(0,0) );  
+	piles_objects.append( STOCK );
+	piles_IDs.append(pile_cards_stock); 
+	
+	piles_names.append( "Talon" );
+	piles_grids.append( build_pile_on_grid(0,1) );  
+	piles_objects.append( TALON );	
+	piles_IDs.append(pile_cards_talon ); 
+	
+	piles_names.append( "Foundation_1" );
+	piles_grids.append( build_pile_on_grid(0,3) );  
+	piles_objects.append( FOUNDATION1 );
+	piles_IDs.append(pile_cards_foundation1 );
+	
+	 
+	piles_names.append( "Foundation_2" );
+	piles_grids.append( build_pile_on_grid(0,4) );  
+	piles_objects.append( FOUNDATION2 );
+	piles_IDs.append(pile_cards_foundation2 );
+	 
+	piles_names.append( "Foundation_3" );
+	piles_grids.append( build_pile_on_grid(0,5) );   
+	piles_objects.append( FOUNDATION3 ); 
+	piles_IDs.append(pile_cards_foundation3 );
+	
+	piles_names.append(  "Foundation_4" );
+	piles_grids.append( build_pile_on_grid(0,6) );   
+	piles_objects.append( FOUNDATION4 ); 
+	piles_IDs.append(pile_cards_foundation4 );
 
-	base_path = "Stock"; 
-	new_path = build_path(base_path, "nogrid");  
-	piles_names.append(new_path);
-	temp_grid.append(0);
-	temp_grid.append(0);
-	piles_grids.append(temp_grid.duplicate() );
-	temp_grid.clear(); 
+	piles_names.append(  "Tableau_1" );
+	piles_grids.append( build_pile_on_grid(1,0) );  
+	piles_objects.append( TABLEAU1 );  
+	piles_IDs.append(pile_cards_tableau_1 );
 	 
+	piles_names.append( "Tableau_2" );
+	piles_grids.append( build_pile_on_grid(1,1) );  
+	piles_objects.append( TABLEAU2 );  
+	piles_IDs.append(pile_cards_tableau_2 );
 	 
-	base_path = "Talon"; 
-	new_path = build_path(base_path, "nogrid");  
-	piles_names.append(new_path);
-	temp_grid.append(0);
-	temp_grid.append(1);
-	piles_grids.append(temp_grid.duplicate() ); 
-	temp_grid.clear(); 
+	piles_names.append( "Tableau_3" );
+	piles_grids.append( build_pile_on_grid(1,2) );  
+	piles_objects.append( TABLEAU3 );  
+	piles_IDs.append(pile_cards_tableau_3 );
+	  
+	piles_names.append( "Tableau_4" );
+	piles_grids.append( build_pile_on_grid(1,3) );   
+	piles_objects.append( TABLEAU4 );
+	piles_IDs.append(pile_cards_tableau_4 );
+	   
+	piles_names.append(  "Tableau_5" );
+	piles_grids.append( build_pile_on_grid(1,4) );  
+	piles_objects.append( TABLEAU5 );
+	piles_IDs.append(pile_cards_tableau_5 );
 	
-	base_path = "Foundation_1"; 
-	new_path = build_path(base_path, "nogrid");   
-	piles_names.append(new_path); 
-	temp_grid.append(0);
-	temp_grid.append(3);
-	piles_grids.append(temp_grid.duplicate() );  
-	temp_grid.clear(); 
-	
-	base_path = "Foundation_2"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(0);
-	temp_grid.append(4);
-	piles_grids.append(temp_grid.duplicate() );  
-	temp_grid.clear(); 
+	piles_names.append( "Tableau_6" );
+	piles_grids.append( build_pile_on_grid(1,5) );   
+	piles_objects.append( TABLEAU6  );
+	piles_IDs.append(pile_cards_tableau_6 );
 	 
-	base_path = "Foundation_3"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(0);
-	temp_grid.append(5);
-	piles_grids.append(temp_grid.duplicate() );  
-	temp_grid.clear(); 
-	
-	base_path = "Foundation_4"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path);  
-	temp_grid.append(0);
-	temp_grid.append(6);
-	piles_grids.append(temp_grid.duplicate() );   
-	temp_grid.clear(); 
-	
-	base_path = "Tableau_1"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(1);
-	temp_grid.append(0);
-	piles_grids.append(temp_grid.duplicate());  
-	temp_grid.clear(); 
-	
-	base_path = "Tableau_2"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path);  
-	temp_grid.append(1);
-	temp_grid.append(1);
-	piles_grids.append(temp_grid.duplicate() );   
-	temp_grid.clear(); 
-	
-	base_path = "Tableau_3"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(1);
-	temp_grid.append(2);
-	piles_grids.append(temp_grid.duplicate() );   
-	temp_grid.clear(); 
-	
-	base_path = "Tableau_4"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(1);
-	temp_grid.append(3);
-	piles_grids.append(temp_grid.duplicate() );  
-	temp_grid.clear(); 
-	
-	base_path = "Tableau_5"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(1);
-	temp_grid.append(4);
-	piles_grids.append(temp_grid.duplicate());   
-	temp_grid.clear();
-	
-	base_path = "Tableau_6"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(1);
-	temp_grid.append(5);
-	piles_grids.append(temp_grid.duplicate() );   
-	temp_grid.clear();
-	
-	base_path = "Foundation_1"; 
-	new_path = build_path(base_path, "nogrid");    
-	piles_names.append(new_path); 
-	temp_grid.append(1);
-	temp_grid.append(6);
-	piles_grids.append(temp_grid.duplicate());   
-	temp_grid.clear();
+	piles_names.append(  "Tableau_7" );
+	piles_grids.append( build_pile_on_grid(1,6) );  
+	piles_objects.append( TABLEAU7 ); 
+	piles_IDs.append(pile_cards_tableau_7 );
 	 
+	print(piles_names);
+	print(piles_grids);
+	print(piles_objects);
+	print(piles_IDs);
+
 	for n in range(piles_names.size()):
-		var temp_node_name = str(piles_names[n] +  sprite_full_path ); 
-		# 
-		if(debug_level == 0):
-			print(temp_node_name);
-			print (get_node(temp_node_name));
-			print (get_node(temp_node_name).get_position_in_parent());
-			
-		upper_right_x = Vector2(get_node(piles_names[n]).get_transform().get_origin()).x;
-		upper_right_y = Vector2(get_node(piles_names[n]).get_transform().get_origin()).y;
-		size_x = get_node(temp_node_name).texture.get_size().x;
-		size_y = get_node(temp_node_name).texture.get_size().y;
+		print(n); 
+		upper_right_x = STOCK.get_uppper_right_x();
+		upper_right_y = STOCK.get_uppper_right_y();
+		size_x = get_node(piles_names[n]).texture.get_size().x;
+		size_y = get_node(piles_names[n]).texture.get_size().y;
 		lower_left_x = upper_right_x + size_x;
 		lower_left_y = upper_right_y + size_y;
 		#
@@ -378,18 +380,19 @@ func build_pile_grid_array():
 
 
 func make_a_deck(): 
+	var temp_array=[];
 	if(debug_level == 0):
-		print("function: make deck");
-	var array = [];
+		print("function: make deck"); 
 	# 7 colors
 	for i in range(4):
 		# 13 cards per color 
-		for l in range(13): 
+		for l in range(13):   
 			var card = spawn_card(i, l);
-			array.append(card); 
+			#print(i, " : ", l, " : Spawned : ",card)
+			temp_array.append(card); 			
 			if(debug_level == 0):
 				print(card);
-	return array;
+	return temp_array;
  
 func spawn_card(color, rank):
 	if(debug_level == 0):
@@ -398,12 +401,17 @@ func spawn_card(color, rank):
 		print(color);
 		print(rank);
 	var rand = floor(rand_range(0,possible_cards.size()));
-	var card = possible_cards[rand].instance();
-	add_child(card);
-	card.position = card_position(Vector2(0,0), 0,"noshift"); 
-	card.setTextureForground(rank);
-	card.setTextureBackground(color);
-	return(card);
+	#print(rand);
+	#var CARD = possible_cards[rand]; 
+	var CARD = possible_cards[rand].instance();
+	#print(CARD);
+	add_child(CARD);
+	var Vect2Position = card_position(Vector2(0,0), 0,"noshift"); 
+	CARD.setNodePosition(Vect2Position); 	
+	CARD.setTextureForground_CardSpec(rank);
+	CARD.setTextureBackground_FaceUp(color);
+	CARD.setTextureBackground_FaceDown(color);
+	return(CARD);
 
 func shuffle_the_deck(): 
 	if(debug_level == 0):
@@ -949,14 +957,6 @@ func move_card(active_x, active_y, card):
 	card.position = Vector2(active_x, active_y)
 	card.move(card.position);
 	pass;
-
-func StartMenuVisibility():	
-	if(get_parent().get_node("GUI/YSort/GameMenu").visible):
-		get_parent().get_node("GUI/YSort/GameMenu").hide();	
-	if(get_parent().get_node("GUI/YSort/ScoreGUI").visible):
-		get_parent().get_node("GUI/YSort/ScoreGUI").hide();	
-	if(get_parent().get_node("GUI/YSort/OptionsGUI").visible):
-		get_parent().get_node("GUI/YSort/OptionsGUI").hide();
 		
 func _process(delta):
 	pass; 
@@ -964,10 +964,8 @@ func _process(delta):
 func _input(event):	 
 	if event is InputEventMouse: 
 		if controlling ==  true:
-			print("mouse input")
-			mouse_input();
-		else:
-			print("not clicked yet do nothing.")
+			print("InputEventMouse is recognized.")
+			mouse_input(); 
 			
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
@@ -984,6 +982,7 @@ func _input(event):
 	
 func _unhandled_input(event: InputEvent): 
 	if event is InputEventMouseMotion: 
+		print("InputEventMouseMotion Recognized");
 		mouse_input();    
 		  
 	if event is InputEventScreenTouch:

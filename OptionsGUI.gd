@@ -1,10 +1,5 @@
 extends Control
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+  
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,3 +23,12 @@ func _on_TextureButton2_pressed():
 
 func _on_TextureButton_pressed():
 	pass # Replace with function body.
+
+
+func make_visible(): 
+		self.show();	 
+		print("OptionsGUI should now be visible.");
+		
+func make_invisible(): 
+		self.hide();	
+		print("OptionsGUI should now be invisible.");

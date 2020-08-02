@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Grid.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Background/Texture-176.jpg" type="Texture" id=2]
@@ -20,6 +20,20 @@
 [ext_resource path="res://Resources/SharedDB/PlayerDB.gd" type="Script" id=18]
 [ext_resource path="res://DraftCardGUI.gd" type="Script" id=19]
 [ext_resource path="res://Game_Window.gd" type="Script" id=20]
+[ext_resource path="res://GameMenu.gd" type="Script" id=21]
+[ext_resource path="res://Stock.gd" type="Script" id=22]
+[ext_resource path="res://Tableau_2.gd" type="Script" id=23]
+[ext_resource path="res://Talon.gd" type="Script" id=24]
+[ext_resource path="res://Tableau_1.gd" type="Script" id=25]
+[ext_resource path="res://Tableau_3.gd" type="Script" id=26]
+[ext_resource path="res://Tableau_4.gd" type="Script" id=27]
+[ext_resource path="res://Tableau_5.gd" type="Script" id=28]
+[ext_resource path="res://Tableau_6.gd" type="Script" id=29]
+[ext_resource path="res://Tableau_7.gd" type="Script" id=30]
+[ext_resource path="res://Foundation_1.gd" type="Script" id=31]
+[ext_resource path="res://Foundation_2.gd" type="Script" id=32]
+[ext_resource path="res://Foundation_3.gd" type="Script" id=33]
+[ext_resource path="res://Foundation_4.gd" type="Script" id=34]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -54,6 +68,14 @@ font_data = ExtResource( 4 )
 size = 30
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://Resources/Fonts/Kenney Blocks.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+size = 28
+outline_color = Color( 0.823529, 0.0313726, 0.870588, 1 )
+font_data = SubResource( 10 )
+
 [node name="Game_Window" type="Node2D"]
 script = ExtResource( 20 )
 
@@ -81,7 +103,8 @@ debug_level = 1
 [node name="YSort" type="YSort" parent="YSort/Grid"]
 
 [node name="Stock" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 100, 100 )
+position = Vector2( 113.566, 136.176 )
+script = ExtResource( 22 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Stock"]
 texture = ExtResource( 3 )
@@ -100,7 +123,8 @@ __meta__ = {
 }
 
 [node name="Talon" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 225, 100 )
+position = Vector2( 238.566, 136.176 )
+script = ExtResource( 24 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Talon"]
 texture = ExtResource( 3 )
@@ -118,7 +142,8 @@ __meta__ = {
 }
 
 [node name="Tableau_1" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 100, 285 )
+position = Vector2( 113.566, 321.176 )
+script = ExtResource( 25 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_1"]
 texture = ExtResource( 3 )
@@ -136,7 +161,8 @@ __meta__ = {
 }
 
 [node name="Tableau_2" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 225, 285 )
+position = Vector2( 238.566, 321.176 )
+script = ExtResource( 23 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_2"]
 texture = ExtResource( 3 )
@@ -154,7 +180,8 @@ __meta__ = {
 }
 
 [node name="Tableau_3" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 350, 285 )
+position = Vector2( 363.566, 321.176 )
+script = ExtResource( 26 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_3"]
 texture = ExtResource( 3 )
@@ -172,7 +199,8 @@ __meta__ = {
 }
 
 [node name="Tableau_4" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 475, 285 )
+position = Vector2( 488.566, 321.176 )
+script = ExtResource( 27 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_4"]
 texture = ExtResource( 3 )
@@ -190,7 +218,8 @@ __meta__ = {
 }
 
 [node name="Tableau_5" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 600, 285 )
+position = Vector2( 613.566, 321.176 )
+script = ExtResource( 28 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_5"]
 texture = ExtResource( 3 )
@@ -208,7 +237,8 @@ __meta__ = {
 }
 
 [node name="Tableau_6" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 725, 285 )
+position = Vector2( 738.566, 321.176 )
+script = ExtResource( 29 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_6"]
 texture = ExtResource( 3 )
@@ -226,7 +256,8 @@ __meta__ = {
 }
 
 [node name="Tableau_7" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 850, 285 )
+position = Vector2( 863.566, 321.176 )
+script = ExtResource( 30 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Tableau_7"]
 texture = ExtResource( 3 )
@@ -244,7 +275,8 @@ __meta__ = {
 }
 
 [node name="Foundation_1" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 475, 100 )
+position = Vector2( 488.566, 136.176 )
+script = ExtResource( 31 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Foundation_1"]
 texture = ExtResource( 3 )
@@ -262,7 +294,8 @@ __meta__ = {
 }
 
 [node name="Foundation_2" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 600, 100 )
+position = Vector2( 613.566, 136.176 )
+script = ExtResource( 32 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Foundation_2"]
 texture = ExtResource( 3 )
@@ -280,7 +313,8 @@ __meta__ = {
 }
 
 [node name="Foundation_3" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 725, 100 )
+position = Vector2( 738.566, 136.176 )
+script = ExtResource( 33 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Foundation_3"]
 texture = ExtResource( 3 )
@@ -298,7 +332,8 @@ __meta__ = {
 }
 
 [node name="Foundation_4" type="Node2D" parent="YSort/Grid/YSort"]
-position = Vector2( 850, 100 )
+position = Vector2( 863.566, 136.176 )
+script = ExtResource( 34 )
 
 [node name="Sprite_Holder" type="Sprite" parent="YSort/Grid/YSort/Foundation_4"]
 texture = ExtResource( 3 )
@@ -603,6 +638,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RTLPlayer1" type="RichTextLabel" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer1/BG_Player_1"]
+margin_left = 19.0
+margin_top = 198.0
+margin_right = 182.0
+margin_bottom = 288.0
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureButton" type="TextureButton" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer1"]
 margin_top = 304.0
 margin_right = 200.0
@@ -648,6 +693,15 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 170.0
 margin_bottom = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RTLPlayer2" type="RichTextLabel" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer2/BG_Player_2"]
+margin_left = -185.0
+margin_top = 198.0
+margin_right = -22.0
+margin_bottom = 288.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -699,6 +753,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RTLPlayer3" type="RichTextLabel" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer3/BG_Player_3"]
+margin_left = -389.0
+margin_top = 198.0
+margin_right = -226.0
+margin_bottom = 288.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureButton3" type="TextureButton" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer3"]
 margin_top = 304.0
 margin_right = 200.0
@@ -722,12 +785,12 @@ margin_left = 612.0
 margin_right = 812.0
 margin_bottom = 329.0
 
-[node name="BG_Player_3" type="TextureRect" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4"]
+[node name="BG_Player_4" type="TextureRect" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4"]
 margin_right = 200.0
 margin_bottom = 300.0
 texture = ExtResource( 12 )
 
-[node name="NinePatchRect4" type="NinePatchRect" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4/BG_Player_3"]
+[node name="NinePatchRect4" type="NinePatchRect" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4/BG_Player_4"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 180.0
@@ -736,11 +799,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TexRec_PlayerImage_Slot_004" type="TextureRect" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4/BG_Player_3/NinePatchRect4"]
+[node name="TexRec_PlayerImage_Slot_004" type="TextureRect" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4/BG_Player_4/NinePatchRect4"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 170.0
 margin_bottom = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RTLPlayer4" type="RichTextLabel" parent="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4/BG_Player_4"]
+margin_left = -593.0
+margin_top = 198.0
+margin_right = -430.0
+margin_bottom = 288.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -771,6 +843,7 @@ margin_left = 100.0
 margin_top = 75.0
 margin_right = 475.0
 margin_bottom = 675.0
+script = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -823,10 +896,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoresButton" type="TextureButton" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
+[node name="DraftButton" type="TextureButton" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
 margin_top = 177.0
 margin_right = 311.0
 margin_bottom = 227.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="YSort/GUI/YSort/GameMenu/VBoxContainer/DraftButton"]
+margin_left = 100.0
+margin_right = 200.0
+margin_bottom = 59.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 9 )
+text = "DRAFT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoresButton" type="TextureButton" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
+margin_top = 246.0
+margin_right = 311.0
+margin_bottom = 296.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
@@ -843,9 +935,9 @@ __meta__ = {
 }
 
 [node name="SettingsButton" type="TextureButton" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
-margin_top = 246.0
+margin_top = 315.0
 margin_right = 311.0
-margin_bottom = 296.0
+margin_bottom = 365.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
@@ -862,9 +954,9 @@ __meta__ = {
 }
 
 [node name="ExitGameButton" type="TextureButton" parent="YSort/GUI/YSort/GameMenu/VBoxContainer"]
-margin_top = 315.0
+margin_top = 384.0
 margin_right = 311.0
-margin_bottom = 365.0
+margin_bottom = 434.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 8 )
@@ -880,6 +972,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RTL_CASH" type="RichTextLabel" parent="YSort"]
+margin_left = 372.493
+margin_top = 1.58667
+margin_right = 679.493
+margin_bottom = 60.5867
+custom_fonts/normal_font = SubResource( 11 )
+visible_characters = 8
+text = "CASH: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RTL_CASH_VAR" type="RichTextLabel" parent="YSort"]
+margin_left = 693.0
+margin_right = 1000.0
+margin_bottom = 59.0
+custom_fonts/normal_font = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Node" type="Node" parent="."]
 script = ExtResource( 17 )
 [connection signal="pressed" from="YSort/GUI/YSort/ScoreGUI/VBoxContainer/VBoxContainer/ReturnToMenuButton" to="YSort/GUI" method="_on_ReturnToMenuButton_pressed"]
@@ -890,6 +1003,7 @@ script = ExtResource( 17 )
 [connection signal="pressed" from="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer3/TextureButton3" to="YSort/GUI/YSort/DraftCardsGUI" method="_on_TextureButton3_pressed"]
 [connection signal="pressed" from="YSort/GUI/YSort/DraftCardsGUI/HBoxContainer/VBoxPlayer4/TextureButton3" to="YSort/GUI/YSort/DraftCardsGUI" method="_on_TextureButton3_pressed"]
 [connection signal="pressed" from="YSort/GUI/YSort/GameMenu/VBoxContainer/PlayButton" to="YSort/GUI" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="YSort/GUI/YSort/GameMenu/VBoxContainer/DraftButton" to="YSort/GUI" method="_on_DraftButton_pressed"]
 [connection signal="pressed" from="YSort/GUI/YSort/GameMenu/VBoxContainer/ScoresButton" to="YSort/GUI" method="_on_ScoresButton_pressed"]
 [connection signal="pressed" from="YSort/GUI/YSort/GameMenu/VBoxContainer/SettingsButton" to="YSort/GUI" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="YSort/GUI/YSort/GameMenu/VBoxContainer/ExitGameButton" to="YSort/GUI" method="_on_ExitGameButton_pressed"]
