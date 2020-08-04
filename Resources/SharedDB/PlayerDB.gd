@@ -10,6 +10,7 @@ func _ready():
 	pass;
 	
 func start():
+	
 	var delim = ","
 	var newLineDelim = "\n"
 	## open and read files  
@@ -27,6 +28,9 @@ func start():
 			PlayerDB_matrix[l].append(PlayerDB_Array[n])
 	saveDB_PlayerDB(PlayerDB, file_PlayerDB)
 	  
+func get_PlayerDBMatrix():
+	return(PlayerDB_matrix.duplicate())	;
+	
 func loadDB_PlayerDB(fileName):
 	var content = loadFile( fileName) 
 	return content

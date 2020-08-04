@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Scripts/GUI.gd" type="Script" id=4]
+[ext_resource path="res://Resources/Scenes/DraftCardsGUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/Scenes/GameMenuGUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Resources/Scenes/ScoreGUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resources/Scenes/OptionsGUI.tscn" type="PackedScene" id=9]
+
+[node name="GUI" type="Control"]
+margin_left = 75.0
+margin_right = 925.0
+margin_bottom = 600.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreGUI" parent="." instance=ExtResource( 8 )]
+margin_left = 497.503
+margin_top = 85.0211
+margin_right = 872.503
+margin_bottom = 685.021
+
+[node name="OptionsGUI" parent="." instance=ExtResource( 9 )]
+margin_left = -70.3583
+margin_top = 78.3404
+margin_right = 304.642
+margin_bottom = 678.34
+
+[node name="DraftCardsGUI" parent="." instance=ExtResource( 6 )]
+
+[node name="GameMenu" parent="." instance=ExtResource( 7 )]
+margin_left = 205.221
+margin_top = 95.0422
+margin_right = 580.221
+margin_bottom = 695.042

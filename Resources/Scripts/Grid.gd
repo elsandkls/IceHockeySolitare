@@ -12,19 +12,19 @@ export (int) var debug_level;
 export (int) var card_width;
 export (int) var card_height;
 
-onready var STOCK = load("res://Stock.gd").new();
-onready var TALON = load("res://Talon.gd").new();
-onready var TABLEAU1 = load("res://Tableau_1.gd").new();
-onready var TABLEAU2 = load("res://Tableau_2.gd").new();
-onready var TABLEAU3 = load("res://Tableau_3.gd").new();
-onready var TABLEAU4 = load("res://Tableau_4.gd").new();
-onready var TABLEAU5 = load("res://Tableau_5.gd").new();
-onready var TABLEAU6 = load("res://Tableau_6.gd").new();
-onready var TABLEAU7 = load("res://Tableau_7.gd").new();
-onready var FOUNDATION1 = load("res://Foundation_1.gd").new();
-onready var FOUNDATION2 = load("res://Foundation_2.gd").new();
-onready var FOUNDATION3 = load("res://Foundation_3.gd").new();
-onready var FOUNDATION4 = load("res://Foundation_4.gd").new();
+var STOCK = load("res://Resources/Scripts/Stock.gd");
+var TALON = load("res://Resources/Scripts/Talon.gd");
+var TABLEAU1 = load("res://Resources/Scripts/Tableau_1.gd");
+var TABLEAU2 = load("res://Resources/Scripts/Tableau_2.gd");
+var TABLEAU3 = load("res://Resources/Scripts/Tableau_3.gd");
+var TABLEAU4 = load("res://Resources/Scripts/Tableau_4.gd");
+var TABLEAU5 = load("res://Resources/Scripts/Tableau_5.gd");
+var TABLEAU6 = load("res://Resources/Scripts/Tableau_6.gd");
+var TABLEAU7 = load("res://Resources/Scripts/Tableau_7.gd");
+var FOUNDATION1 = load("res://Resources/Scripts/Foundation_1.gd");
+var FOUNDATION2 = load("res://Resources/Scripts/Foundation_2.gd");
+var FOUNDATION3 = load("res://Resources/Scripts/Foundation_3.gd");
+var FOUNDATION4 = load("res://Resources/Scripts/Foundation_4.gd");
 
 # variables for cards  
 var possible_cards = [
@@ -259,8 +259,8 @@ func build_pile_grid_array():
 	var base_path = ""; 
 	var new_path = ""; 
  
-	print(STOCK);
-	STOCK.start();
+	#print(STOCK);
+	#STOCK.start();
 	piles_names.append( "Stock" );
 	piles_grids.append( build_pile_on_grid(0,0) );  
 	piles_objects.append( STOCK );
@@ -325,22 +325,32 @@ func build_pile_grid_array():
 	piles_names.append(  "Tableau_7" );
 	piles_grids.append( build_pile_on_grid(1,6) );  
 	piles_objects.append( TABLEAU7 ); 
-	piles_IDs.append(pile_cards_tableau_7 );
+	piles_IDs.append(pile_cards_tableau_7);
 	 
-	print(piles_names);
-	print(piles_grids);
-	print(piles_objects);
-	print(piles_IDs);
+	#print(piles_names);
+	#print(piles_grids);
+	#print(piles_objects);
+	#print(piles_IDs);
 
 	for n in range(piles_names.size()):
 		print(n); 
-		upper_right_x = STOCK.get_uppper_right_x();
-		upper_right_y = STOCK.get_uppper_right_y();
-		size_x = get_node(piles_names[n]).texture.get_size().x;
-		size_y = get_node(piles_names[n]).texture.get_size().y;
+		print(piles_names[n]);
+		print(piles_grids[n]);
+		print(piles_objects[n]);
+		print(piles_IDs[n]);
+		var TEMPOBJECT = piles_objects[n];
+		print (TEMPOBJECT);
+		upper_right_x = TEMPOBJECT.get_uppper_right_x();
+		print(upper_right_x);
+		upper_right_y = TEMPOBJECT.get_uppper_right_y();
+		print(upper_right_y);
+		size_x = TEMPOBJECT.get_size_x();
+		print(size_x);
+		size_y = TEMPOBJECT.get_size_y();
+		print(size_y);
 		lower_left_x = upper_right_x + size_x;
 		lower_left_y = upper_right_y + size_y;
-		#
+		
 		if(debug_level == 0):
 			print("(", upper_right_x, ",", upper_right_y, "), (", lower_left_x, ",", lower_left_y, "), (", size_x, ",", size_y, ")");
 		position_origin.append(upper_right_x);
@@ -964,7 +974,7 @@ func _process(delta):
 func _input(event):	 
 	if event is InputEventMouse: 
 		if controlling ==  true:
-			print("InputEventMouse is recognized.")
+			#print("InputEventMouse is recognized.")
 			mouse_input(); 
 			
 	if event is InputEventMouseButton:
@@ -974,22 +984,22 @@ func _input(event):
 					controlling = false;
 				else:
 					controlling = true;
-				print("Left button was clicked at ", event.position); 
-				print("InputEventMouseButton Recognized"); 
+				#print("Left button was clicked at ", event.position); 
+				#print("InputEventMouseButton Recognized"); 
 				mouse_input();   
 	pass;
 	
 	
 func _unhandled_input(event: InputEvent): 
 	if event is InputEventMouseMotion: 
-		print("InputEventMouseMotion Recognized");
+		#print("InputEventMouseMotion Recognized");
 		mouse_input();    
 		  
 	if event is InputEventScreenTouch:
-		print("InputEventScreenTouch Recognized");
+		#print("InputEventScreenTouch Recognized");
 		touch_input();
 		
 	if event is InputEventKey:
-		print("InputEventKey Recognized");
+		#print("InputEventKey Recognized");
 		key_input();  
 		

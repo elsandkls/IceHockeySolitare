@@ -48,5 +48,6 @@ func set_TextureSprite(rank):
 			set_texture(card_tex13)
 
 func _input(event): 
+	print(event);
 	pass;
  

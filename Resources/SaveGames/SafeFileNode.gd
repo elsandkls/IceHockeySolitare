@@ -26,7 +26,15 @@ func parse_save_content(content):
 			SaveGameContent_matrix[l].append(SaveGameContent_Array[n]);
 	return(SaveGameContent_matrix);
 	
-func build_save_content(user_name, user_color, cash, score):
+func build_save_content(user_name, user_color, cash, score, content):
+	### todo
+	# this function is incomplete
+	# needs to build the content to put in the file.
+	print(user_name);
+	print(user_color);
+	print(cash);
+	print(score);
+	print(content);
 	var delim = ",";
 	var newLineDelim = "\n"; 
 	#print("Parse Flie Content: " + String(content));
@@ -42,12 +50,12 @@ func build_save_content(user_name, user_color, cash, score):
 			SaveGameContent_matrix[l].append(SaveGameContent_Array[n]);
 	return(SaveGameContent_matrix);	
 	
-func extract_cash_total(SaveGameContent_matrix):
+func extract_cash_total(SGC_matrix):
 	print("extract cash total function: ");
 	var cash = 0;
 	var trigger = -1;
-	for a in range(SaveGameContent_matrix.size()):
-		var SaveGameContent_Array = SaveGameContent_matrix[a];
+	for a in range(SGC_matrix.size()):
+		var SaveGameContent_Array = SGC_matrix[a];
 		for n in range(SaveGameContent_Array.size()):
 			#print("Looking for cash total :" + String(n) + ":" + SaveGameContent_Array[n]);
 			if(SaveGameContent_Array[n] == "cash"):
@@ -57,12 +65,12 @@ func extract_cash_total(SaveGameContent_matrix):
 					cash = SaveGameContent_Array[n];
 	return (cash);
 	
-func extract_score_total(SaveGameContent_matrix):
+func extract_score_total(SGC_matrix):
 	print("extract score function: ");
 	var score = 0;
 	var trigger = -1;
-	for a in range(SaveGameContent_matrix.size()):
-		var SaveGameContent_Array = SaveGameContent_matrix[a];
+	for a in range(SGC_matrix.size()):
+		var SaveGameContent_Array = SGC_matrix[a];
 		for n in range(SaveGameContent_Array.size()):
 			#print("Looking for score total :" + String(n) + ":" + SaveGameContent_Array[n]);
 			if(SaveGameContent_Array[n] == "score"):
@@ -73,12 +81,12 @@ func extract_score_total(SaveGameContent_matrix):
 	return (score);
 	
 	
-func extract_user_color_total(SaveGameContent_matrix):
+func extract_user_color_total(SGC_matrix):
 	print("extract user_color function: ");
 	var user_color = 0;
 	var trigger = -1;
-	for a in range(SaveGameContent_matrix.size()):
-		var SaveGameContent_Array = SaveGameContent_matrix[a];
+	for a in range(SGC_matrix.size()):
+		var SaveGameContent_Array = SGC_matrix[a];
 		for n in range(SaveGameContent_Array.size()):
 			#print("Looking for user_color total :" + String(n) + ":" + SaveGameContent_Array[n]);
 			if(SaveGameContent_Array[n] == "user_color"):
@@ -89,12 +97,12 @@ func extract_user_color_total(SaveGameContent_matrix):
 	return (user_color);
 	
 	
-func extract_user_name_total(SaveGameContent_matrix):
+func extract_user_name_total(SGC_matrix):
 	print("extract user_name function: ");
 	var user_name = 0;
 	var trigger = -1;
-	for a in range(SaveGameContent_matrix.size()):
-		var SaveGameContent_Array = SaveGameContent_matrix[a];
+	for a in range(SGC_matrix.size()):
+		var SaveGameContent_Array = SGC_matrix[a];
 		for n in range(SaveGameContent_Array.size()):
 			#print("Looking for user_name total :" + String(n) + ":" + SaveGameContent_Array[n]);
 			if(SaveGameContent_Array[n] == "user_name"):
