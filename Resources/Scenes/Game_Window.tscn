@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Resources/SharedDB/Node.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Scenes/Timer.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Background/Texture-176.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Scenes/Grid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Scripts/Game_Window.gd" type="Script" id=4]
@@ -29,10 +29,6 @@ __meta__ = {
 }
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="Grid" parent="YSort" instance=ExtResource( 3 )]
-
-[node name="GUI" parent="YSort" instance=ExtResource( 5 )]
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 3.0
@@ -119,5 +115,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node" type="Node" parent="."]
+[node name="Grid" parent="." instance=ExtResource( 3 )]
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+margin_left = 73.1494
+margin_top = 1.85062
+margin_right = 923.149
+margin_bottom = 601.851
+
+[node name="SettingsButton_pressed" type="Timer" parent="."]
+
+[node name="ExitGameButton_pressed" type="Timer" parent="."]
+
+[node name="ScoresButton_pressed" type="Timer" parent="."]
+
+[node name="ReturnToMenuButton_pressed" type="Timer" parent="."]
+
+[node name="Timer" type="Node2D" parent="."]
 script = ExtResource( 1 )
+[connection signal="timeout" from="SettingsButton_pressed" to="." method="_on_SettingsButton_pressed"]
+[connection signal="timeout" from="ExitGameButton_pressed" to="." method="_on_ExitGameButton_pressed"]
+[connection signal="timeout" from="ScoresButton_pressed" to="." method="_on_ScoresButton_pressed"]
+[connection signal="timeout" from="ReturnToMenuButton_pressed" to="." method="_on_ReturnToMenuButton_pressed"]

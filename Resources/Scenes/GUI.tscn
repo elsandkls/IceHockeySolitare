@@ -16,21 +16,9 @@ __meta__ = {
 }
 
 [node name="ScoreGUI" parent="." instance=ExtResource( 8 )]
-margin_left = 497.503
-margin_top = 85.0211
-margin_right = 872.503
-margin_bottom = 685.021
 
 [node name="OptionsGUI" parent="." instance=ExtResource( 9 )]
-margin_left = -70.3583
-margin_top = 78.3404
-margin_right = 304.642
-margin_bottom = 678.34
 
 [node name="DraftCardsGUI" parent="." instance=ExtResource( 6 )]
 
 [node name="GameMenu" parent="." instance=ExtResource( 7 )]
-margin_left = 205.221
-margin_top = 95.0422
-margin_right = 580.221
-margin_bottom = 695.042

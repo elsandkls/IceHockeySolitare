@@ -1,12 +1,13 @@
 extends Node2D
 
+# This is Grid.gd   
 # Grid Variables
 export (int) var width;
 export (int) var height;
 export (int) var start_x;
 export (int) var start_y;
-export (int) var stop_x;
-export (int) var stop_y;
+#export (int) var stop_x;
+#export (int) var stop_y;
 export (int) var offset;
 export (int) var debug_level;
 export (int) var card_width;
@@ -33,7 +34,7 @@ var possible_cards = [
 ];
 
 #Two dimensional array to hold coordinates x,y plane
-var all_pieces = [];
+#var all_pieces = [];
  
 #Two dimensional array to hold coordinates x,z plane 
 var my_deck = [];
@@ -54,16 +55,16 @@ var pile_cards_tableau_7 = [];
 var pile_locations = [];
 
 # Touch variables
-var first_touch = Vector2(0,0);
-var final_touch = Vector2(0,0);
-var New_Position = Vector2(0,0);
+#var first_touch = Vector2(0,0);
+#var final_touch = Vector2(0,0);
+#var New_Position = Vector2(0,0);
 var new_x = start_x;
 var new_y = start_y;
 var controlling = false;
-var last_x = 0;
-var last_y = 0;
-var active_x = 0;
-var active_y = 0;
+#var last_x = 0;
+#var last_y = 0;
+#var active_x = 0;
+#var active_y = 0;
  
 var grid_full_path = "./YSort/Grid/";
 var ysort_full_path = "YSort/";
@@ -148,7 +149,7 @@ func is_in_grid_single(grid_position):
 			return false;
 	else:
 		return false;
-	return false;
+	pass;
 
 func touch_input():  
 	if(debug_level == 0):
@@ -166,58 +167,29 @@ func key_input():
 	
 	
 func mouse_input(): 		
+	var _on_grid = false;   
 	var card = possible_cards[0]; 
-	var grid_position = [];  
-	var change = false;
-	if (debug_level == 0):
-		print(change);
-	
-	var start_on_grid = false;
-	var stop_on_grid = false;
-	var transverse_on_grid = false;
-	
-	if (debug_level == 0):
-		if (debug_level == 0):
-			print( transverse_on_grid );
-		if(debug_level == 0):
-			print("Input Check: initial touch");    
-		start_x = get_global_mouse_position().x;
-		print("It is start_x: ", start_x);
-		start_y = get_global_mouse_position().y;  
-		print("It is start_y: ", start_y);
-		grid_position.append(start_x); 
-		grid_position.append(start_y); 
-		start_on_grid = is_in_grid_single(grid_position);
-		grid_position.clear();
-		if start_on_grid == true:
-			card = pickup_card(start_x, start_y);
-		else:
-			print("Not on grid");   
-			
-	
-	if (debug_level == 0):
-		print("Check for InputEventMouse");    
-		print("Check BUTTON_LEFT");   
-		start_x = get_global_mouse_position().x;
-		print("It is start_x: ", start_x);
-		start_y = get_global_mouse_position().y;  
-		print("It is start_y: ", start_y);
-		if start_x > 0:
-			grid_position.append(start_x); 
-			if start_y > 0:
-				grid_position.append(start_y); 
-				start_on_grid = is_in_grid_single(grid_position);
-				grid_position.clear();
-				if start_on_grid == true:
-					card = pickup_card(start_x, start_y);
-				else:
-					print("Not on grid");
-			else:
-				print ("Not on grid");
-		else:
-			print ("Not on grid");   
-			  
+	var grid_position = [];
+	var position_x = get_global_mouse_position().x; 
+	var position_y = get_global_mouse_position().y;   
+	grid_position.append(position_x); 
+	grid_position.append(position_y); 
+	_on_grid = is_in_grid_single(grid_position);
+	grid_position.clear();
+	if _on_grid == true:
+		var status = check_click_status();
+		if status == "pickup":
+			card = pickup_card(position_x,position_y);
+		if status == "moving":
+			print("moving"); 
+		if status == "drop":
+			drop_card(position_x,position_y, card);
 
+func check_click_status():
+	### todo
+	# return if it's a new click, moving, or drop
+	return("moving");
+	
 func _on_MatchCheck_Timer_timeout():
 	pass; 
 
@@ -254,10 +226,10 @@ func build_pile_grid_array():
 	var piles_names = [];
 	var piles_objects = [];
 	var piles_IDs = [];
-	var temp_grid = [];
+	#var temp_grid = [];
 	
-	var base_path = ""; 
-	var new_path = ""; 
+	#var base_path = ""; 
+	#var new_path = ""; 
  
 	#print(STOCK);
 	#STOCK.start();
@@ -684,7 +656,7 @@ func card_position( NewPosition, Shift_Me, Shift_Type):
 	
 func pixel_to_pile(clicked_here_x, clicked_here_y):
 	# pick up card clicked on 
-	var return_vars = [];
+	#var return_vars = [];
 	var pile = []; 
 	if (debug_level == 0):
 		print (pile);
@@ -700,8 +672,8 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	var piles_grids_coordinates = [];
 	if(debug_level == 0):
 		print(piles_grids_coordinates);
-	var Active_Container = get_parent().get_node(grid_full_path);
-	var Grid_Container = get_parent().get_node(grid_full_path);
+	var _Active_Container = get_parent().get_node(grid_full_path);
+	#var Grid_Container = get_parent().get_node(grid_full_path);
 	
 	# standard variable holders
 	var piles_grids_coordinates_x = 0;
@@ -710,9 +682,8 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	var piles_grids_coordinates_y = 0;
 	if(debug_level == 0):
 		print(piles_grids_coordinates_y);
-	var piles_name_string = "String";
-	if(debug_level == 0):
-		print(piles_name_string);
+	var piles_name_string = "String"; 
+	print(piles_name_string);
 	var position_origin_x
 	var position_origin_y
 	var position_base_x
@@ -732,7 +703,8 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	var pixel_x = 0;
 	var pixel_y = 0;
 	var pickup_pile_true = false;
-	var drop_pile_true = false;
+	print (pickup_pile_true);
+	#var drop_pile_true = false;
 	
 	if(debug_level == 1):
 		print("Which Pile is it? ", clicked_here_x, ",", clicked_here_y, ";" ); 
@@ -803,14 +775,14 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 			print ("P to p: Overlap Check: Pile: ", p, " Pixel X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " Pixel Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . ")	
 
 		if pixel_x >= position_origin_x && pixel_x <= position_base_x:
-			if(debug_level == 0):
-				print ("Pixel to Pile Function X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " . ");
-				print ("Next Check: Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
+			#if(debug_level == 0):
+			print ("Pixel to Pile Function X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " . ");
+			print ("Next Check: Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
 			if pixel_y >= position_origin_y  && pixel_y <= position_base_y:
-				if(debug_level == 0):
-					print ("Pixel to Pile Function Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
-					print ("Confirmed pixel location matches a pile: ", piles_name_string);  
-					print ("Pickup pile: ", piles_name_string); 
+				#if(debug_level == 0):
+				#	print ("Pixel to Pile Function Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
+				#	print ("Confirmed pixel location matches a pile: ", piles_name_string);  
+				#	print ("Pickup pile: ", piles_name_string); 
 				pickup_pile_true = true; 
 				return piles_name_string; 
 			else: 
@@ -909,7 +881,7 @@ func GetPileArray(piles_name_string):
 func pickup_card(clicked_here_x, clicked_here_y):
 	var card = possible_cards[0].instance();
 	var Active_Container = get_parent().get_node(grid_full_path);
-	var Grid_Container = get_parent().get_node(grid_full_path); 
+	#var Grid_Container = get_parent().get_node(grid_full_path); 
 	var piles_name_string = "";
 	var PileArray = [] ;
 	var set_number = 0;
@@ -945,7 +917,7 @@ func pickup_card(clicked_here_x, clicked_here_y):
 
 func drop_card(clicked_here_x, clicked_here_y, card):
 	var Active_Container = get_parent().get_node("Grid");
-	var Grid_Container = get_parent().get_node("Grid");
+	#var Grid_Container = get_parent().get_node("Grid");
 	var return_vars = [];
 	var piles_name_string = "";
 	var PileArray = [];
@@ -962,13 +934,13 @@ func drop_card(clicked_here_x, clicked_here_y, card):
 		print("Moved to: ", piles_name_string);
 	pass; 
 	
-func move_card(active_x, active_y, card):	 
+func move_card(position_x, position_y, card):	 
 	#move the card following the mouse pointer
-	card.position = Vector2(active_x, active_y)
+	card.position = Vector2(position_x, position_y)
 	card.move(card.position);
 	pass;
 		
-func _process(delta):
+func _process(_delta):
 	pass; 
 	
 func _input(event):	 
@@ -1003,3 +975,23 @@ func _unhandled_input(event: InputEvent):
 		#print("InputEventKey Recognized");
 		key_input();  
 		
+func make_visible():
+	print("Game Grid: Make Visible");
+	self.show();
+	print("New Game Grid: should now be visible.");
+	pass # Replace with function body.
+	
+func make_invisible():
+	print("Game Grid: Make inVisible");
+	self.hide();
+	print("New Game Grid: should now be invisible.");
+	pass # Replace with function body.
+
+func check_visiblity():
+	if self.visible:
+		print("DraftCardGUI is viible. ");
+		return(1);
+	else:
+		print("DraftCardGUI is not visible. ");
+		return(0);
+	pass;

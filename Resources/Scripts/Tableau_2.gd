@@ -18,9 +18,14 @@ func get_uppper_right_y():
 
 
 func get_size_x():
-	var size_x = self.texture.get_size().x; 
+	var GRID = self.get_parent();
+	var SELF = GRID.get_child("Tableau_2");
+	var size_x = SELF.texture.get_size().x; 
 	return(size_x);
 
 func get_size_y(): 
-	var size_y = self.texture.get_size().y;
+	var GRID = self.get_parent();
+	var SELF = GRID.get_child("Tableau_2"); 
+	var size_y = SELF.texture.get_size().y;
 	return(size_y);
+

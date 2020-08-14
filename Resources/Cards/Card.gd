@@ -1,7 +1,6 @@
 extends Node2D
-
-export (String) var color; 
-var matched = false;
+ 
+#ar matched = false;
  
 # Sprite nodes for the cards 
 var CARDSPRITE_ANIM  = preload("res://Resources/Cards/Sprite_Anim.gd"); 

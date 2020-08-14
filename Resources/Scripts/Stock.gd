@@ -28,14 +28,16 @@ func get_uppper_right_y():
 	print(upper_right_y);
 	return(upper_right_y);
 
+
 func get_size_x():
-	print(self);
-	var size_x = self.texture.get_size().x; 
-	print(size_x);
+	var GRID = self.get_parent();
+	var SELF = GRID.get_child("Stock");
+	var size_x = SELF.texture.get_size().x; 
 	return(size_x);
 
 func get_size_y(): 
-	print(self);
-	var size_y = self.texture.get_size().y;
-	print(size_y);
+	var GRID = self.get_parent();
+	var SELF = GRID.get_child("Stock"); 
+	var size_y = SELF.texture.get_size().y;
 	return(size_y);
+

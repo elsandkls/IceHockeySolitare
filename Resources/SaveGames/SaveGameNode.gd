@@ -1,14 +1,19 @@
 extends Node
  
-var path_SaveGames = "res://Resources/SaveGames/"
-var file_SaveGameContent = path_SaveGames + "ice_hockey_save_game.dat"
+var SaveGame_path = "res://Resources/SaveGames/";
+var SaveGame_file = "ice_hockey_save_game.dat";
+var SaveGame_Location = SaveGame_path + SaveGame_file;
 var SaveGameContent = "username,color,cash,score";
 var SaveGameContent_matrix = [] 
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
-	print("Save Game File: " + String(file_SaveGameContent));
+	print("Save Game File: " + String(SaveGame_Location));
 	pass;
+
+func new():
+	print("save game node is active.");
+	pass; 
 
 func parse_save_content(content):
 	var delim = ",";
@@ -19,7 +24,8 @@ func parse_save_content(content):
 	var SaveGameContent_LineEntryCount = SaveGameContent_Lines.size();
 	for l in range(SaveGameContent_LineEntryCount):
 		SaveGameContent_matrix.append([]);
-		var SaveGameContent_Array = SaveGameContent_Lines[l].split(delim, true, 0);
+		SaveGameContent = SaveGameContent_Lines[l];
+		var SaveGameContent_Array = SaveGameContent.split(delim, true, 0);
 		var SaveGameContent_EntryCount = SaveGameContent_Array.size();
 		for n in range(SaveGameContent_EntryCount):			
 			#print(String(l) + ":" + String(n) + ":" + SaveGameContent_Array[n]); # Prints n entry
@@ -80,7 +86,6 @@ func extract_score_total(SGC_matrix):
 					score = SaveGameContent_Array[n];			
 	return (score);
 	
-	
 func extract_user_color_total(SGC_matrix):
 	print("extract user_color function: ");
 	var user_color = 0;
@@ -95,7 +100,6 @@ func extract_user_color_total(SGC_matrix):
 				if (trigger == n):
 					user_color = SaveGameContent_Array[n];			
 	return (user_color);
-	
 	
 func extract_user_name_total(SGC_matrix):
 	print("extract user_name function: ");
@@ -115,14 +119,14 @@ func extract_user_name_total(SGC_matrix):
 func saveGame(content):
 	#print("Save Game File: " + String(file_SaveGameContent));
 	#print("Save Game Content: " + String(content)); 
-	var flag = saveFILE(content, file_SaveGameContent );
+	var flag = saveFILE(content, SaveGame_Location );
 	return(flag); 
 	
 
 func loadGame():
-	#print("Load Game File: " + String(file_SaveGameContent));  
-	var content = loadFile( file_SaveGameContent ); 
-	#print("Load Game Content: " + String(content));  
+	print("Load Game File: " + String(SaveGame_Location));  
+	var content = loadFile( SaveGame_Location ); 
+	print("Load Game Content: " + String(content));  
 	return content;
 
 func saveFILE(content, fileName ):

@@ -15,7 +15,9 @@ font_data = ExtResource( 4 )
 size = 30
 font_data = ExtResource( 4 )
 
-[node name="GameMenu" type="Control"]
+[node name="GameMenuGUINode2D" type="Node2D"]
+
+[node name="GameMenu" type="Control" parent="."]
 margin_left = 100.0
 margin_top = 75.0
 margin_right = 475.0
@@ -25,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="GameMenu"]
 margin_right = 375.0
 margin_bottom = 600.0
 texture = ExtResource( 6 )
@@ -33,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu"]
 margin_left = 40.0
 margin_top = 40.0
 margin_right = 351.0
@@ -43,18 +45,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer"]
 margin_right = 311.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 1 )
 text = "Game Menu"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameMenu/VBoxContainer"]
 margin_top = 89.0
 margin_right = 311.0
 margin_bottom = 89.0
 
-[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
 margin_top = 108.0
 margin_right = 311.0
 margin_bottom = 158.0
@@ -62,7 +64,7 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/PlayButton"]
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/PlayButton"]
 margin_left = 100.0
 margin_right = 200.0
 margin_bottom = 59.0
@@ -73,7 +75,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DraftButton" type="TextureButton" parent="VBoxContainer"]
+[node name="DraftButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
 margin_top = 177.0
 margin_right = 311.0
 margin_bottom = 227.0
@@ -81,7 +83,7 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/DraftButton"]
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/DraftButton"]
 margin_left = 100.0
 margin_right = 200.0
 margin_bottom = 59.0
@@ -92,7 +94,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoresButton" type="TextureButton" parent="VBoxContainer"]
+[node name="ScoresButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
 margin_top = 246.0
 margin_right = 311.0
 margin_bottom = 296.0
@@ -100,7 +102,7 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/ScoresButton"]
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/ScoresButton"]
 margin_left = 90.0
 margin_right = 203.0
 margin_bottom = 59.0
@@ -111,7 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
 margin_top = 315.0
 margin_right = 311.0
 margin_bottom = 365.0
@@ -119,7 +121,7 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/SettingsButton"]
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/SettingsButton"]
 margin_left = 60.0
 margin_right = 243.0
 margin_bottom = 59.0
@@ -130,7 +132,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitGameButton" type="TextureButton" parent="VBoxContainer"]
+[node name="ExitGameButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
 margin_top = 384.0
 margin_right = 311.0
 margin_bottom = 434.0
@@ -138,7 +140,7 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="VBoxContainer/ExitGameButton"]
+[node name="Label" type="Label" parent="GameMenu/VBoxContainer/ExitGameButton"]
 margin_left = 100.0
 margin_right = 283.0
 margin_bottom = 59.0
@@ -148,8 +150,8 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/DraftButton" to="." method="_on_DraftButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ScoresButton" to="." method="_on_ScoresButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitGameButton" to="." method="_on_ExitGameButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/PlayButton" to="GameMenu" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/DraftButton" to="GameMenu" method="_on_DraftButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/ScoresButton" to="GameMenu" method="_on_ScoresButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/SettingsButton" to="GameMenu" method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/ExitGameButton" to="GameMenu" method="_on_ExitGameButton_pressed"]

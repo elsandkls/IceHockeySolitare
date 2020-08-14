@@ -1,0 +1,17 @@
+Godot Engine v3.2.1.stable.mono.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: Mesa DRI Intel(R) HD Graphics 4000 (IVB GT2)
+ 
+Mono: Logfile is: /home/southworth/.local/share/godot/mono/mono_logs/2020_08_06 23.30.01 (33144).txt
+Display OptionsGUI Scene
+Display DraftCardsGUI Scene
+Display ScoreGUI Scene
+Display ScoreGUI Scene
+Game Window: Make Visible
+Game Window should now be Visible.
+Display Title Scene
+**ERROR**: Index p_index = 0 is out of bounds (data.children.size() = 0).
+   At: scene/main/node.cpp:1296:get_child() - Index p_index = 0 is out of bounds (data.children.size() = 0).
+Title Screen self node definition failed
+Title Screen GUI is parent of Title Screen, and child of GUI
+[Control:1700]
+Title Screen GUI node definition of parent failed

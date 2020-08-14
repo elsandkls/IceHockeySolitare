@@ -7,19 +7,14 @@ func _ready():
 func new():
 	pass # Replace with function body.
 
-func get_uppper_right_x():
-	var upper_right_x = Vector2(self.get_transform().get_origin()).x;
-	return(upper_right_x);
-
-func get_uppper_right_y():
-	var upper_right_y = Vector2(self.get_transform().get_origin()).y; 
-	return(upper_right_y);
-
-
 func get_size_x():
-	var size_x = self.texture.get_size().x; 
+	var GRID = self.get_parent();
+	var SELF = GRID.get_child("Tableau_4");
+	var size_x = SELF.texture.get_size().x; 
 	return(size_x);
 
 func get_size_y(): 
-	var size_y = self.texture.get_size().y;
+	var GRID = self.get_parent();
+	var SELF = GRID.get_child("Tableau_4"); 
+	var size_y = SELF.texture.get_size().y;
 	return(size_y);
