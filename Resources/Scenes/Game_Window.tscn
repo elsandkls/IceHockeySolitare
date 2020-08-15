@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/Scenes/Timer.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Background/Texture-176.jpg" type="Texture" id=2]
 [ext_resource path="res://Resources/Scenes/Grid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Scripts/Game_Window.gd" type="Script" id=4]
 [ext_resource path="res://Resources/Scenes/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Scenes/TitleScreen.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Resources/Fonts/Kenney Blocks.ttf"
@@ -133,6 +134,8 @@ margin_bottom = 601.851
 
 [node name="Timer" type="Node2D" parent="."]
 script = ExtResource( 1 )
+
+[node name="TitleScreen" parent="." instance=ExtResource( 6 )]
 [connection signal="timeout" from="SettingsButton_pressed" to="." method="_on_SettingsButton_pressed"]
 [connection signal="timeout" from="ExitGameButton_pressed" to="." method="_on_ExitGameButton_pressed"]
 [connection signal="timeout" from="ScoresButton_pressed" to="." method="_on_ScoresButton_pressed"]

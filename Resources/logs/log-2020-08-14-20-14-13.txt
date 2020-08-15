@@ -1,18 +1,18 @@
 Godot Engine v3.2.1.stable.mono.official - https://godotengine.org
 OpenGL ES 3.0 Renderer: Mesa DRI Intel(R) HD Graphics 4000 (IVB GT2)
  
-Mono: Logfile is: /home/southworth/.local/share/godot/mono/mono_logs/2020_08_14 20.14.13 (8443).txt
+Mono: Logfile is: /home/southworth/.local/share/godot/mono/mono_logs/2020_08_14 20.13.11 (8413).txt
 Display OptionsGUI Scene
 Display DraftCardsGUI Scene
 Display ScoreGUI Scene
 Display ScoreGUI Scene
-**ERROR**: Node not found: TitleScreen.
+**ERROR**: Node not found: root/Game_Window/TitleScreen.
    At: scene/main/node.cpp:1381:get_node() - Condition "!node" is true. Returned: __null
 [Object:null]
-**ERROR**: Node not found: TitleScreen/TitleScreenNodeGUI.
+**ERROR**: Node not found: root/Game_Window/TitleScreen/TitleScreenNodeGUI.
    At: scene/main/node.cpp:1381:get_node() - Condition "!node" is true. Returned: __null
 [Object:null]
-**ERROR**: Node not found: TitleScreen/TitleScreenNodeGUI/TitleScreenControl.
+**ERROR**: Node not found: root/Game_Window/TitleScreen/TitleScreenNodeGUI/TitleScreenControl.
    At: scene/main/node.cpp:1381:get_node() - Condition "!node" is true. Returned: __null
 [Object:null]
 Game Window: Make Visible

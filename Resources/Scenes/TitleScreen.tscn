@@ -4,10 +4,12 @@
 [ext_resource path="res://Resources/Scripts/TitleScreen.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Background/Texture-164.jpg" type="Texture" id=3]
 
-[node name="TitleScreenGUI" type="Node2D"]
+[node name="TitleScreenNode" type="Node2D"]
+
+[node name="TitleScreenNodeGUI" type="Node2D" parent="."]
 z_index = 100
 
-[node name="TitleScreen" type="Control" parent="."]
+[node name="TitleScreenControl" type="Control" parent="TitleScreenNodeGUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 7.0
@@ -16,7 +18,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="TitleScreen"]
+[node name="TextureRect" type="TextureRect" parent="TitleScreenNodeGUI/TitleScreenControl"]
 margin_right = 3000.0
 margin_bottom = 3000.0
 texture = ExtResource( 3 )
@@ -24,7 +26,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="VBoxContainer" parent="TitleScreen"]
+[node name="Menu" type="VBoxContainer" parent="TitleScreenNodeGUI/TitleScreenControl"]
 margin_left = 14.0
 margin_top = 9.0
 margin_right = 1014.0
@@ -33,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="TitleScreen/Menu"]
+[node name="Logo" type="TextureRect" parent="TitleScreenNodeGUI/TitleScreenControl/Menu"]
 margin_right = 1000.0
 margin_bottom = 400.0
 texture = ExtResource( 1 )

@@ -22,7 +22,6 @@ func build_card():
 #func _process(delta):
 #	pass
 
-
 func _on_TextureButton3_pressed():
 	pass # Replace with function body.
 

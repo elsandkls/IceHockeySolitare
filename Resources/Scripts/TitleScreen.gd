@@ -2,11 +2,18 @@ extends Control
   
 var my_z_index = 0;
 var TITLESCREEN = [];
-var PARENT = [];
-var GUI = [];
+var TITLESCREEN_NODEGUI = [];
+var TITLESCREEN_CONTROL = [];
+var PARENT = []; 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():     
+func _ready():
+	TITLESCREEN = get_node("TitleScreen")
+	print(TITLESCREEN)
+	TITLESCREEN_NODEGUI = get_node("TitleScreen/TitleScreenNodeGUI")
+	print(TITLESCREEN_NODEGUI)
+	TITLESCREEN_CONTROL = get_node("TitleScreen/TitleScreenNodeGUI/TitleScreenControl")
+	print(TITLESCREEN_CONTROL)
 	pass # Replace with function body
 
 func create_timer(seconds):
@@ -20,39 +27,9 @@ func create_timer(seconds):
 
 func make_visible():   
 	
-	var children_array = self.get_children();
-	print(children_array);
-	for n in range(children_array.size()):
-		if n == 0:
-			TITLESCREEN = children_array[n];
-			 
-	if(TITLESCREEN):
-		print("TitleScreen is child of TitleScreenGUI");
-		print(TITLESCREEN);
-	else:
-		print("TitleScreen node definition failed");
-		
-	PARENT = self;
-	if(PARENT):
-		print("TitleScreenGUI is parent of TitleScreen, and child of GUI");
-		print(PARENT);
-	else:
-		print("TitleScreenGUI node as parent of TitleScreen failed");
-	
-	GUI = PARENT.get_parent(); 
-	if(GUI):
-		print("Title Screen super parent is GUI");
-		print(GUI);
-	else:
-		print("Title Screen GUI node definition of parent failed");  
-		
-	self.show();
-	
-	#my_z_index = self.get_z_index(); 
-	#Parser Error: The method "get_z_index" isn't declared in the current class.
-	my_z_index = PARENT.get_z_index();
-	#Invalid call. Nonexistent function 'get_z_index' in base 'Nil'.
-	
+	TITLESCREEN.show();
+	my_z_index = TITLESCREEN.get_z_index();
+
 	PARENT.set_z_index(100);
 	var check = self.check_visiblity(); 
 	if(check == 1):

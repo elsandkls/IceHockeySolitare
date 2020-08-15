@@ -26,8 +26,8 @@ func ToDo():
 func Display_TitleScreen():
 	print("Display Title Scene"); 
 	var TITLESCREEN_SCENE = load("res://Resources/Scenes/TitleScreen.tscn"); 
-	TITLESCREEN_SCENE.instance();
-	#self.add_child(TITLESCREEN)
+	TITLESCREEN_SCENE.instance(); 
+	#self.add_child(TITLESCREEN_SCENE)
 	var TITLESCREEN_SCRIPT = load("res://Resources/Scripts/TitleScreen.gd"); 
 	var TITLESCREEN = TITLESCREEN_SCRIPT.new();
 	TITLESCREEN.make_visible(); 
