@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/Background/blue_button_pressed_template.jpg" type="Texture" id=1]
 [ext_resource path="res://Resources/Scripts/GameMenuGUI.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Resources/Fonts/Kenney Blocks.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Resources/Background/blue_button_template.jpg" type="Texture" id=5]
 [ext_resource path="res://Resources/Background/acylic_blue_menu_400_600.jpg" type="Texture" id=6]
+[ext_resource path="res://Resources/Background/cyan_button_pressed_sm_template.jpg" type="Texture" id=7]
+[ext_resource path="res://Resources/Background/teal_button_pressed_sm_template.jpg" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -16,13 +18,15 @@ size = 30
 font_data = ExtResource( 4 )
 
 [node name="GameMenuGUINode2D" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
 
 [node name="GameMenu" type="Control" parent="."]
+pause_mode = 2
 margin_left = 100.0
 margin_top = 75.0
 margin_right = 475.0
 margin_bottom = 675.0
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,12 +61,16 @@ margin_right = 311.0
 margin_bottom = 89.0
 
 [node name="PlayButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+pause_mode = 2
 margin_top = 108.0
 margin_right = 311.0
 margin_bottom = 158.0
+hint_tooltip = "Load new game."
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GameMenu/VBoxContainer/PlayButton"]
 margin_left = 100.0
@@ -76,12 +84,16 @@ __meta__ = {
 }
 
 [node name="DraftButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+pause_mode = 2
 margin_top = 177.0
 margin_right = 311.0
 margin_bottom = 227.0
+hint_tooltip = "Load Draft Menu"
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GameMenu/VBoxContainer/DraftButton"]
 margin_left = 100.0
@@ -95,12 +107,16 @@ __meta__ = {
 }
 
 [node name="ScoresButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+pause_mode = 2
 margin_top = 246.0
 margin_right = 311.0
 margin_bottom = 296.0
+hint_tooltip = "Load High Scores Menu"
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GameMenu/VBoxContainer/ScoresButton"]
 margin_left = 90.0
@@ -114,12 +130,16 @@ __meta__ = {
 }
 
 [node name="SettingsButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+pause_mode = 2
 margin_top = 315.0
 margin_right = 311.0
 margin_bottom = 365.0
+hint_tooltip = "Load Settings Menu"
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GameMenu/VBoxContainer/SettingsButton"]
 margin_left = 60.0
@@ -133,12 +153,16 @@ __meta__ = {
 }
 
 [node name="ExitGameButton" type="TextureButton" parent="GameMenu/VBoxContainer"]
+pause_mode = 2
 margin_top = 384.0
 margin_right = 311.0
 margin_bottom = 434.0
+hint_tooltip = "Exit the active game, and close the game."
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 7 )
+texture_focused = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="GameMenu/VBoxContainer/ExitGameButton"]
 margin_left = 100.0
@@ -150,8 +174,8 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="GameMenu/VBoxContainer/PlayButton" to="GameMenu" method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="GameMenu/VBoxContainer/DraftButton" to="GameMenu" method="_on_DraftButton_pressed"]
-[connection signal="pressed" from="GameMenu/VBoxContainer/ScoresButton" to="GameMenu" method="_on_ScoresButton_pressed"]
-[connection signal="pressed" from="GameMenu/VBoxContainer/SettingsButton" to="GameMenu" method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="GameMenu/VBoxContainer/ExitGameButton" to="GameMenu" method="_on_ExitGameButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/DraftButton" to="." method="_on_DraftButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/ScoresButton" to="." method="_on_ScoresButton_pressed" flags=6]
+[connection signal="pressed" from="GameMenu/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="GameMenu/VBoxContainer/ExitGameButton" to="." method="_on_ExitGameButton_pressed"]

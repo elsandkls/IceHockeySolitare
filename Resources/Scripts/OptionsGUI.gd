@@ -1,20 +1,31 @@
-extends Control
+extends Node2D
 
+# OptionsGUI.gd
 #Load Parent Scenes 
-var GUI = []; 
+var GUI = [];
 #Load Current Scenes Object 
-var OPTIONS = []; 
-var my_z_index = 0;
-var PARENT = self.get_parent();
+var OPTIONS = self;
+var my_z_index = 0; 
  
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
-	GUI = get_parent();
+	GUI  = get_node("../Gui_Scene");
+	#print(GUI) 
 	OPTIONS = self;
+	#print(OPTIONS)
+	print("Options GUI Ready")  
 	pass # Replace with function body.
 
-func start():	 
+func start():
+	make_visible();
 	pass;
+	
+func stop():	 
+	make_invisible();
+	pass;
+	
+func new():
+	pass # Replace with function body.
 	
 func build_card():
 	pass;
@@ -36,26 +47,26 @@ func _on_TextureButton_pressed():
 
 func make_visible():  	
 	self.show();	
-	my_z_index = PARENT.get_z_index();
-	PARENT.set_z_index(100);
+	my_z_index = self.get_z_index();
+	self.set_z_index(100);
 	var check = self.check_visiblity(); 
 	if(check != 1):
 #		print("OptionsGUI set to show. ");
 #	else:
 		OPTIONS.show();
-		var check2 = self.check_visiblity(); 
+		var check2 = OPTIONS.check_visiblity(); 
 		if(check2 == 1):
 			print("OptionsGUI set to show. ");
 		
 func make_invisible(): 
 	self.hide();	
-	PARENT.set_z_index(my_z_index);
+	self.set_z_index(my_z_index);
 	var check = self.check_visiblity(); 
 	if(check != 0):
 #		print("OptionsGUI set to hide. ");
 #	else:
 		OPTIONS.hide();
-		var check2 = self.check_visiblity(); 
+		var check2 = OPTIONS.check_visiblity(); 
 		if(check2 == 0):
 			print("OptionsGUI set to hide. ");
 

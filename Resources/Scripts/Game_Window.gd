@@ -2,56 +2,51 @@ extends Node2D
 
 # This is Game Window script
 #var PlayerDB_matrix = [];     
-var SAVEGAME =[];
+var SAVEGAME =[];   
+var controlling = false;
+#onready var DRAFT = self.get_node("../DraftCards_Scene"); #
+#onready var SCORE = self.get_node("../Score_Scene"); # 
+#onready var OPTIONS = self.get_node("../Options_Scene"); #
+#onready var GAMEMENU = self.get_node("../GameMenu_Scene"); # 
+onready var GUI = self.get_node("../Gui_Scene"); # 
+onready var GRID = self.get_node("../Grid_Scene"); # 
+onready var TITLESCREEN = self.get_node("../TitleScreen_Scene"); # 
 
 func _ready():   
-	self.make_visible();
-	Display_TitleScreen();
-	#create_timer(400);
-	#Setup_SaveGame(); 
-	#create_timer(400);
-	#Display_Grid();
-	#create_timer(400);
-	#Display_GUI();
+	print("Game Window Ready")
+	self.make_visible(); 
+	self.start();
 	
 	
-func ToDo():
-	### todo
-	# needs to make the title screen visible on load
-	# then pause for a few seconds
-	# then hide the titie screen
-	# then display the game menu 
+func start():
+	print("Game Window Loading Title Screen")
+	Display_TitleScreen(); 
+	#Setup_SaveGame();  
+	print("Game Window Loading Game Grid")
+	Display_Grid(); 
+	print("Game Window Loading Game GUI")
+	Display_GUI();
+	print("Finished Game Window Load.") 
 	pass;
 	
 func Display_TitleScreen():
-	print("Display Title Scene"); 
-	var TITLESCREEN_SCENE = load("res://Resources/Scenes/TitleScreen.tscn"); 
-	TITLESCREEN_SCENE.instance(); 
-	#self.add_child(TITLESCREEN_SCENE)
-	var TITLESCREEN_SCRIPT = load("res://Resources/Scripts/TitleScreen.gd"); 
-	var TITLESCREEN = TITLESCREEN_SCRIPT.new();
-	TITLESCREEN.make_visible(); 
-	TITLESCREEN.create_timer(200);
-	TITLESCREEN.make_invisible();
-	# Remove the title screen 
-	self.remove_child(TITLESCREEN) 
-	TITLESCREEN.call_deferred("free"); 
+	print("Display Title Scene (from Game_Window)");  
+	TITLESCREEN = get_node("../TitleScreen_Scene")  
+	TITLESCREEN.start(); 
 	pass;
 	
 func Display_Grid():
-	print("Loadiing game..............."); 
-	var GRID_SCENE = load("res://Resources/Scenes/Grid.tscn"); 
-	var GRID = GRID_SCENE.instance(); 
-	self.add_child(GRID); 
-	GRID.make_visible();  
+	print("Loadiing game grid ............... (from Game_Window)"); 
+	GRID = get_node("../Grid_Scene") 
+	#GRID.start();
+	print(GRID);
 	return(GRID);
 	 
 func Display_GUI():
-	print("Load GUI, and main menu. "); 	
-	var GUI_SCENE = load("res://Resources/Scenes/GUI.tscn"); 
-	var GUI = GUI_SCENE.instance();    
-	self.add_child(GUI); 
-	GUI.make_visible();   	
+	print("Load GUI. (from Game_Window)");
+	GUI = get_node("../Gui_Scene") 
+	GUI.Make_Menu_visible();
+	print(GUI);         
 	return(GUI);
 	
 func Setup_SaveGame():
@@ -75,11 +70,13 @@ func Setup_SaveGame():
 	return(SAVEGAME);
 	
 func color_display_system(_color): 
-	print(_color);
+	if(_color > 0):
+		print(_color);
 	pass; 
 	
 func name_display_system(_name): 
-	print(_name);
+	if(_name > 0):
+		print(_name);
 	pass; 
 	
 func score_display_system(_score):
@@ -129,23 +126,62 @@ func check_visiblity():
 		return(0);
 	pass;
 
-func _on_SettingsButton_pressed(GUI):
+func _on_SettingsButton_pressed():
 	GUI._on_SettingsButton_pressed();
 	pass # Replace with function body.
 
-func _on_ExitGameButton_pressed(GUI):
+func _on_ExitGameButton_pressed():
 	GUI._on_ExitGameButton_pressed();
 	pass # Replace with function body.
 
-func _on_ScoresButton_pressed(GUI):
+func _on_ScoresButton_pressed():
 	GUI._on_ScoresButton_pressed();
 	pass # Replace with function body.
 
-func _on_ReturnToMenuButton_pressed(GUI):
+func _on_ReturnToMenuButton_pressed():
 	GUI._on_ReturnToMenuButton_pressed();
 	pass # Replace with function body.
-
 
 func create_timer(seconds): 
 	var TIMER = get_node("Timer");
 	TIMER.start(seconds);
+
+func _unhandled_input(event: InputEvent): 
+	if event is InputEventMouseMotion: 
+		#print("InputEventMouseMotion Recognized");
+		GRID.mouse_input();    
+		#print("mouse")
+		  
+	if event is InputEventScreenTouch:
+		#print("InputEventScreenTouch Recognized");
+		GRID.touch_input();
+		#print("touch")
+		
+	if event is InputEventKey:
+		#print("InputEventKey Recognized");
+		GRID.key_input();  
+		#print("key")
+	pass;
+		
+func _process(_delta):
+	pass; 
+	
+func _input(event):	 
+	print(event.as_text())
+	if event is InputEventMouse: 
+		if controlling ==  true:
+			#print("InputEventMouse is recognized.")
+			GRID.mouse_input();  
+			
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if event.pressed:
+				if controlling == true:
+					controlling = false;
+				else:
+					controlling = true;
+				#print("Left button was clicked at ", event.position); 
+				#print("InputEventMouseButton Recognized"); 
+				GRID.mouse_input();   
+	pass;
+

@@ -34,12 +34,12 @@ size = 30
 font_data = ExtResource( 9 )
 
 [node name="DraftCardsGUINode2D" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="DraftCardsGUI" type="Control" parent="."]
 margin_top = 75.0
 margin_right = 875.0
 margin_bottom = 575.0
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

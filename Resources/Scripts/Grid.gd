@@ -73,25 +73,36 @@ var Grid_Container = "Grid";
 var ActivePile_Container = "Active" 
 var SpriteHolder_Container = "Card";   
 
-func _ready(): 
+func _ready(): 	
+	print("Game Grid Ready")	
+	print("Finished Game Grid Load.")
+	controlling = false;
 	pass;
 
 func start(): 
-	debug_level = 1;
+	make_visible();
+	debug_level = 2;
 	randomize();
+	build_deck();
 
+func new():
+	pass # Replace with function body.
+ 
 func build_deck(): 
-		my_deck = make_a_deck(); 
-		shuffle_the_deck();
-		build_pile_grid_array();
-		deal_game();
+	print("Starting Build Deck in Grid.")
+	my_deck = make_a_deck(); 
+	shuffle_the_deck();
+	build_pile_grid_array();
+	deal_game();
+	print("Finished Build Deck in Grid.")
 
 func move_check():
 	pass;
 
 func undo_move(column, row, direction): 
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print("Undo Move Function");
+	if(debug_level == 0):
 		print(column, row, direction);  
 	var card = possible_cards[0].instance();
 	card.move(pile_to_pixel(card)); 
@@ -112,7 +123,7 @@ func pile_to_pixel( pile ):
 	var size_x = 0;
 	var size_y = 0; 
 	#
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print ("Pile to Pixel");   
 	upper_right_x = Vector2(pile.get_transform().get_origin()).x;
 	upper_right_y = Vector2(pile.get_transform().get_origin()).y;
@@ -135,14 +146,14 @@ func is_in_grid(column, row):
 func is_in_grid_single(grid_position):
 	var position_x_coord = grid_position[0];
 	var position_y_coord  = grid_position[1];
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print("Position X Coord: ", position_x_coord, " Max is: ", width);
 		print("Position Y Coord: ", position_y_coord, " Max is: ", height);
 	if position_x_coord >= 0 and position_x_coord < width:
-		if(debug_level == 1):
+		if(debug_level == 0):
 			print("Is inside width of grid: ", width);
 		if position_y_coord >= 0 and position_y_coord < height:
-			if(debug_level == 1):
+			if(debug_level == 0):
 				print("Is inside height of grid: ", height);
 			return true;
 		else:
@@ -168,6 +179,7 @@ func key_input():
 	
 func mouse_input(): 		
 	var _on_grid = false;   
+	var _mouse_moving = 0;
 	var card = possible_cards[0]; 
 	var grid_position = [];
 	var position_x = get_global_mouse_position().x; 
@@ -180,10 +192,16 @@ func mouse_input():
 		var status = check_click_status();
 		if status == "pickup":
 			card = pickup_card(position_x,position_y);
+			_mouse_moving = 0;
 		if status == "moving":
-			print("moving"); 
+			#print("mouse moving");  
+			_mouse_moving = 1;
 		if status == "drop":
 			drop_card(position_x,position_y, card);
+			_mouse_moving = 0;
+	else:
+		_mouse_moving = 0;
+	pass;
 
 func check_click_status():
 	### todo
@@ -195,8 +213,7 @@ func _on_MatchCheck_Timer_timeout():
 
 func _on_UndoDriver_Timer_timeout(): 
 	pass;
-	
- 
+	 
 
 func build_temp_path(base_path):
 	var new_path = build_path(base_path, "nogrid"); 
@@ -207,7 +224,6 @@ func build_pile_on_grid(grid_var_x,grid_var_y):
 	temp_grid.append(grid_var_x);
 	temp_grid.append(grid_var_y);
 	return temp_grid.duplicate(); 
-	
 	
 func build_pile_grid_array(): 
 	var upper_right_x = 0;
@@ -305,21 +321,26 @@ func build_pile_grid_array():
 	#print(piles_IDs);
 
 	for n in range(piles_names.size()):
-		print(n); 
-		print(piles_names[n]);
-		print(piles_grids[n]);
-		print(piles_objects[n]);
-		print(piles_IDs[n]);
+		if(debug_level == 0):
+			print(n); 
+			print(piles_names[n]);
+			print(piles_grids[n]);
+			print(piles_objects[n]);
+			print(piles_IDs[n]);
 		var TEMPOBJECT = piles_objects[n];
 		print (TEMPOBJECT);
 		upper_right_x = TEMPOBJECT.get_uppper_right_x();
-		print(upper_right_x);
+		if(debug_level == 0):
+			print(upper_right_x);
 		upper_right_y = TEMPOBJECT.get_uppper_right_y();
-		print(upper_right_y);
+		if(debug_level == 0):
+			print(upper_right_y);
 		size_x = TEMPOBJECT.get_size_x();
-		print(size_x);
+		if(debug_level == 0):
+			print(size_x);
 		size_y = TEMPOBJECT.get_size_y();
-		print(size_y);
+		if(debug_level == 0):
+			print(size_y);
 		lower_left_x = upper_right_x + size_x;
 		lower_left_y = upper_right_y + size_y;
 		
@@ -683,7 +704,8 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	if(debug_level == 0):
 		print(piles_grids_coordinates_y);
 	var piles_name_string = "String"; 
-	print(piles_name_string);
+	if(debug_level == 0):
+		print(piles_name_string);
 	var position_origin_x
 	var position_origin_y
 	var position_base_x
@@ -703,10 +725,11 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	var pixel_x = 0;
 	var pixel_y = 0;
 	var pickup_pile_true = false;
-	print (pickup_pile_true);
+	if(debug_level == 0):
+		print (pickup_pile_true);
 	#var drop_pile_true = false;
 	
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print("Which Pile is it? ", clicked_here_x, ",", clicked_here_y, ";" ); 
 		 
 	# Identify Pile and Associated Card Array
@@ -792,8 +815,9 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 			if(debug_level == 0):
 				print ("Nope: failed test of x: ", piles_name_string); 
 	 
-	return "";  						
-						
+	return "";
+	
+	
 func CheckPileName(piles_name_string):	
 	var Active_Container = get_parent().get_node("Grid");
 	# note to self, undoing this move is complicated
@@ -891,18 +915,18 @@ func pickup_card(clicked_here_x, clicked_here_y):
 	if  piles_name_string != "":
 		var full_path_piles_name_string = grid_full_path + piles_name_string;
 		Active_Container = get_parent().get_node(full_path_piles_name_string);
-		if(debug_level == 1):
+		if(debug_level == 0):
 			print("Active_Container: ", Active_Container);  
 			print("piles_name_string: ", piles_name_string);  
 		PileArray = GetPileArray(piles_name_string);
-		if(debug_level == 1):
+		if(debug_level == 0):
 			print("PileArray: ", PileArray);  
 		set_number = PileArray.size();
-		if(debug_level == 1):
+		if(debug_level == 0):
 			print("set_number: ", set_number);  
 		if(set_number > 0):
 			card = PileArray[set_number].duplicate();
-			if(debug_level == 1):
+			if(debug_level == 0):
 				print("card: ", card);  
 				print("PileArray: ", PileArray[set_number]); 
 			PileArray[set_number].remove(); 
@@ -913,7 +937,6 @@ func pickup_card(clicked_here_x, clicked_here_y):
 			print("Pile is empty.")	   
 	else:
 		pass;
-
 
 func drop_card(clicked_here_x, clicked_here_y, card):
 	var Active_Container = get_parent().get_node("Grid");
@@ -930,7 +953,7 @@ func drop_card(clicked_here_x, clicked_here_y, card):
 	# card.move(card.position);
 	PileArray.append(card);
 	Active_Container.add_child(card);
-	if(debug_level == 1):
+	if(debug_level == 0):
 		print("Moved to: ", piles_name_string);
 	pass; 
 	
@@ -939,42 +962,7 @@ func move_card(position_x, position_y, card):
 	card.position = Vector2(position_x, position_y)
 	card.move(card.position);
 	pass;
-		
-func _process(_delta):
-	pass; 
-	
-func _input(event):	 
-	if event is InputEventMouse: 
-		if controlling ==  true:
-			#print("InputEventMouse is recognized.")
-			mouse_input(); 
-			
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
-			if event.pressed:
-				if controlling == true:
-					controlling = false;
-				else:
-					controlling = true;
-				#print("Left button was clicked at ", event.position); 
-				#print("InputEventMouseButton Recognized"); 
-				mouse_input();   
-	pass;
-	
-	
-func _unhandled_input(event: InputEvent): 
-	if event is InputEventMouseMotion: 
-		#print("InputEventMouseMotion Recognized");
-		mouse_input();    
-		  
-	if event is InputEventScreenTouch:
-		#print("InputEventScreenTouch Recognized");
-		touch_input();
-		
-	if event is InputEventKey:
-		#print("InputEventKey Recognized");
-		key_input();  
-		
+		 
 func make_visible():
 	print("Game Grid: Make Visible");
 	self.show();
@@ -989,9 +977,9 @@ func make_invisible():
 
 func check_visiblity():
 	if self.visible:
-		print("DraftCardGUI is viible. ");
+		print("Game Grid: is viible. ");
 		return(1);
 	else:
-		print("DraftCardGUI is not visible. ");
+		print("Game Grid: is not visible. ");
 		return(0);
 	pass;

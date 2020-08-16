@@ -1,20 +1,219 @@
 Godot Engine v3.2.1.stable.mono.official - https://godotengine.org
 OpenGL ES 3.0 Renderer: Mesa DRI Intel(R) HD Graphics 4000 (IVB GT2)
  
-Mono: Logfile is: /home/southworth/.local/share/godot/mono/mono_logs/2020_08_14 20.14.13 (8443).txt
-Display OptionsGUI Scene
-Display DraftCardsGUI Scene
-Display ScoreGUI Scene
-Display ScoreGUI Scene
-**ERROR**: Node not found: TitleScreen.
-   At: scene/main/node.cpp:1381:get_node() - Condition "!node" is true. Returned: __null
-[Object:null]
-**ERROR**: Node not found: TitleScreen/TitleScreenNodeGUI.
-   At: scene/main/node.cpp:1381:get_node() - Condition "!node" is true. Returned: __null
-[Object:null]
-**ERROR**: Node not found: TitleScreen/TitleScreenNodeGUI/TitleScreenControl.
-   At: scene/main/node.cpp:1381:get_node() - Condition "!node" is true. Returned: __null
-[Object:null]
+Mono: Logfile is: /home/southworth/.local/share/godot/mono/mono_logs/2020_08_16 10.18.58 (11402).txt
+Game Grid Ready
+Finished Game Grid Load.
+Title Screen Ready
+GUI Ready
+GUI loading child scenes:
+Game Menu GUI Ready
+Draft Card GUI Ready
+Options GUI Ready
+Score GUI Ready
+Game Window Ready
 Game Window: Make Visible
 Game Window should now be Visible.
-Display Title Scene
+Game Window Loading Title Screen
+Display Title Scene (from Game_Window)
+[Node2D:1331]
+TitleScreen Visible!
+TitleScreen set to show. 
+[RichTextLabel:1336]
+seconds: 25
+[Node2D:1331]
+TitleScreen Not Visible!
+TitleScreen set to hide. 
+Game Window Loading Game Grid
+Loadiing game grid ............... (from Game_Window)
+[Node2D:1265]
+Game Window Loading Game GUI
+Load GUI. (from Game_Window)
+Game Start: New GameMenu
+New GameMenu should now be visible. Score, Options, and Draft should be hidden.
+[Control:1342]
+Finished Game Window Load.
+InputEventMouseMotion : button_mask=0, position=(600, 291), relative=(-396, 244), speed=(705.45459, 36.656704)
+InputEventMouseMotion : button_mask=0, position=(596, 291), relative=(-4, 0), speed=(-310.198029, 237.317337)
+InputEventMouseMotion : button_mask=0, position=(588, 291), relative=(-8, 0), speed=(-310.198029, 237.317337)
+InputEventMouseMotion : button_mask=0, position=(574, 289), relative=(-14, -2), speed=(-310.198029, 237.317337)
+InputEventMouseMotion : button_mask=0, position=(561, 287), relative=(-13, -2), speed=(-310.198029, 237.317337)
+InputEventMouseMotion : button_mask=0, position=(541, 285), relative=(-20, -2), speed=(-310.198029, 237.317337)
+InputEventMouseMotion : button_mask=0, position=(512, 280), relative=(-29, -5), speed=(-586.608765, 60.883667)
+InputEventMouseMotion : button_mask=0, position=(480, 275), relative=(-32, -5), speed=(-586.608765, 60.883667)
+InputEventMouseMotion : button_mask=0, position=(455, 273), relative=(-25, -2), speed=(-586.608765, 60.883667)
+InputEventMouseMotion : button_mask=0, position=(434, 269), relative=(-21, -4), speed=(-586.608765, 60.883667)
+InputEventMouseMotion : button_mask=0, position=(419, 268), relative=(-15, -1), speed=(-586.608765, 60.883667)
+InputEventMouseMotion : button_mask=0, position=(410, 268), relative=(-9, 0), speed=(-586.608765, 60.883667)
+InputEventMouseMotion : button_mask=0, position=(403, 268), relative=(-7, 0), speed=(-970.644531, -65.677994)
+InputEventMouseMotion : button_mask=0, position=(398, 268), relative=(-5, 0), speed=(-970.644531, -65.677994)
+InputEventMouseMotion : button_mask=0, position=(395, 268), relative=(-3, 0), speed=(-970.644531, -65.677994)
+InputEventMouseMotion : button_mask=0, position=(392, 268), relative=(-3, 0), speed=(-970.644531, -65.677994)
+InputEventMouseMotion : button_mask=0, position=(391, 268), relative=(-1, 0), speed=(-970.644531, -65.677994)
+InputEventMouseMotion : button_mask=0, position=(390, 268), relative=(-1, 0), speed=(-970.644531, -65.677994)
+InputEventMouseMotion : button_mask=0, position=(388, 268), relative=(-2, 0), speed=(-499.345886, -30.011673)
+InputEventMouseMotion : button_mask=0, position=(386, 268), relative=(-2, 0), speed=(-499.345886, -30.011673)
+InputEventMouseMotion : button_mask=0, position=(385, 268), relative=(-1, 0), speed=(-499.345886, -30.011673)
+InputEventMouseMotion : button_mask=0, position=(383, 268), relative=(-2, 0), speed=(-499.345886, -30.011673)
+InputEventMouseMotion : button_mask=0, position=(382, 268), relative=(-1, 0), speed=(-499.345886, -30.011673)
+InputEventMouseMotion : button_mask=0, position=(381, 268), relative=(-1, 0), speed=(-499.345886, -30.011673)
+InputEventMouseMotion : button_mask=0, position=(379, 267), relative=(-2, -1), speed=(-236.934967, -10.767687)
+InputEventMouseMotion : button_mask=0, position=(376, 266), relative=(-3, -1), speed=(-236.934967, -10.767687)
+InputEventMouseMotion : button_mask=0, position=(372, 264), relative=(-4, -2), speed=(-236.934967, -10.767687)
+InputEventMouseMotion : button_mask=0, position=(365, 262), relative=(-7, -2), speed=(-236.934967, -10.767687)
+InputEventMouseMotion : button_mask=0, position=(354, 258), relative=(-11, -4), speed=(-236.934967, -10.767687)
+InputEventMouseMotion : button_mask=0, position=(349, 256), relative=(-5, -2), speed=(-236.934967, -10.767687)
+InputEventMouseMotion : button_mask=0, position=(343, 254), relative=(-6, -2), speed=(-288.171082, -80.954948)
+InputEventMouseMotion : button_mask=0, position=(338, 253), relative=(-5, -1), speed=(-288.171082, -80.954948)
+InputEventMouseMotion : button_mask=0, position=(333, 252), relative=(-5, -1), speed=(-288.171082, -80.954948)
+InputEventMouseMotion : button_mask=0, position=(330, 252), relative=(-3, 0), speed=(-288.171082, -80.954948)
+InputEventMouseMotion : button_mask=0, position=(327, 251), relative=(-3, -1), speed=(-288.171082, -80.954948)
+InputEventMouseMotion : button_mask=0, position=(322, 251), relative=(-5, 0), speed=(-288.171082, -80.954948)
+InputEventMouseMotion : button_mask=0, position=(319, 250), relative=(-3, -1), speed=(-264.314972, -64.413063)
+InputEventMouseMotion : button_mask=0, position=(317, 250), relative=(-2, 0), speed=(-264.314972, -64.413063)
+InputEventMouseMotion : button_mask=0, position=(314, 250), relative=(-3, 0), speed=(-264.314972, -64.413063)
+InputEventMouseMotion : button_mask=0, position=(313, 250), relative=(-1, 0), speed=(-264.314972, -64.413063)
+InputEventMouseMotion : button_mask=0, position=(311, 250), relative=(-2, 0), speed=(-264.314972, -64.413063)
+InputEventMouseMotion : button_mask=0, position=(310, 250), relative=(-1, 0), speed=(-264.314972, -64.413063)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(310, 250), button_mask=1, doubleclick=false
+InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(309, 250), relative=(-1, 0), speed=(-179.036224, -26.107294)
+InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(308, 250), relative=(-1, 0), speed=(-179.036224, -26.107294)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(308, 250), button_mask=0, doubleclick=false
+InputEventMouseMotion : button_mask=0, position=(305, 250), relative=(-3, 0), speed=(-32.96661, -3.228058)
+InputEventMouseMotion : button_mask=0, position=(302, 253), relative=(-3, 3), speed=(-32.96661, -3.228058)
+InputEventMouseMotion : button_mask=0, position=(298, 259), relative=(-4, 6), speed=(-63.175354, 37.965233)
+InputEventMouseMotion : button_mask=0, position=(294, 264), relative=(-4, 5), speed=(-63.175354, 37.965233)
+InputEventMouseMotion : button_mask=0, position=(291, 274), relative=(-3, 10), speed=(-63.175354, 37.965233)
+InputEventMouseMotion : button_mask=0, position=(287, 279), relative=(-4, 5), speed=(-63.175354, 37.965233)
+InputEventMouseMotion : button_mask=0, position=(284, 285), relative=(-3, 6), speed=(-63.175354, 37.965233)
+InputEventMouseMotion : button_mask=0, position=(281, 293), relative=(-3, 8), speed=(-63.175354, 37.965233)
+InputEventMouseMotion : button_mask=0, position=(280, 297), relative=(-1, 4), speed=(-147.122711, 270.052002)
+InputEventMouseMotion : button_mask=0, position=(278, 301), relative=(-2, 4), speed=(-147.122711, 270.052002)
+InputEventMouseMotion : button_mask=0, position=(277, 304), relative=(-1, 3), speed=(-147.122711, 270.052002)
+InputEventMouseMotion : button_mask=0, position=(276, 306), relative=(-1, 2), speed=(-147.122711, 270.052002)
+InputEventMouseMotion : button_mask=0, position=(275, 308), relative=(-1, 2), speed=(-147.122711, 270.052002)
+InputEventMouseMotion : button_mask=0, position=(275, 309), relative=(0, 1), speed=(-147.122711, 270.052002)
+InputEventMouseMotion : button_mask=0, position=(274, 310), relative=(-1, 1), speed=(-96.198174, 184.399719)
+InputEventMouseMotion : button_mask=0, position=(274, 311), relative=(0, 1), speed=(-96.198174, 184.399719)
+InputEventMouseMotion : button_mask=0, position=(274, 312), relative=(0, 1), speed=(-96.198174, 184.399719)
+InputEventMouseMotion : button_mask=0, position=(273, 313), relative=(-1, 1), speed=(-96.198174, 184.399719)
+-0.007377
+InputEventMouseMotion : button_mask=0, position=(273, 313), relative=(0, 0), speed=(-39.647751, 89.525909)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(273, 313), button_mask=1, doubleclick=false
+InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(273, 314), relative=(0, 1), speed=(-39.647751, 89.525909)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(273, 314), button_mask=0, doubleclick=false
+InputEventMouseMotion : button_mask=0, position=(273, 314), relative=(0, 0), speed=(-4.573308, 14.907888)
+InputEventMouseMotion : button_mask=0, position=(273, 316), relative=(0, 2), speed=(-4.573308, 14.907888)
+InputEventMouseMotion : button_mask=0, position=(274, 320), relative=(1, 4), speed=(-4.573308, 14.907888)
+InputEventMouseMotion : button_mask=0, position=(274, 324), relative=(0, 4), speed=(-4.573308, 14.907888)
+InputEventMouseMotion : button_mask=0, position=(274, 335), relative=(0, 11), speed=(-4.573308, 14.907888)
+InputEventMouseMotion : button_mask=0, position=(274, 342), relative=(0, 7), speed=(-4.573308, 14.907888)
+InputEventMouseMotion : button_mask=0, position=(275, 350), relative=(1, 8), speed=(11.022966, 218.54393)
+InputEventMouseMotion : button_mask=0, position=(275, 360), relative=(0, 10), speed=(11.022966, 218.54393)
+InputEventMouseMotion : button_mask=0, position=(276, 367), relative=(1, 7), speed=(11.022966, 218.54393)
+InputEventMouseMotion : button_mask=0, position=(277, 375), relative=(1, 8), speed=(11.022966, 218.54393)
+InputEventMouseMotion : button_mask=0, position=(277, 382), relative=(0, 7), speed=(11.022966, 218.54393)
+InputEventMouseMotion : button_mask=0, position=(277, 385), relative=(0, 3), speed=(11.022966, 218.54393)
+InputEventMouseMotion : button_mask=0, position=(276, 387), relative=(-1, 2), speed=(10.677693, 323.590546)
+InputEventMouseMotion : button_mask=0, position=(276, 388), relative=(0, 1), speed=(10.677693, 323.590546)
+InputEventMouseMotion : button_mask=0, position=(275, 389), relative=(-1, 1), speed=(10.677693, 323.590546)
+InputEventMouseMotion : button_mask=0, position=(275, 390), relative=(0, 1), speed=(10.677693, 323.590546)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(275, 390), button_mask=1, doubleclick=false
+InputEventMouseMotion : button_mask=BUTTON_MASK_LEFT, position=(275, 391), relative=(0, 1), speed=(0.327896, 133.407166)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(275, 391), button_mask=0, doubleclick=false
+InputEventMouseMotion : button_mask=0, position=(275, 391), relative=(0, 0), speed=(-1.718567, 28.696274)
+InputEventMouseMotion : button_mask=0, position=(275, 394), relative=(0, 3), speed=(-1.718567, 28.696274)
+InputEventMouseMotion : button_mask=0, position=(276, 398), relative=(1, 4), speed=(-1.718567, 28.696274)
+InputEventMouseMotion : button_mask=0, position=(278, 401), relative=(2, 3), speed=(-1.718567, 28.696274)
+InputEventMouseMotion : button_mask=0, position=(280, 407), relative=(2, 6), speed=(-1.718567, 28.696274)
+InputEventMouseMotion : button_mask=0, position=(284, 419), relative=(4, 12), speed=(41.443069, 145.221558)
+InputEventMouseMotion : button_mask=0, position=(286, 425), relative=(2, 6), speed=(41.443069, 145.221558)
+InputEventMouseMotion : button_mask=0, position=(288, 434), relative=(2, 9), speed=(41.443069, 145.221558)
+InputEventMouseMotion : button_mask=0, position=(290, 439), relative=(2, 5), speed=(41.443069, 145.221558)
+InputEventMouseMotion : button_mask=0, position=(292, 443), relative=(2, 4), speed=(41.443069, 145.221558)
+InputEventMouseMotion : button_mask=0, position=(293, 447), relative=(1, 4), speed=(41.443069, 145.221558)
+InputEventMouseMotion : button_mask=0, position=(294, 449), relative=(1, 2), speed=(89.598717, 270.648651)
+InputEventMouseMotion : button_mask=0, position=(294, 451), relative=(0, 2), speed=(89.598717, 270.648651)
+InputEventMouseMotion : button_mask=0, position=(294, 453), relative=(0, 2), speed=(89.598717, 270.648651)
+InputEventMouseMotion : button_mask=0, position=(294, 454), relative=(0, 1), speed=(89.598717, 270.648651)
+InputEventMouseMotion : button_mask=0, position=(294, 454), relative=(0, 0), speed=(34.583294, 126.229828)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(294, 454), button_mask=1, doubleclick=false
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(294, 454), button_mask=0, doubleclick=false
+InputEventMouseMotion : button_mask=0, position=(294, 455), relative=(0, 1), speed=(6.194239, 36.116867)
+InputEventMouseMotion : button_mask=0, position=(294, 457), relative=(0, 2), speed=(6.194239, 36.116867)
+InputEventMouseMotion : button_mask=0, position=(295, 459), relative=(1, 2), speed=(6.194239, 36.116867)
+InputEventMouseMotion : button_mask=0, position=(296, 463), relative=(1, 4), speed=(6.194239, 36.116867)
+InputEventMouseMotion : button_mask=0, position=(297, 468), relative=(1, 5), speed=(6.194239, 36.116867)
+InputEventMouseMotion : button_mask=0, position=(298, 473), relative=(1, 5), speed=(6.194239, 36.116867)
+InputEventMouseMotion : button_mask=0, position=(299, 478), relative=(1, 5), speed=(25.589119, 130.666901)
+InputEventMouseMotion : button_mask=0, position=(299, 485), relative=(0, 7), speed=(25.589119, 130.666901)
+InputEventMouseMotion : button_mask=0, position=(299, 490), relative=(0, 5), speed=(25.589119, 130.666901)
+InputEventMouseMotion : button_mask=0, position=(299, 494), relative=(0, 4), speed=(25.589119, 130.666901)
+InputEventMouseMotion : button_mask=0, position=(298, 498), relative=(-1, 4), speed=(25.589119, 130.666901)
+InputEventMouseMotion : button_mask=0, position=(298, 503), relative=(0, 5), speed=(25.589119, 130.666901)
+InputEventMouseMotion : button_mask=0, position=(297, 508), relative=(-1, 5), speed=(5.723738, 236.081696)
+InputEventMouseMotion : button_mask=0, position=(296, 510), relative=(-1, 2), speed=(5.723738, 236.081696)
+InputEventMouseMotion : button_mask=0, position=(296, 513), relative=(0, 3), speed=(5.723738, 236.081696)
+InputEventMouseMotion : button_mask=0, position=(295, 516), relative=(-1, 3), speed=(5.723738, 236.081696)
+InputEventMouseMotion : button_mask=0, position=(295, 517), relative=(0, 1), speed=(5.723738, 236.081696)
+InputEventMouseMotion : button_mask=0, position=(295, 518), relative=(0, 1), speed=(-9.838064, 173.50592)
+InputEventMouseMotion : button_mask=0, position=(294, 519), relative=(-1, 1), speed=(-9.838064, 173.50592)
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=true, position=(294, 519), button_mask=1, doubleclick=false
+InputEventMouseButton : button_index=BUTTON_LEFT, pressed=false, position=(294, 519), button_mask=0, doubleclick=false
+InputEventMouseMotion : button_mask=0, position=(296, 519), relative=(2, 0), speed=(-2.103365, 30.728575)
+InputEventMouseMotion : button_mask=0, position=(302, 519), relative=(6, 0), speed=(-2.103365, 30.728575)
+InputEventMouseMotion : button_mask=0, position=(309, 519), relative=(7, 0), speed=(63.147785, 16.023191)
+InputEventMouseMotion : button_mask=0, position=(318, 517), relative=(9, -2), speed=(63.147785, 16.023191)
+InputEventMouseMotion : button_mask=0, position=(334, 516), relative=(16, -1), speed=(63.147785, 16.023191)
+InputEventMouseMotion : button_mask=0, position=(362, 511), relative=(28, -5), speed=(63.147785, 16.023191)
+InputEventMouseMotion : button_mask=0, position=(388, 504), relative=(26, -7), speed=(63.147785, 16.023191)
+InputEventMouseMotion : button_mask=0, position=(439, 482), relative=(51, -22), speed=(63.147785, 16.023191)
+InputEventMouseMotion : button_mask=0, position=(477, 464), relative=(38, -18), speed=(996.356079, -291.45874)
+InputEventMouseMotion : button_mask=0, position=(518, 441), relative=(41, -23), speed=(996.356079, -291.45874)
+InputEventMouseMotion : button_mask=0, position=(553, 416), relative=(35, -25), speed=(996.356079, -291.45874)
+InputEventMouseMotion : button_mask=0, position=(589, 386), relative=(36, -30), speed=(996.356079, -291.45874)
+InputEventMouseMotion : button_mask=0, position=(626, 355), relative=(37, -31), speed=(996.356079, -291.45874)
+InputEventMouseMotion : button_mask=0, position=(648, 335), relative=(22, -20), speed=(996.356079, -291.45874)
+InputEventMouseMotion : button_mask=0, position=(679, 302), relative=(31, -33), speed=(1672.378662, -1073.35791)
+InputEventMouseMotion : button_mask=0, position=(714, 263), relative=(35, -39), speed=(1672.378662, -1073.35791)
+InputEventMouseMotion : button_mask=0, position=(734, 238), relative=(20, -25), speed=(1672.378662, -1073.35791)
+InputEventMouseMotion : button_mask=0, position=(751, 213), relative=(17, -25), speed=(1672.378662, -1073.35791)
+InputEventMouseMotion : button_mask=0, position=(768, 188), relative=(17, -25), speed=(1672.378662, -1073.35791)
+InputEventMouseMotion : button_mask=0, position=(780, 172), relative=(12, -16), speed=(1672.378662, -1073.35791)
+InputEventMouseMotion : button_mask=0, position=(788, 159), relative=(8, -13), speed=(1399.161987, -1394.259888)
+InputEventMouseMotion : button_mask=0, position=(798, 145), relative=(10, -14), speed=(1399.161987, -1394.259888)
+InputEventMouseMotion : button_mask=0, position=(808, 132), relative=(10, -13), speed=(1399.161987, -1394.259888)
+InputEventMouseMotion : button_mask=0, position=(823, 113), relative=(15, -19), speed=(1399.161987, -1394.259888)
+InputEventMouseMotion : button_mask=0, position=(829, 106), relative=(6, -7), speed=(1399.161987, -1394.259888)
+InputEventMouseMotion : button_mask=0, position=(836, 96), relative=(7, -10), speed=(1399.161987, -1394.259888)
+InputEventMouseMotion : button_mask=0, position=(843, 89), relative=(7, -7), speed=(851.91333, -961.368225)
+InputEventMouseMotion : button_mask=0, position=(851, 82), relative=(8, -7), speed=(851.91333, -961.368225)
+InputEventMouseMotion : button_mask=0, position=(857, 78), relative=(6, -4), speed=(851.91333, -961.368225)
+InputEventMouseMotion : button_mask=0, position=(865, 69), relative=(8, -9), speed=(851.91333, -961.368225)
+InputEventMouseMotion : button_mask=0, position=(873, 63), relative=(8, -6), speed=(851.91333, -961.368225)
+InputEventMouseMotion : button_mask=0, position=(881, 57), relative=(8, -6), speed=(851.91333, -961.368225)
+InputEventMouseMotion : button_mask=0, position=(885, 54), relative=(4, -3), speed=(572.712524, -579.235107)
+InputEventMouseMotion : button_mask=0, position=(889, 52), relative=(4, -2), speed=(572.712524, -579.235107)
+InputEventMouseMotion : button_mask=0, position=(894, 50), relative=(5, -2), speed=(572.712524, -579.235107)
+InputEventMouseMotion : button_mask=0, position=(899, 48), relative=(5, -2), speed=(572.712524, -579.235107)
+InputEventMouseMotion : button_mask=0, position=(904, 45), relative=(5, -3), speed=(572.712524, -579.235107)
+InputEventMouseMotion : button_mask=0, position=(911, 40), relative=(7, -5), speed=(572.712524, -579.235107)
+InputEventMouseMotion : button_mask=0, position=(919, 36), relative=(8, -4), speed=(402.416199, -316.748474)
+InputEventMouseMotion : button_mask=0, position=(925, 31), relative=(6, -5), speed=(402.416199, -316.748474)
+InputEventMouseMotion : button_mask=0, position=(930, 27), relative=(5, -4), speed=(402.416199, -316.748474)
+InputEventMouseMotion : button_mask=0, position=(935, 24), relative=(5, -3), speed=(402.416199, -316.748474)
+InputEventMouseMotion : button_mask=0, position=(940, 21), relative=(5, -3), speed=(402.416199, -316.748474)
+InputEventMouseMotion : button_mask=0, position=(943, 19), relative=(3, -2), speed=(402.416199, -316.748474)
+InputEventMouseMotion : button_mask=0, position=(946, 17), relative=(3, -2), speed=(340.078705, -243.464172)
+InputEventMouseMotion : button_mask=0, position=(948, 15), relative=(2, -2), speed=(340.078705, -243.464172)
+InputEventMouseMotion : button_mask=0, position=(951, 14), relative=(3, -1), speed=(340.078705, -243.464172)
+InputEventMouseMotion : button_mask=0, position=(952, 13), relative=(1, -1), speed=(340.078705, -243.464172)
+InputEventMouseMotion : button_mask=0, position=(953, 12), relative=(1, -1), speed=(340.078705, -243.464172)
+InputEventMouseMotion : button_mask=0, position=(956, 11), relative=(3, -1), speed=(340.078705, -243.464172)
+InputEventMouseMotion : button_mask=0, position=(957, 9), relative=(1, -2), speed=(197.668945, -141.428619)
+InputEventMouseMotion : button_mask=0, position=(960, 8), relative=(3, -1), speed=(197.668945, -141.428619)
+InputEventMouseMotion : button_mask=0, position=(962, 7), relative=(2, -1), speed=(197.668945, -141.428619)
+InputEventMouseMotion : button_mask=0, position=(964, 6), relative=(2, -1), speed=(197.668945, -141.428619)
+InputEventMouseMotion : button_mask=0, position=(967, 4), relative=(3, -2), speed=(197.668945, -141.428619)
+InputEventMouseMotion : button_mask=0, position=(969, 1), relative=(2, -3), speed=(197.668945, -141.428619)
+InputEventMouseMotion : button_mask=0, position=(971, 0), relative=(2, -1), speed=(163.60318, -112.674141)

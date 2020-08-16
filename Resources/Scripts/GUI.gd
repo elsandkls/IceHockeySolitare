@@ -1,18 +1,16 @@
 extends Control
 
-# This is GUI.gd   
-var OPTIONS = [];
-var DRAFT = [];
-var SCORE = [];  
-var GAMEMENU = [];  
-
+# This is GUI.gd       
+onready var DRAFT = self.get_node("../DraftCards_Scene"); #
+onready var SCORE = self.get_node("../Score_Scene"); # 
+onready var OPTIONS = self.get_node("../Options_Scene"); #
+onready var GAMEMENU = self.get_node("../GameMenu_Scene"); # 
+onready var GRID = self.get_node("../Grid_Scene"); # 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	#Laod Scenes 
-	OPTIONS = get_OptionsGUI();
-	DRAFT = get_DraftCardsGUI();
-	SCORE = get_ScoreGUI();  
-	GAMEMENU = get_GameMenuGUI();  
+
+func _ready(): 	 
+	print("GUI Ready")
+	print("GUI loading child scenes:"); 
 	pass # Replace with function body.
 	
 func _input(event): 
@@ -27,58 +25,59 @@ func _input(event):
 
 func new():
 	pass # Replace with function body.
+	
+func start():
+	self.make_invisible();
+	pass # Replace with function body.
   
 func _on_PlayButton_pressed():	    
-	SCORE.make_invisible();
-	OPTIONS.make_invisible();
-	DRAFT.make_invisible(); 
-	GAMEMENU.make_invisible(); 
-	self.make_invisible();
+	SCORE.stop();
+	OPTIONS.stop();
+	DRAFT.stop(); 
+	GAMEMENU.stop();  
 	print("Clicked Game Menu - Play - Grid or the Table should now be visible."); 
-	var GAME_WINDOW = self.get_parent()
-	var GRID = GAME_WINDOW.get_child("Grid")
-	GRID.make_visible();
-	GRID.start();
-	GRID.build_deck();
+	GRID.start(); 
 	pass # Replace with function body.
 
 func _on_SettingsButton_pressed(): 
-	SCORE.make_invisible(); 
-	DRAFT.make_invisible(); 
-	GAMEMENU.make_invisible(); 
+	SCORE.stop(); 
+	DRAFT.stop(); 
+	GAMEMENU.stop(); 
 	print("Clicked Game Menu Settings - Settings should now be visible.");
-	OPTIONS.make_visible();
-	OPTIONS.start();
+	OPTIONS.start(); 
 	pass # Replace with function body.
 
 func _on_ExitGameButton_pressed():
+	OPTIONS.stop();
+	DRAFT.stop(); 
+	GAMEMENU.stop(); 	
+	SCORE.stop();  
 	#SAVEGAME.saveGame(SAVEGAME.content);
 	get_tree().quit(-1)
 	pass # Replace with function body.
 
 func _on_ScoresButton_pressed():  
-	OPTIONS.make_invisible();
-	DRAFT.make_invisible(); 
-	GAMEMENU.make_invisible(); 
+	OPTIONS.stop();
+	DRAFT.stop(); 
+	GAMEMENU.stop(); 
 	print("Clicked Game Menu Score - High Scores should now be visible.");
-	SCORE.make_visible(); 
-	SCORE.start();
+	SCORE.start();  
 	pass # Replace with function body.
 
 func _on_ReturnToMenuButton_pressed():     
-	SCORE.make_invisible();
-	OPTIONS.make_invisible();
-	DRAFT.make_invisible(); 
-	GAMEMENU.make_visible(); 
+	SCORE.stop();
+	OPTIONS.stop();
+	DRAFT.stop();  
+	GAMEMENU.start(); 
 	print("Clicked Return To Menu - GameMenu should now be visible. Score, Options, and Draft should be hidden.");
 	pass # Replace with function body.
 
 func Make_Menu_visible():
 	print("Game Start: New GameMenu");
-	SCORE.make_invisible();
-	OPTIONS.make_invisible(); 
-	DRAFT.make_invisible();
-	GAMEMENU.make_visible();
+	SCORE.stop();
+	OPTIONS.stop(); 
+	DRAFT.stop(); 
+	GAMEMENU.start();
 	print("New GameMenu should now be visible. Score, Options, and Draft should be hidden.");
 	pass # Replace with function body.
 
@@ -93,28 +92,3 @@ func make_invisible():
 	self.hide();
 	print("New Game GUI: should now be invisible.");
 	pass # Replace with function body.
-
-
-func get_OptionsGUI():
-	print("Display OptionsGUI Scene"); 
-	var OPTIONS_SCENE = load("res://Resources/Scenes/OptionsGUI.tscn"); 
-	var OPTION = OPTIONS_SCENE.instance();
-	self.add_child(OPTION); 
-		
-func get_DraftCardsGUI():
-	print("Display DraftCardsGUI Scene"); 
-	var DRAFT_SCENE = load("res://Resources/Scenes/DraftCardsGUI.tscn"); 
-	var DRAFTS = DRAFT_SCENE.instance();
-	self.add_child(DRAFTS); 
-	
-func get_ScoreGUI():
-	print("Display ScoreGUI Scene"); 
-	var SCORE_SCENE = load("res://Resources/Scenes/ScoreGUI.tscn"); 
-	var SCORES = SCORE_SCENE.instance();
-	self.add_child(SCORES); 
-	
-func get_GameMenuGUI():
-	print("Display ScoreGUI Scene"); 
-	var GAMEMENU_SCENE = load("res://Resources/Scenes/ScoreGUI.tscn"); 
-	var GAMEMENUS = GAMEMENU_SCENE.instance();
-	self.add_child(GAMEMENUS); 

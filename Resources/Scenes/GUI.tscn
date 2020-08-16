@@ -1,10 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Resources/Scripts/GUI.gd" type="Script" id=4]
-[ext_resource path="res://Resources/Scenes/DraftCardsGUI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Resources/Scenes/GameMenuGUI.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Resources/Scenes/ScoreGUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Resources/Scenes/OptionsGUI.tscn" type="PackedScene" id=9]
 
 [node name="GUI" type="Control"]
 margin_left = 75.0
@@ -14,11 +10,3 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ScoreGUI" parent="." instance=ExtResource( 8 )]
-
-[node name="OptionsGUI" parent="." instance=ExtResource( 9 )]
-
-[node name="DraftCardsGUI" parent="." instance=ExtResource( 6 )]
-
-[node name="GameMenu" parent="." instance=ExtResource( 7 )]

@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
  
 # This is DraftCardGUI.gd 
 var PlayerDB = load("res://Resources/SharedDB/PlayerDB.gd");
@@ -6,18 +6,28 @@ var PlayerDB_matrix = [];
 var temp_node_name = ""; 
 var PlayerCharacterCard = "object";
 var image_column_id = 0;  
-var GUI = [];  
-var DRAFTCARD = [];  
-var my_z_index = 0;
-var PARENT = self.get_parent();
+onready var GUI = get_node("../Gui_Scene");
+var DRAFTCARD = self;
+var my_z_index = 0; 
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
-	GUI = get_parent();
+	print("Draft Card GUI Ready")
+	GUI  = get_node("../Gui_Scene");
+	#print(GUI)
 	DRAFTCARD = self;
+	#print(DRAFTCARD)
 	pass; # Replace with function body.
 
-func start(): 
+func start():
+	make_visible();
+	pass;
+	
+func stop():	 
+	make_invisible();
+	pass;
+	
+func new(): 
 	pass;
 	
 func build_card():
@@ -75,26 +85,26 @@ func _on_TextureButton_pressed():
 	 
 func make_visible():  	
 	self.show();	
-	my_z_index = PARENT.get_z_index();
-	PARENT.set_z_index(100);
+	my_z_index = self.get_z_index();
+	self.set_z_index(100);
 	var check = self.check_visiblity(); 
 	if(check != 1):
 #		print("DraftCardGUI set to show. ");
 #	else:
 		#get_node("DraftCardGUI").show();
-		var check2 = self.check_visiblity(); 
+		var check2 = DRAFTCARD.check_visiblity(); 
 		if(check2 == 1):
 			print("DraftCardGUI set to show. ");
 		
 func make_invisible(): 
-	self.hide();	 
-	PARENT.set_z_index(my_z_index);
+	.hide();	 
+	self.set_z_index(my_z_index);
 	var check = self.check_visiblity(); 
 	if(check != 0):
 #		print("DraftCardGUI set to hide. ");
 #	else:
 		#get_node("YSort/GUI/DraftCardGUI").hide();
-		var check2 = self.check_visiblity(); 
+		var check2 = DRAFTCARD.check_visiblity(); 
 		if(check2 == 0):
 			print("DraftCardGUI set to hide. ");
 
