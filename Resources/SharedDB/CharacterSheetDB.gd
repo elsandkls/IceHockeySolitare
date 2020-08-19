@@ -8,11 +8,13 @@ var CharacterSheetDB_matrix = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
+	pass;
+
+func start(): 
 	var delim = ","
 	var newLineDelim = "\n"
 		
 	## open and read files  
-	
 	print(file_CharacterSheetDB)
 	CharacterSheetDB = loadDB_CharacterSheet(file_CharacterSheetDB)
 	var CharacterSheetDB_Lines = CharacterSheetDB.split(newLineDelim, true, 0)

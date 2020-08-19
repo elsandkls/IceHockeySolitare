@@ -7,11 +7,13 @@ var SeasonalStatsDB_matrix = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
+	pass;
+	
+func start(): 
 	var delim = ","
 	var newLineDelim = "\n"
 		
 	## open and read files 
- 
 	print(file_SeasonalStatsDB)
 	SeasonalStatsDB = loadDB_SeasonalStatsDB(file_SeasonalStatsDB)
 	var SeasonalStatsDB_Lines = SeasonalStatsDB.split(newLineDelim, true, 0)

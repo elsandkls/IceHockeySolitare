@@ -6,21 +6,21 @@ var timer_string = "";
 var my_z_index = 0;  
 var TITLESCREEN_NODEGUI = self;  #1525 #TitleScreenNodeGUI #Node2d
 onready var TITLESCREEN_CONTROL = self.get_node("TitleScreenControl"); #1526 Control #TitleScreenControl
-onready var DISPLAYTIMER = self.get_node("TitleScreenControl/DisplayTimer"); #1530 RichTextLabel
-
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
 	print("Title Screen Ready")
 	#print(TITLESCREEN_NODEGUI);
 	TITLESCREEN_CONTROL = self.get_node("TitleScreenControl"); #1524 #TitleScreenControl
 	#print(TITLESCREEN_CONTROL);
-	DISPLAYTIMER = self.get_node("TitleScreenControl/DisplayTimer"); #1530 RichTextLabel
-	#print(DISPLAYTIMER);
+ 
 	pass # Replace with function body
 	
 func start():
-	make_visible();
-	countdown_timer(25, DISPLAYTIMER);
+	make_visible(); 
+	pass # Replace with function body
+	
+func stop(): 
 	make_invisible();
 	pass # Replace with function body
  

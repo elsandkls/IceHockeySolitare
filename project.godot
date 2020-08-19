@@ -31,12 +31,19 @@ GameMenu_Scene="*res://Resources/Scenes/GameMenuGUI.tscn"
 DraftCards_Scene="*res://Resources/Scenes/DraftCardsGUI.tscn"
 Options_Scene="*res://Resources/Scenes/OptionsGUI.tscn"
 Score_Scene="*res://Resources/Scenes/ScoreGUI.tscn"
+Global="*res://Resources/Scripts/Global.gd"
+PlayerDb="*res://Resources/SharedDB/PlayerDB.gd"
+TeamDb="*res://Resources/SharedDB/TeamDB.gd"
+TeamStatsDb="*res://Resources/SharedDB/TeamStatsDB.gd"
+PlayerGameSkillTreeDb="*res://Resources/SharedDB/PlayerGameSkillTreeDB.gd"
+PlayerGameSkillTypesDb="*res://Resources/SharedDB/PlayerGameSkillTypesDB.gd"
+CharacterSkillTreeDb="*res://Resources/SharedDB/CharacterSkillTreeDB.gd"
+CharacterSheetDb="*res://Resources/SharedDB/CharacterSheetDB.gd"
 
 [debug]
 
 settings/profiler/max_functions=65535
 settings/gdscript/max_call_stack=102400
-gdscript/warnings/treat_warnings_as_errors=true
 gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unused_class_variable=true
 gdscript/warnings/unsafe_property_access=true
@@ -52,6 +59,10 @@ window/size/height=800
 window/size/test_width=1000
 window/size/test_height=800
 window/per_pixel_transparency/allowed=true
+
+[filesystem]
+
+import/open_asset_import/use_fbx=false
 
 [input]
 
@@ -85,6 +96,10 @@ ExitGameButton={
 "deadzone": 0.5,
 "events": [  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [logging]
 

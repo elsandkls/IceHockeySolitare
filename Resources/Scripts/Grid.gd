@@ -243,11 +243,11 @@ func build_pile_grid_array():
 	var piles_objects = [];
 	var piles_IDs = [];
 	#var temp_grid = [];
-	
 	#var base_path = ""; 
 	#var new_path = ""; 
  
-	#print(STOCK);
+	if(debug_level == 2):
+		print(STOCK);
 	#STOCK.start();
 	piles_names.append( "Stock" );
 	piles_grids.append( build_pile_on_grid(0,0) );  
@@ -264,7 +264,6 @@ func build_pile_grid_array():
 	piles_objects.append( FOUNDATION1 );
 	piles_IDs.append(pile_cards_foundation1 );
 	
-	 
 	piles_names.append( "Foundation_2" );
 	piles_grids.append( build_pile_on_grid(0,4) );  
 	piles_objects.append( FOUNDATION2 );
@@ -314,35 +313,42 @@ func build_pile_grid_array():
 	piles_grids.append( build_pile_on_grid(1,6) );  
 	piles_objects.append( TABLEAU7 ); 
 	piles_IDs.append(pile_cards_tableau_7);
-	 
-	#print(piles_names);
-	#print(piles_grids);
-	#print(piles_objects);
-	#print(piles_IDs);
+
+	if(debug_level == 2):	 
+		print(piles_names);
+		print(piles_grids);
+		print(piles_objects);
+		print(piles_IDs);
 
 	for n in range(piles_names.size()):
-		if(debug_level == 0):
+		if(debug_level == 2):
 			print(n); 
-			print(piles_names[n]);
-			print(piles_grids[n]);
-			print(piles_objects[n]);
-			print(piles_IDs[n]);
+			print("piles_names: ", piles_names[n]);
+			print("piles_grids: ", piles_grids[n]);
+			print("piles_objects: ", piles_objects[n]);
+			print("piles_IDs: ", piles_IDs[n]);
 		var TEMPOBJECT = piles_objects[n];
-		print (TEMPOBJECT);
+		print ("TEMPOBJECT: ", TEMPOBJECT);
 		upper_right_x = TEMPOBJECT.get_uppper_right_x();
-		if(debug_level == 0):
-			print(upper_right_x);
+		if(debug_level == 2):
+			print("upper_right_x: ", upper_right_x);
 		upper_right_y = TEMPOBJECT.get_uppper_right_y();
-		if(debug_level == 0):
-			print(upper_right_y);
+		if(debug_level == 2):
+			print("upper_right_y: ", upper_right_y);
 		size_x = TEMPOBJECT.get_size_x();
-		if(debug_level == 0):
-			print(size_x);
+		if(debug_level == 2):
+			print("size_x: ", size_x);
 		size_y = TEMPOBJECT.get_size_y();
-		if(debug_level == 0):
-			print(size_y);
+		if(debug_level == 2):
+			print("size_y: ", size_y);
+		print("debug_level: ", debug_level);
 		lower_left_x = upper_right_x + size_x;
+		if(debug_level == 2):
+			print("lower_left_x: ", lower_left_x);
+			print("lower_left_x: ", lower_left_x);
 		lower_left_y = upper_right_y + size_y;
+		if(debug_level == 0):
+			print("lower_left_y: ", lower_left_y);
 		
 		if(debug_level == 0):
 			print("(", upper_right_x, ",", upper_right_y, "), (", lower_left_x, ",", lower_left_y, "), (", size_x, ",", size_y, ")");

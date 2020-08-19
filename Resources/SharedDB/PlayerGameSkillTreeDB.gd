@@ -7,11 +7,13 @@ var PlayerGameSkillTreeDB_matrix = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
+	pass;
+	
+func start(): 
 	var delim = ","
 	var newLineDelim = "\n"
 		
-	## open and read files  	 
-	
+	## open and read files  	 	
 	print(file_PlayerGameSkillTreeDB)
 	PlayerGameSkillTreeDB = loadDB_PlayerGameSkillTreeDB(file_PlayerGameSkillTreeDB)
 	var PlayerGameSkillTreeDB_Lines = PlayerGameSkillTreeDB.split(newLineDelim, true, 0)

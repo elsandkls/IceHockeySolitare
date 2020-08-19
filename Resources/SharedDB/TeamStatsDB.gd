@@ -7,11 +7,13 @@ var TeamGameStatsDB_matrix = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
+	pass;
+	
+func start(): 
 	var delim = ","
 	var newLineDelim = "\n"
 		
-	## open and read files  
-	
+	## open and read files  	
 	print(file_TeamGameStatsDB)
 	TeamGameStatsDB = loadDB_TeamGameStatsDB(file_TeamGameStatsDB)
 	var TeamGameStatsDB_Lines = TeamGameStatsDB.split(newLineDelim, true, 0)

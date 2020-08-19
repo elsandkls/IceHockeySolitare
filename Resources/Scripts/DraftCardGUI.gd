@@ -1,12 +1,12 @@
 extends Node2D
  
 # This is DraftCardGUI.gd 
-var PlayerDB = load("res://Resources/SharedDB/PlayerDB.gd");
+onready var PLAYERDB = get_node("../PlayerDb")
+onready var GUI = get_node("../Gui_Scene");
 var PlayerDB_matrix = [];
 var temp_node_name = ""; 
 var PlayerCharacterCard = "object";
-var image_column_id = 0;  
-onready var GUI = get_node("../Gui_Scene");
+var image_column_id = 0;   
 var DRAFTCARD = self;
 var my_z_index = 0; 
 
@@ -14,13 +14,13 @@ var my_z_index = 0;
 func _ready(): 
 	print("Draft Card GUI Ready")
 	GUI  = get_node("../Gui_Scene");
-	#print(GUI)
-	DRAFTCARD = self;
-	#print(DRAFTCARD)
+	PLAYERDB = get_node("../PlayerDb") 
+	DRAFTCARD = self; 
 	pass; # Replace with function body.
 
 func start():
 	make_visible();
+	new();
 	pass;
 	
 func stop():	 
@@ -28,10 +28,27 @@ func stop():
 	pass;
 	
 func new(): 
+	print(PLAYERDB)
+	PLAYERDB.start();
+	build_card();
 	pass;
 	
 func build_card():
-	PlayerDB_matrix = PlayerDB.get_PlayerDBMatrix();
+	PlayerDB_matrix = PLAYERDB.get_PlayerDBMatrix(); 
+	var temp_node_name = "";
+	var temp_node_text = "";
+	var temp_textid_id = "";
+	var temp_textid_fn = "";
+	var temp_textid_ln = "";
+	var temp_textid_height = "";
+	var temp_textid_weight = "";
+	var temp_textid_shots = "";
+	var temp_textid_born = "";
+	var temp_textid_city = "";
+	var temp_textid_country = "";
+	var base_path = "res://Resources/SharedDB/player_db_images/";
+	var base_node_path = "DraftCardsGUI/VBoxContainer/HBoxContainer/";
+	
 	print(PlayerDB_matrix); 
 	print("PlayerDB accessed in the DraftCardGui: " + String(PlayerDB_matrix.size() ));
 	for l in range(PlayerDB_matrix.size()):  
@@ -39,37 +56,92 @@ func build_card():
 		var PlayerDB_EntryCount = PlayerDB_Array.size();
 		for n in range(PlayerDB_EntryCount):
 			print(String(l) + ":" + String(n) + ":" + PlayerDB_Array[n]) # Prints n entry 
-			if n == 0:
+			if l == 0:
+				if PlayerDB_Array[n] == "id":
+					image_column_id = n;
+					temp_textid_id = n;
+				if PlayerDB_Array[n] == "First Name":
+					image_column_id = n;
+					temp_textid_fn = n;
+				if PlayerDB_Array[n] == "Last Name":
+					image_column_id = n;
+					temp_textid_ln = n;
+				if PlayerDB_Array[n] == "Height":
+					image_column_id = n;
+					temp_textid_height = n;
+				if PlayerDB_Array[n] == "Weight":
+					image_column_id = n;
+					temp_textid_weight = n;
+				if PlayerDB_Array[n] == "Shoots":
+					image_column_id = n;
+					temp_textid_shots = n;
+				if PlayerDB_Array[n] == "Born":
+					image_column_id = n;
+					temp_textid_born = n;
+				if PlayerDB_Array[n] == "LocationCity":
+					image_column_id = n;
+					temp_textid_city = n;
+				if PlayerDB_Array[n] == "LocationCountry":
+					image_column_id = n;
+					temp_textid_country = n;
 				if PlayerDB_Array[n] == "image":
 					image_column_id = n;
-			if n == 1:
-				temp_node_name = "VBoxContainer/HBoxContainer/VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_001";
-				PlayerCharacterCard = get_node(temp_node_name);
-				print("player node 1 connected")
-				PlayerCharacterCard.texture(PlayerDB_Array[image_column_id]); 
+					temp_node_name = n; 
+			if l == 1:
+				temp_node_name = base_node_path + "VBoxPlayer1/BG_Player_1/NinePatchRect/TexRec_PlayerImage_Slot_001";
+				temp_node_text = base_node_path + "VBoxPlayer1/BG_Player_1/RTLPlayer1"
+				print("player node 1 connected") 
+				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				print("player node 1 image loaded")
-			if n == 2:
-				temp_node_name = "VBoxContainer/HBoxContainer/VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_002";
-				PlayerCharacterCard = get_node(temp_node_name);
-				print("player node 2 connected")
-				PlayerCharacterCard.texture(PlayerDB_Array[image_column_id]); 
+			if l == 2:
+				temp_node_name = base_node_path + "VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_002";
+				temp_node_text = base_node_path + "VBoxPlayer2/BG_Player_2/RTLPlayer2"
+				print("player node 2 connected") 
+				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				print("player node 2 image loaded")
-			if n == 3:
-				temp_node_name = "VBoxContainer/HBoxContainer/VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_003";
-				PlayerCharacterCard = get_node(temp_node_name);
+			if l == 3:
+				temp_node_name = base_node_path + "VBoxPlayer3/BG_Player_3/NinePatchRect3/TexRec_PlayerImage_Slot_003";
+				temp_node_text = base_node_path + "VBoxPlayer3/BG_Player_3/RTLPlayer3"
 				print("player node 3 connected")
-				PlayerCharacterCard.texture(PlayerDB_Array[image_column_id]); 
+				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				print("player node 3 image loaded")
-			if n == 4:
-				temp_node_name = "VBoxContainer/HBoxContainer/VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_004";
-				PlayerCharacterCard = get_node(temp_node_name);
+			if l == 4:
+				temp_node_name = base_node_path + "VBoxPlayer4/BG_Player_4/NinePatchRect4/TexRec_PlayerImage_Slot_004";
+				temp_node_text = base_node_path + "VBoxPlayer4/BG_Player_4/RTLPlayer4"
 				print("player node 4 connected")
-				PlayerCharacterCard.texture(PlayerDB_Array[image_column_id]); 
+				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				print("player node 4 image loaded")
 				
 	pass;
 
-
+func _swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path):
+	var PlayerCharacterCard = get_node(temp_node_name);
+	var new_image_location = PlayerDB_Array[image_column_id];
+	new_image_location = base_path + new_image_location;
+	var ImageNode = load(new_image_location);
+	PlayerCharacterCard.texture = ImageNode;
+	print(new_image_location);
+	print(ImageNode);
+	pass;
+	
+func _swap_player_description_on_card(temp_node_text, PlayerDB_Array, _textid_id, _textid_fn, _textid_ln, _textid_height, _textid_weight, _textid_shots, _textid_born, _textid_city, _textid_country):
+	var PlayerCharacterCard = get_node(temp_node_text)
+	var new_card_text_message =                    "Name: "        + str( PlayerDB_Array[_textid_ln] ) ;
+	new_card_text_message = new_card_text_message + " , "          + str( PlayerDB_Array[_textid_fn] )       + '\n';   
+	new_card_text_message = new_card_text_message + "Height: "     + str( PlayerDB_Array[_textid_height] )   + '\n';   
+	new_card_text_message = new_card_text_message + "Weight: "     + str( PlayerDB_Array[_textid_weight] )   + '\n'; 
+	new_card_text_message = new_card_text_message + "Shots: "      + str( PlayerDB_Array[_textid_shots] )    + '\n'; 
+	new_card_text_message = new_card_text_message + "Born: "       + str( PlayerDB_Array[_textid_born] )     + '\n'; 
+	new_card_text_message = new_card_text_message + "City: "       + str( PlayerDB_Array[_textid_city] )     + '\n'; 
+	#new_card_text_message = new_card_text_message + "Country: "    + str( PlayerDB_Array[_textid_country] )  + '\n'; 
+	PlayerCharacterCard.set_text(new_card_text_message);
+	pass;
+	
+	
 func _on_TextureButton4_pressed():
 	pass # Replace with function body.
 
@@ -97,7 +169,7 @@ func make_visible():
 			print("DraftCardGUI set to show. ");
 		
 func make_invisible(): 
-	.hide();	 
+	self.hide();	 
 	self.set_z_index(my_z_index);
 	var check = self.check_visiblity(); 
 	if(check != 0):

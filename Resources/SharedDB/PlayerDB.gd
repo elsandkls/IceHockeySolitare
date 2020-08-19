@@ -10,11 +10,9 @@ func _ready():
 	pass;
 	
 func start():
-	
 	var delim = ","
 	var newLineDelim = "\n"
 	## open and read files  
-	
 	print(file_PlayerDB)
 	PlayerDB = loadDB_PlayerDB(file_PlayerDB)
 	var PlayerDB_Lines = PlayerDB.split(newLineDelim, true, 0)

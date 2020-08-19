@@ -19,9 +19,9 @@ font_data = ExtResource( 4 )
 script = ExtResource( 2 )
 
 [node name="OptionsGUI" type="Control" parent="."]
-margin_left = 100.0
+margin_left = 600.0
 margin_top = 75.0
-margin_right = 475.0
+margin_right = 975.0
 margin_bottom = 675.0
 __meta__ = {
 "_edit_use_anchors_": false
