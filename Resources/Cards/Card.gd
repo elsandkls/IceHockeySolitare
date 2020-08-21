@@ -1,7 +1,6 @@
 extends Node2D
  
-#ar matched = false;
- 
+#var matched = false;
 # Sprite nodes for the cards 
 var CARDSPRITE_ANIM  = preload("res://Resources/Cards/Sprite_Anim.gd"); 
 var CARDSPRITE_BACK  = preload("res://Resources/Cards/Sprite_BG.gd");  
@@ -44,5 +43,4 @@ func setTextureBackground_FaceDown(colour):
 	var new_CARDSPRITE_BACK = CARDSPRITE_BACK.new(); 
 	new_CARDSPRITE_BACK.setTextureSprite(colour)
 	pass;
-	
 	

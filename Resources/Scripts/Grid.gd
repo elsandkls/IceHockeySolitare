@@ -1,31 +1,44 @@
 extends Node2D
 
 # This is Grid.gd   
+
 # Grid Variables
 export (int) var width;
 export (int) var height;
 export (int) var start_x;
-export (int) var start_y;
-#export (int) var stop_x;
-#export (int) var stop_y;
+export (int) var start_y; 
 export (int) var offset;
 export (int) var debug_level;
 export (int) var card_width;
 export (int) var card_height;
 
-var STOCK = load("res://Resources/Scripts/Stock.gd");
-var TALON = load("res://Resources/Scripts/Talon.gd");
-var TABLEAU1 = load("res://Resources/Scripts/Tableau_1.gd");
-var TABLEAU2 = load("res://Resources/Scripts/Tableau_2.gd");
-var TABLEAU3 = load("res://Resources/Scripts/Tableau_3.gd");
-var TABLEAU4 = load("res://Resources/Scripts/Tableau_4.gd");
-var TABLEAU5 = load("res://Resources/Scripts/Tableau_5.gd");
-var TABLEAU6 = load("res://Resources/Scripts/Tableau_6.gd");
-var TABLEAU7 = load("res://Resources/Scripts/Tableau_7.gd");
-var FOUNDATION1 = load("res://Resources/Scripts/Foundation_1.gd");
-var FOUNDATION2 = load("res://Resources/Scripts/Foundation_2.gd");
-var FOUNDATION3 = load("res://Resources/Scripts/Foundation_3.gd");
-var FOUNDATION4 = load("res://Resources/Scripts/Foundation_4.gd");
+var STOCK_SCRIPT = load("res://Resources/Scripts/Stock.gd");
+var TALON_SCRIPT = load("res://Resources/Scripts/Talon.gd");
+var TABLEAU1_SCRIPT = load("res://Resources/Scripts/Tableau_1.gd");
+var TABLEAU2_SCRIPT = load("res://Resources/Scripts/Tableau_2.gd");
+var TABLEAU3_SCRIPT = load("res://Resources/Scripts/Tableau_3.gd");
+var TABLEAU4_SCRIPT = load("res://Resources/Scripts/Tableau_4.gd");
+var TABLEAU5_SCRIPT = load("res://Resources/Scripts/Tableau_5.gd");
+var TABLEAU6_SCRIPT = load("res://Resources/Scripts/Tableau_6.gd");
+var TABLEAU7_SCRIPT = load("res://Resources/Scripts/Tableau_7.gd");
+var FOUNDATION1_SCRIPT = load("res://Resources/Scripts/Foundation_1.gd");
+var FOUNDATION2_SCRIPT = load("res://Resources/Scripts/Foundation_2.gd");
+var FOUNDATION3_SCRIPT = load("res://Resources/Scripts/Foundation_3.gd");
+var FOUNDATION4_SCRIPT = load("res://Resources/Scripts/Foundation_4.gd");
+
+onready var STOCK = get_node("YSort/Stock");
+onready var TALON = get_node("YSort/Talon");
+onready var TABLEAU1 = get_node("YSort/Tableau_1");
+onready var TABLEAU2 = get_node("YSort/Tableau_2");
+onready var TABLEAU3 = get_node("YSort/Tableau_3");
+onready var TABLEAU4 = get_node("YSort/Tableau_4");
+onready var TABLEAU5 = get_node("YSort/Tableau_5");
+onready var TABLEAU6 = get_node("YSort/Tableau_6");
+onready var TABLEAU7 = get_node("YSort/Tableau_7");
+onready var FOUNDATION1 = get_node("YSort/Foundation_1");
+onready var FOUNDATION2 = get_node("YSort/Foundation_2");
+onready var FOUNDATION3 = get_node("YSort/Foundation_3");
+onready var FOUNDATION4 = get_node("YSort/Foundation_4");
 
 # variables for cards  
 var possible_cards = [
@@ -54,19 +67,11 @@ var pile_cards_tableau_7 = [];
 # Grid locations
 var pile_locations = [];
 
-# Touch variables
-#var first_touch = Vector2(0,0);
-#var final_touch = Vector2(0,0);
-#var New_Position = Vector2(0,0);
+# Touch variables 
 var new_x = start_x;
 var new_y = start_y;
-var controlling = false;
-#var last_x = 0;
-#var last_y = 0;
-#var active_x = 0;
-#var active_y = 0;
- 
-var grid_full_path = "./YSort/Grid/";
+var controlling = false;  
+var grid_full_path = self.get_path();
 var ysort_full_path = "YSort/";
 var sprite_full_path = "/Sprite_Holder";
 var Grid_Container = "Grid"; 
@@ -74,8 +79,9 @@ var ActivePile_Container = "Active"
 var SpriteHolder_Container = "Card";   
 
 func _ready(): 	
-	print("Game Grid Ready")	
-	print("Finished Game Grid Load.")
+	if(debug_level == 0):
+		print("Game Grid Ready")	
+		print("Finished Game Grid Load.")
 	controlling = false;
 	pass;
 
@@ -89,21 +95,25 @@ func new():
 	pass # Replace with function body.
  
 func build_deck(): 
-	print("Starting Build Deck in Grid.")
+	if(debug_level == 0):
+		print("Starting Build Deck in Grid.")
+		
 	my_deck = make_a_deck(); 
 	shuffle_the_deck();
 	build_pile_grid_array();
 	deal_game();
-	print("Finished Build Deck in Grid.")
+	
+	if(debug_level == 0):
+		print("Finished Build Deck in Grid.")
 
 func move_check():
 	pass;
 
 func undo_move(column, row, direction): 
 	if(debug_level == 0):
-		print("Undo Move Function");
-	if(debug_level == 0):
+		print("Undo Move Function"); 
 		print(column, row, direction);  
+		
 	var card = possible_cards[0].instance();
 	card.move(pile_to_pixel(card)); 
 	pass;
@@ -125,6 +135,7 @@ func pile_to_pixel( pile ):
 	#
 	if(debug_level == 0):
 		print ("Pile to Pixel");   
+		
 	upper_right_x = Vector2(pile.get_transform().get_origin()).x;
 	upper_right_y = Vector2(pile.get_transform().get_origin()).y;
 	size_x = pile.texture.get_size().x;
@@ -165,6 +176,7 @@ func is_in_grid_single(grid_position):
 func touch_input():  
 	if(debug_level == 0):
 		print("Input Check: initial touch");  
+	
 	# InputEventScreenTouch
 	#if Input.is_action_just_pressed("ui_touch")	
 	pass;
@@ -190,6 +202,7 @@ func mouse_input():
 	grid_position.clear();
 	if _on_grid == true:
 		var status = check_click_status();
+		#print(status);
 		if status == "pickup":
 			card = pickup_card(position_x,position_y);
 			_mouse_moving = 0;
@@ -216,7 +229,7 @@ func _on_UndoDriver_Timer_timeout():
 	 
 
 func build_temp_path(base_path):
-	var new_path = build_path(base_path, "nogrid"); 
+	var new_path = build_path(base_path, "nogrid_node"); 
 	return(new_path)
 	
 func build_pile_on_grid(grid_var_x,grid_var_y):
@@ -241,142 +254,168 @@ func build_pile_grid_array():
 	var piles_grids = [];
 	var piles_names = [];
 	var piles_objects = [];
-	var piles_IDs = [];
-	#var temp_grid = [];
-	#var base_path = ""; 
-	#var new_path = ""; 
+	var piles_IDs = []; 
  
-	if(debug_level == 2):
-		print(STOCK);
-	#STOCK.start();
+	if(debug_level == 0):
+		print(STOCK); 
+	
+	# builds the index or key used through out the program
 	piles_names.append( "Stock" );
 	piles_grids.append( build_pile_on_grid(0,0) );  
 	piles_objects.append( STOCK );
 	piles_IDs.append(pile_cards_stock); 
+	STOCK.make_visible();
 	
 	piles_names.append( "Talon" );
 	piles_grids.append( build_pile_on_grid(0,1) );  
 	piles_objects.append( TALON );	
 	piles_IDs.append(pile_cards_talon ); 
+	TALON.make_visible();
 	
 	piles_names.append( "Foundation_1" );
 	piles_grids.append( build_pile_on_grid(0,3) );  
 	piles_objects.append( FOUNDATION1 );
-	piles_IDs.append(pile_cards_foundation1 );
+	piles_IDs.append( pile_cards_foundation1 );
+	FOUNDATION1.make_visible();
 	
 	piles_names.append( "Foundation_2" );
 	piles_grids.append( build_pile_on_grid(0,4) );  
 	piles_objects.append( FOUNDATION2 );
 	piles_IDs.append(pile_cards_foundation2 );
+	FOUNDATION2.make_visible();
 	 
 	piles_names.append( "Foundation_3" );
 	piles_grids.append( build_pile_on_grid(0,5) );   
 	piles_objects.append( FOUNDATION3 ); 
 	piles_IDs.append(pile_cards_foundation3 );
+	FOUNDATION3.make_visible();
 	
 	piles_names.append(  "Foundation_4" );
 	piles_grids.append( build_pile_on_grid(0,6) );   
 	piles_objects.append( FOUNDATION4 ); 
 	piles_IDs.append(pile_cards_foundation4 );
+	FOUNDATION4.make_visible();
 
 	piles_names.append(  "Tableau_1" );
 	piles_grids.append( build_pile_on_grid(1,0) );  
 	piles_objects.append( TABLEAU1 );  
 	piles_IDs.append(pile_cards_tableau_1 );
+	TABLEAU1.make_visible();
 	 
 	piles_names.append( "Tableau_2" );
 	piles_grids.append( build_pile_on_grid(1,1) );  
 	piles_objects.append( TABLEAU2 );  
 	piles_IDs.append(pile_cards_tableau_2 );
+	TABLEAU2.make_visible();
 	 
 	piles_names.append( "Tableau_3" );
 	piles_grids.append( build_pile_on_grid(1,2) );  
 	piles_objects.append( TABLEAU3 );  
 	piles_IDs.append(pile_cards_tableau_3 );
+	TABLEAU3.make_visible();
 	  
 	piles_names.append( "Tableau_4" );
 	piles_grids.append( build_pile_on_grid(1,3) );   
 	piles_objects.append( TABLEAU4 );
 	piles_IDs.append(pile_cards_tableau_4 );
+	TABLEAU4.make_visible();
 	   
 	piles_names.append(  "Tableau_5" );
 	piles_grids.append( build_pile_on_grid(1,4) );  
 	piles_objects.append( TABLEAU5 );
 	piles_IDs.append(pile_cards_tableau_5 );
+	TABLEAU5.make_visible();
 	
 	piles_names.append( "Tableau_6" );
 	piles_grids.append( build_pile_on_grid(1,5) );   
 	piles_objects.append( TABLEAU6  );
 	piles_IDs.append(pile_cards_tableau_6 );
+	TABLEAU6.make_visible();
 	 
 	piles_names.append(  "Tableau_7" );
 	piles_grids.append( build_pile_on_grid(1,6) );  
 	piles_objects.append( TABLEAU7 ); 
 	piles_IDs.append(pile_cards_tableau_7);
+	TABLEAU7.make_visible();
 
-	if(debug_level == 2):	 
-		print(piles_names);
-		print(piles_grids);
-		print(piles_objects);
-		print(piles_IDs);
+	if(debug_level == 0):	 
+		print("Before we begin, this is what we have. ");
+		print("piles_names ", piles_names);
+		print("piles_grids ", piles_grids);
+		print("piles_objects ", piles_objects);
+		print("piles_IDs ", piles_IDs);
 
-	for n in range(piles_names.size()):
-		if(debug_level == 2):
-			print(n); 
+	for n in range(piles_names.size()): 
+		if(debug_level == 0):
+			print("Inside the for loop: ");
+			print("loop: ", n); 
 			print("piles_names: ", piles_names[n]);
 			print("piles_grids: ", piles_grids[n]);
 			print("piles_objects: ", piles_objects[n]);
 			print("piles_IDs: ", piles_IDs[n]);
+			
 		var TEMPOBJECT = piles_objects[n];
-		print ("TEMPOBJECT: ", TEMPOBJECT);
+		if(debug_level == 0):
+			print ("TEMPOBJECT: ", TEMPOBJECT);
+		
+		# error here on get_upper_right_x on TEMPOBJECT
 		upper_right_x = TEMPOBJECT.get_uppper_right_x();
-		if(debug_level == 2):
-			print("upper_right_x: ", upper_right_x);
 		upper_right_y = TEMPOBJECT.get_uppper_right_y();
-		if(debug_level == 2):
+		if(debug_level == 0):
+			print("upper_right_x: ", upper_right_x); 
 			print("upper_right_y: ", upper_right_y);
+			
+		# error here on get_size_x on TEMPOBJECT
 		size_x = TEMPOBJECT.get_size_x();
-		if(debug_level == 2):
-			print("size_x: ", size_x);
 		size_y = TEMPOBJECT.get_size_y();
-		if(debug_level == 2):
-			print("size_y: ", size_y);
-		print("debug_level: ", debug_level);
+		if(debug_level == 0):
+			print("size_x: ", size_x); 
+			print("size_y: ", size_y); 
+			print("debug_level: ", debug_level);
+			
 		lower_left_x = upper_right_x + size_x;
-		if(debug_level == 2):
-			print("lower_left_x: ", lower_left_x);
-			print("lower_left_x: ", lower_left_x);
 		lower_left_y = upper_right_y + size_y;
 		if(debug_level == 0):
+			print("lower_left_x: ", lower_left_x); 
 			print("lower_left_y: ", lower_left_y);
 		
 		if(debug_level == 0):
 			print("(", upper_right_x, ",", upper_right_y, "), (", lower_left_x, ",", lower_left_y, "), (", size_x, ",", size_y, ")");
+
 		position_origin.append(upper_right_x);
 		position_origin.append(upper_right_y);
+
 		if(debug_level == 0):
 			print(position_origin);
+			
 		position_base.append(lower_left_x);
 		position_base.append(lower_left_y);
+
 		if(debug_level == 0):
 			print(position_base);
+			
 		position_size.append(size_x);
 		position_size.append(size_y); 
 		card_width = size_x;
 		card_height = size_y;
+
 		if(debug_level == 0):
 			print(position_size);
+			
 		position_frame.append(piles_names[n]);
 		position_frame.append(piles_grids[n].duplicate());
 		position_frame.append(position_origin.duplicate());
 		position_frame.append(position_base.duplicate());
 		position_frame.append(position_size.duplicate());
+		
 		if(debug_level == 0):
 			print(position_frame);
+			
 		pile_locations.append(position_frame.duplicate()); 
 		#
 		if(debug_level == 0):
 			print("Clear arrays.");
+			
 		position_origin.clear();
 		position_base.clear();
 		position_size.clear();
@@ -397,16 +436,14 @@ func make_a_deck():
 		# 13 cards per color 
 		for l in range(13):   
 			var card = spawn_card(i, l);
-			#print(i, " : ", l, " : Spawned : ",card)
-			temp_array.append(card); 			
 			if(debug_level == 0):
-				print(card);
+				print(i, " : ", l, " : Spawned : ",card)
+				temp_array.append(card);  
 	return temp_array;
  
 func spawn_card(color, rank):
 	if(debug_level == 0):
-		print("function: spawn card");
-	if(debug_level == 0):
+		print("function: spawn card"); 
 		print(color);
 		print(rank);
 	var rand = floor(rand_range(0,possible_cards.size()));
@@ -430,27 +467,34 @@ func shuffle_the_deck():
 
 func build_path(base_path, path_type): 
 	var new_path = ""; 
-		
-	if(path_type == "sprite"): 
+	grid_full_path = self.get_path();
+	
+	if(path_type == "nogrid_sprite"): 
 		new_path = new_path.insert(0,sprite_full_path); 
 		new_path = new_path.insert(0,base_path); 
-		new_path = new_path.insert(0,ysort_full_path); 
-		new_path = new_path.insert(0,grid_full_path);  
+		new_path = new_path.insert(0,ysort_full_path);   
 		
-	if(path_type == "node"):
-		new_path = new_path.insert(0,base_path); 
-		new_path = new_path.insert(0,ysort_full_path); 
-		new_path = new_path.insert(0,grid_full_path);  
-		
-	if(path_type == "grid"):
-		new_path = new_path.insert(0,grid_full_path);  
-		
-	if(path_type == "nogrid"):
+	if(path_type == "nogrid_node"):
 		new_path = new_path.insert(0,base_path); 
 		new_path = new_path.insert(0,ysort_full_path);  
-		 
+		
+	if(path_type == "grid_sprite"): 
+		new_path = new_path.insert(0,sprite_full_path); 
+		new_path = new_path.insert(0,base_path); 
+		new_path = new_path.insert(0,ysort_full_path);  
+		new_path = new_path.insert(0,grid_full_path);    
+		
+	if(path_type == "grid_node"):
+		new_path = new_path.insert(0,base_path); 
+		new_path = new_path.insert(0,ysort_full_path);  
+		new_path = new_path.insert(0,grid_full_path);    
+		
+	if(path_type == "grid"):
+		new_path = new_path.insert(0,grid_full_path);   
+		  
 	if(debug_level == 0):
 		print(new_path);
+		print(get_node(new_path));
 	return new_path
 
 func deal_game():
@@ -460,12 +504,20 @@ func deal_game():
 	var new_path = "";
 	var base_path = "Stock";  
 	# Example
-	new_path = build_path(base_path, "grid"); 
+	new_path = build_path(base_path, "grid");  
 	Grid_Container = get_parent().get_node(new_path);   
-	new_path = build_path(base_path, "node"); 
+	if(debug_level == 0):
+		print(Grid_Container);
+	
+	new_path = build_path(base_path, "nogrid_node"); 
 	ActivePile_Container = get_parent().get_node(new_path);  
-	new_path = build_path(base_path, "sprite");
+	if(debug_level == 0):
+		print(ActivePile_Container);
+	
+	new_path = build_path(base_path, "nogrid_sprite");
 	SpriteHolder_Container = get_parent().get_node(new_path); 
+	if(debug_level == 0):
+		print(SpriteHolder_Container);
 	offset = 10;
 	
 	for i in range(8): 
@@ -482,19 +534,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_1"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path); 
-				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position);
-				Grid_Container.remove_child(card);   
-				ActivePile_Container.add_child(card);  
-				pile_cards_tableau_1.append(card);
-				my_deck.remove(c);
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_1, c);
 				
 			if( i < 3):
 				if(debug_level == 0):		
@@ -502,19 +542,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c];
 				base_path = "Tableau_2"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path);  
-				card.position = SpriteHolder_Container.get_transform().get_origin(); 
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position); 
-				Grid_Container.remove_child(card);   
-				SpriteHolder_Container.add_child(card);  
-				pile_cards_tableau_2.append(card); 
-				my_deck.remove(c);
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_2, c);
 				
 			if( i < 4):
 				if(debug_level == 0):		
@@ -522,19 +550,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c];
 				base_path = "Tableau_3"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path);   
-				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position);
-				Grid_Container.remove_child(card);  
-				SpriteHolder_Container.add_child(card);
-				pile_cards_tableau_3.append(card);  
-				my_deck.remove(c); 
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_3, c);
 				
 			if( i < 5):
 				if(debug_level == 0):		
@@ -542,19 +558,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_4"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path);  
-				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position);
-				Grid_Container.remove_child(card);   
-				SpriteHolder_Container.add_child(card);
-				pile_cards_tableau_4.append(card); 
-				my_deck.remove(c); 
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_4, c);
 				
 			if( i < 6):
 				if(debug_level == 0):		
@@ -562,19 +566,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_5"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path);  
-				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position);
-				Grid_Container.remove_child(card);   
-				SpriteHolder_Container.add_child(card);
-				pile_cards_tableau_5.append(card);
-				my_deck.remove(c); 
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_5, c);
 				
 			if( i < 7):
 				if(debug_level == 0):		
@@ -582,19 +574,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_6"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path);  
-				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position);
-				Grid_Container.remove_child(card);   
-				SpriteHolder_Container.add_child(card);
-				pile_cards_tableau_6.append(card); 
-				my_deck.remove(c); 
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_6, c);
 				
 			if( i < 8):
 				if(debug_level == 0):		
@@ -602,19 +582,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int; 
 				card = my_deck[c]; 
 				base_path = "Tableau_7"; 
-				new_path = build_path(base_path, "node"); 
-				ActivePile_Container = get_parent().get_node(new_path); 
-				new_path = build_path(base_path, "sprite"); 
-				SpriteHolder_Container = get_parent().get_node(new_path);  
-				card.position = SpriteHolder_Container.get_transform().get_origin();
-				card.position = card_position(card.position, offset*i, "vshift"); 
-				card.move(card.position);
-				Grid_Container.remove_child(card);   
-				SpriteHolder_Container.add_child(card);
-				pile_cards_tableau_7.append(card);  
-				my_deck.remove(c); 
-				if(debug_level == 0):
-					print("card", card); 
+				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_7, c);
 				 
 		offset = offset + increment;
 	
@@ -622,45 +590,56 @@ func deal_game():
 	for _x in range(3):
 		c = rand_range(0, my_deck.size()) as int;
 		card = my_deck[c]; 
-		base_path = "Talon"; 
-		new_path = build_path(base_path, "node"); 
-		ActivePile_Container = get_parent().get_node(new_path); 
-		new_path = build_path(base_path, "sprite"); 
-		SpriteHolder_Container = get_parent().get_node(new_path); 
-		card.position = SpriteHolder_Container.get_transform().get_origin();
-		card.position = card_position(card.position, offset, "hshift");
-		card.move(card.position);
-		Grid_Container.remove_child(card);  
-		#Grid_Container.queue_free();
-		SpriteHolder_Container.add_child(card);
-		# three cards in talon
-		pile_cards_talon.append(card);
-		my_deck.remove(c);   
+		base_path = "Talon";
+		talon_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_stock, c);
 		offset = offset + increment;
-		if(debug_level == 0):
-			print("card", card);
-	if(debug_level == 0):
-		print("pile talon"); 
 	
 	for _n in range(my_deck.size()):
 		c = rand_range(0, my_deck.size()) as int;
 		card = my_deck[c]; 
 		base_path = "Stock"; 
-		new_path = build_path(base_path, "node"); 
-		ActivePile_Container = get_parent().get_node(new_path); 
-		new_path = build_path(base_path, "sprite"); 
-		SpriteHolder_Container = get_parent().get_node(new_path); 
-		card.position = SpriteHolder_Container.get_transform().get_origin();
-		card.position = card_position(card.position, offset, "noshift");
-		card.move(card.position); 
-		Grid_Container.remove_child(card);   
-		SpriteHolder_Container.add_child(card); 
-		pile_cards_stock.append(card); 
-		my_deck.remove(c);  
-		if(debug_level == 0):
-			print("card", card);
-	if(debug_level == 0):
-		print("pile stock");
+		stock_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_stock, c);
+
+
+func tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_pile, c):
+	### Do This withing the loop but after the if statements define the pile
+	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
+	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
+	card_handler(card,SpriteHolder_Container, offset, i, "vshift")
+	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
+
+
+func stock_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_pile, c):
+	### Do This withing the loop but after the if statements define the pile
+	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
+	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
+	card_handler(card,SpriteHolder_Container, offset, 1, "noshift");
+	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
+		
+func talon_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_pile, c):
+	### Do This withing the loop but after the if statements define the pile
+	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
+	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
+	card_handler(card,SpriteHolder_Container, offset, 1, "hshift")
+	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
+
+func card_handler(card,SpriteHolder_Container, offset, i, shifter):
+	card.position = SpriteHolder_Container.get_transform().get_origin();
+	card.position = card_position(card.position, offset*i, shifter); 
+	card.move(card.position);  
+	pass;
+	
+					
+func get_Container(base_path, node_def):
+	var new_path = build_path(base_path, node_def); 
+	var myContainer = get_node(new_path);   
+	return(myContainer);
+
+func move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c):
+	Grid_Container.remove_child(card);    
+	ActivePile_Container.add_child(card);  
+	pile_cards_pile.append(card);
+	my_deck.remove(c); 
 	
 func card_position( NewPosition, Shift_Me, Shift_Type):
 	#control display of cards.
@@ -704,35 +683,31 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 	
 	# standard variable holders
 	var piles_grids_coordinates_x = 0;
-	if(debug_level == 0):
-		print(piles_grids_coordinates_x);
 	var piles_grids_coordinates_y = 0;
-	if(debug_level == 0):
-		print(piles_grids_coordinates_y);
 	var piles_name_string = "String"; 
 	if(debug_level == 0):
+		print(piles_grids_coordinates_x);  
+		print(piles_grids_coordinates_y);  
 		print(piles_name_string);
 	var position_origin_x
 	var position_origin_y
 	var position_base_x
 	var position_base_y
 	var position_size_width
-	if(debug_level == 0):
-		print(position_size_width);
 	var position_size_height
 	if(debug_level == 0):
+		print(position_size_width);  
 		print(position_size_height);
 	#Active Pile Variables
 	var base_path = "Stock";
 	var new_path = build_path(base_path, "grid"); 
 	var active_pile_name = new_path; 	
-	if(debug_level == 0):
-		print(active_pile_name);
-	var pixel_x = 0;
-	var pixel_y = 0;
 	var pickup_pile_true = false;
 	if(debug_level == 0):
+		print(active_pile_name);
 		print (pickup_pile_true);
+	var pixel_x = 0;
+	var pixel_y = 0; 
 	#var drop_pile_true = false;
 	
 	if(debug_level == 0):
@@ -804,14 +779,16 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 			print ("P to p: Overlap Check: Pile: ", p, " Pixel X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " Pixel Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . ")	
 
 		if pixel_x >= position_origin_x && pixel_x <= position_base_x:
-			#if(debug_level == 0):
-			print ("Pixel to Pile Function X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " . ");
-			print ("Next Check: Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
+			if(debug_level == 0):
+				print ("Pixel to Pile Function X: ", pixel_x, " >= ", position_origin_x, " : ", pixel_x, " <= ", position_base_x, " . ");
+				print ("Next Check: Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
+
 			if pixel_y >= position_origin_y  && pixel_y <= position_base_y:
-				#if(debug_level == 0):
-				#	print ("Pixel to Pile Function Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
-				#	print ("Confirmed pixel location matches a pile: ", piles_name_string);  
-				#	print ("Pickup pile: ", piles_name_string); 
+
+				if(debug_level == 0):
+					print ("Pixel to Pile Function Y: ", pixel_y, " >= ", position_origin_y, " : ", pixel_y, " <= ", position_base_y, " . "); 
+					print ("Confirmed pixel location matches a pile: ", piles_name_string);  
+					print ("Pickup pile: ", piles_name_string); 
 				pickup_pile_true = true; 
 				return piles_name_string; 
 			else: 
@@ -827,51 +804,62 @@ func pixel_to_pile(clicked_here_x, clicked_here_y):
 func CheckPileName(piles_name_string):	
 	var Active_Container = get_parent().get_node("Grid");
 	# note to self, undoing this move is complicated
-	if piles_name_string == "Grid/YSort/Stock":
+	if piles_name_string == "Stock":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);  
-	if piles_name_string == "Grid/YSort/Talon":
+			
+	if piles_name_string == "Talon":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);  
-	if piles_name_string == "Grid/YSort/Foundation_1":
+			
+	if piles_name_string == "Foundation_1":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);   
-	if piles_name_string == "Grid/YSort/Foundation_2":
+			
+	if piles_name_string == "Foundation_2":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);   
-	if piles_name_string == "Grid/YSort/Foundation_3":
+			
+	if piles_name_string == "Foundation_3":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);    
-	if piles_name_string == "Grid/YSort/Tableau_1":
+			
+	if piles_name_string == "Tableau_1":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);    
-	if piles_name_string == "Grid/YSort/Tableau_2":
+			
+	if piles_name_string == "Tableau_2":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);   
-	if piles_name_string == "Grid/YSort/Tableau_3":
+			
+	if piles_name_string == "Tableau_3":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);    
-	if piles_name_string == "Grid/YSort/Tableau_4":
+			
+	if piles_name_string == "Tableau_4":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);     
-	if piles_name_string == "Grid/YSort/Tableau_5":
+			
+	if piles_name_string == "Tableau_5":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);    
-	if piles_name_string == "Grid/YSort/Tableau_6":
+			
+	if piles_name_string == "Tableau_6":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);     
-	if piles_name_string == "Grid/YSort/Tableau_7":
+			
+	if piles_name_string == "Tableau_7":
 		Active_Container = get_parent().get_node(piles_name_string);
 		if(debug_level == 0):
 			print(piles_name_string);    
@@ -924,25 +912,29 @@ func pickup_card(clicked_here_x, clicked_here_y):
 		if(debug_level == 0):
 			print("Active_Container: ", Active_Container);  
 			print("piles_name_string: ", piles_name_string);  
+			
 		PileArray = GetPileArray(piles_name_string);
-		if(debug_level == 0):
-			print("PileArray: ", PileArray);  
 		set_number = PileArray.size();
 		if(debug_level == 0):
+			print("PileArray: ", PileArray);    
 			print("set_number: ", set_number);  
+			
 		if(set_number > 0):
 			card = PileArray[set_number].duplicate();
 			if(debug_level == 0):
 				print("card: ", card);  
 				print("PileArray: ", PileArray[set_number]); 
+				
 			PileArray[set_number].remove(); 
 			Active_Container.remove_child(card);   
 			Grid_Container.add_child(card); 
 			return card;
 		else:
-			print("Pile is empty.")	   
+			if(debug_level == 0):
+				print("Pile is empty.")	   
 	else:
 		pass;
+	pass;
 
 func drop_card(clicked_here_x, clicked_here_y, card):
 	var Active_Container = get_parent().get_node("Grid");
@@ -970,22 +962,28 @@ func move_card(position_x, position_y, card):
 	pass;
 		 
 func make_visible():
-	print("Game Grid: Make Visible");
+	if(debug_level == 0):
+		print("Game Grid: Make Visible");
 	self.show();
-	print("New Game Grid: should now be visible.");
+	if(debug_level == 0):
+		print("New Game Grid: should now be visible.");
 	pass # Replace with function body.
 	
 func make_invisible():
-	print("Game Grid: Make inVisible");
+	if(debug_level == 0):
+		print("Game Grid: Make inVisible");
 	self.hide();
-	print("New Game Grid: should now be invisible.");
+	if(debug_level == 0):
+		print("New Game Grid: should now be invisible.");
 	pass # Replace with function body.
 
 func check_visiblity():
 	if self.visible:
-		print("Game Grid: is viible. ");
+		if(debug_level == 0):
+			print("Game Grid: is viible. ");
 		return(1);
 	else:
-		print("Game Grid: is not visible. ");
+		if(debug_level == 0):
+			print("Game Grid: is not visible. ");
 		return(0);
 	pass;

@@ -36,24 +36,14 @@ func make_visible():
 	self.set_z_index(100);
 	var check = self.check_visiblity(); 
 	if(check != 1):
-#		print("GameMenu set to show. ");
-#	else:
-		GAMEMENU.show();
-		var check2 = GAMEMENU.check_visiblity(); 
-		if(check2 == 1):
-			print("GameMenu set to show. ");
+		print("GameMenu set to show. "); 
 		
 func make_invisible(): 
 	self.hide();	 
 	self.set_z_index(my_z_index);
 	var check = self.check_visiblity(); 
 	if(check != 0):
-#		print("GameMenu set to hide. ");
-#	else:
-		GAMEMENU.hide();
-		var check2 = GAMEMENU.check_visiblity(); 
-		if(check2 == 0):
-			print("GameMenu set to hide. ");
+		print("GameMenu set to hide. "); 
 
 func check_visiblity():
 	if self.visible:

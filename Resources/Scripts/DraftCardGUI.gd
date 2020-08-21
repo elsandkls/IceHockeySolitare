@@ -27,8 +27,7 @@ func stop():
 	make_invisible();
 	pass;
 	
-func new(): 
-	print(PLAYERDB)
+func new():  
 	PLAYERDB.start();
 	build_card();
 	pass;
@@ -49,8 +48,6 @@ func build_card():
 	var base_path = "res://Resources/SharedDB/player_db_images/";
 	var base_node_path = "DraftCardsGUI/VBoxContainer/HBoxContainer/";
 	
-	print(PlayerDB_matrix); 
-	print("PlayerDB accessed in the DraftCardGui: " + String(PlayerDB_matrix.size() ));
 	for l in range(PlayerDB_matrix.size()):  
 		var PlayerDB_Array = PlayerDB_matrix[l].duplicate();
 		var PlayerDB_EntryCount = PlayerDB_Array.size();
@@ -90,31 +87,31 @@ func build_card():
 			if l == 1:
 				temp_node_name = base_node_path + "VBoxPlayer1/BG_Player_1/NinePatchRect/TexRec_PlayerImage_Slot_001";
 				temp_node_text = base_node_path + "VBoxPlayer1/BG_Player_1/RTLPlayer1"
-				print("player node 1 connected") 
+				#print("player node 1 connected") 
 				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
-				print("player node 1 image loaded")
+				#print("player node 1 image loaded")
 			if l == 2:
 				temp_node_name = base_node_path + "VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_002";
 				temp_node_text = base_node_path + "VBoxPlayer2/BG_Player_2/RTLPlayer2"
-				print("player node 2 connected") 
+				#print("player node 2 connected") 
 				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
-				print("player node 2 image loaded")
+				#print("player node 2 image loaded")
 			if l == 3:
 				temp_node_name = base_node_path + "VBoxPlayer3/BG_Player_3/NinePatchRect3/TexRec_PlayerImage_Slot_003";
 				temp_node_text = base_node_path + "VBoxPlayer3/BG_Player_3/RTLPlayer3"
-				print("player node 3 connected")
+				#print("player node 3 connected")
 				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
-				print("player node 3 image loaded")
+				#print("player node 3 image loaded")
 			if l == 4:
 				temp_node_name = base_node_path + "VBoxPlayer4/BG_Player_4/NinePatchRect4/TexRec_PlayerImage_Slot_004";
 				temp_node_text = base_node_path + "VBoxPlayer4/BG_Player_4/RTLPlayer4"
-				print("player node 4 connected")
+				#print("player node 4 connected")
 				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
-				print("player node 4 image loaded")
+				#print("player node 4 image loaded")
 				
 	pass;
 
@@ -124,8 +121,8 @@ func _swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id,
 	new_image_location = base_path + new_image_location;
 	var ImageNode = load(new_image_location);
 	PlayerCharacterCard.texture = ImageNode;
-	print(new_image_location);
-	print(ImageNode);
+	#print(new_image_location);
+	#print(ImageNode);
 	pass;
 	
 func _swap_player_description_on_card(temp_node_text, PlayerDB_Array, _textid_id, _textid_fn, _textid_ln, _textid_height, _textid_weight, _textid_shots, _textid_born, _textid_city, _textid_country):
@@ -161,28 +158,18 @@ func make_visible():
 	self.set_z_index(100);
 	var check = self.check_visiblity(); 
 	if(check != 1):
-#		print("DraftCardGUI set to show. ");
-#	else:
-		#get_node("DraftCardGUI").show();
-		var check2 = DRAFTCARD.check_visiblity(); 
-		if(check2 == 1):
-			print("DraftCardGUI set to show. ");
+		print("DraftCardGUI set to show. "); 
 		
 func make_invisible(): 
 	self.hide();	 
 	self.set_z_index(my_z_index);
 	var check = self.check_visiblity(); 
 	if(check != 0):
-#		print("DraftCardGUI set to hide. ");
-#	else:
-		#get_node("YSort/GUI/DraftCardGUI").hide();
-		var check2 = DRAFTCARD.check_visiblity(); 
-		if(check2 == 0):
-			print("DraftCardGUI set to hide. ");
+		print("DraftCardGUI set to hide. "); 
 
 func check_visiblity():
 	if self.visible:
-		#print("DraftCardGUI is viible. ");
+		#print("DraftCardGUI is visible. ");
 		return(1);
 	else:
 		#print("DraftCardGUI is not visible. ");

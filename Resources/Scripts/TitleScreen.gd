@@ -25,7 +25,7 @@ func stop():
 	pass # Replace with function body
  
 func countdown_timer(seconds, _DISPLAYTIMER): 
-	print(_DISPLAYTIMER);  		
+	#print(_DISPLAYTIMER);  		
 	print("seconds: ", seconds);	
 	var reversal = seconds;
 	for x in range(seconds): 

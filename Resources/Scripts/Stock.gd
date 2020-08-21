@@ -1,43 +1,65 @@
 extends Node2D
 
+onready var SELFNODE = self;
+onready var SELFSPRITE = self.get_node("Sprite_Holder");
+var my_z_index = 0; 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SELFNODE = self;
+	SELFSPRITE = self.get_node("Sprite_Holder");
 	pass # Replace with function body.
 	
 func new():
 	pass # Replace with function body.
 
 func start():
-	print(self);
-	print("Stock pile initiated");
+	SELFNODE = self; 
+	print("SELFNODE pile initiated");
 	pass;
 	
 func end():
-	print("Stock pile stopped");
+	SELFNODE = self; 
+	print("SELFNODE pile stopped");
 	pass;
 	
-func get_uppper_right_x():
-	print(self);
-	var upper_right_x = Vector2(self.get_transform().get_origin()).x; 
-	print(upper_right_x);
+func get_uppper_right_x(): 
+	SELFNODE = self; 
+	var upper_right_x = Vector2( SELFNODE.get_transform().get_origin() ).x; 
 	return(upper_right_x);
 
 func get_uppper_right_y():
-	print(self);
-	var upper_right_y = Vector2(self.get_transform().get_origin()).y; 
-	print(upper_right_y);
+	SELFNODE = self; 
+	var upper_right_y = Vector2( SELFNODE.get_transform().get_origin() ).y; 
 	return(upper_right_y);
 
-
 func get_size_x():
-	var GRID = self.get_parent();
-	var SELF = GRID.get_child("Stock");
-	var size_x = SELF.texture.get_size().x; 
+	SELFSPRITE = self.get_node("Sprite_Holder");
+	var size_x = SELFSPRITE.texture.get_size().x; 
 	return(size_x);
 
 func get_size_y(): 
-	var GRID = self.get_parent();
-	var SELF = GRID.get_child("Stock"); 
-	var size_y = SELF.texture.get_size().y;
+	SELFSPRITE = self.get_node("Sprite_Holder");
+	var size_y = SELFSPRITE.texture.get_size().y;
 	return(size_y);
 
+
+func make_visible():  	
+	self.show();	
+	my_z_index = self.get_z_index();
+	self.set_z_index(100);
+	var check = self.check_visiblity();  
+		
+func make_invisible(): 
+	self.hide();	 
+	self.set_z_index(my_z_index);
+	var check = self.check_visiblity();  
+
+func check_visiblity():
+	if self.visible:
+		#print("DraftCardGUI is visible. ");
+		return(1);
+	else:
+		#print("DraftCardGUI is not visible. ");
+		return(0);
+	pass;
