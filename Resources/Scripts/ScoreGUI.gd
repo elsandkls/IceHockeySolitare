@@ -7,7 +7,7 @@ var my_z_index = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
-	print("Score GUI Ready")
+	#print("Score GUI Ready")
 	GUI  = get_node("../Gui_Scene"); 
 	SCORE = self; 
 	pass # Replace with function body.

@@ -14,7 +14,7 @@ func start():
 	var newLineDelim = "\n"
 		
 	## open and read files  	
-	print(file_TeamDB)
+	#print(file_TeamDB)
 	TeamDB = loadDB_TeamDB(file_TeamDB)
 	var TeamDB_Lines = TeamDB.split(newLineDelim, true, 0)
 	var TeamDB_LineEntryCount = TeamDB_Lines.size()

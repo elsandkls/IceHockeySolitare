@@ -14,7 +14,7 @@ func start():
 	var newLineDelim = "\n"
 		
 	## open and read files  	
-	print(file_TeamGameStatsDB)
+	#print(file_TeamGameStatsDB)
 	TeamGameStatsDB = loadDB_TeamGameStatsDB(file_TeamGameStatsDB)
 	var TeamGameStatsDB_Lines = TeamGameStatsDB.split(newLineDelim, true, 0)
 	var TeamGameStatsDB_LineEntryCount = TeamGameStatsDB_Lines.size()
@@ -23,7 +23,7 @@ func start():
 		var TeamGameStatsDB_Array = TeamGameStatsDB_Lines[l].split(delim, true, 0)
 		var TeamGameStatsDB_EntryCount = TeamGameStatsDB_Array.size()
 		for n in range(TeamGameStatsDB_EntryCount):
-			print(String(l) + ":" + String(n) + ":" + TeamGameStatsDB_Array[n]) # Prints n entry
+			#print(String(l) + ":" + String(n) + ":" + TeamGameStatsDB_Array[n]) # Prints n entry
 			TeamGameStatsDB_matrix[l].append(TeamGameStatsDB_Array[n])
 	saveDB_TeamGameStatsDB(TeamGameStatsDB, file_TeamGameStatsDB)
 	  

@@ -14,6 +14,6 @@ func start(seconds):
 	pass;
 
 func _timeout():
-	print("Timed out!");
+	#print("Timed out!");
 	pass;
 	

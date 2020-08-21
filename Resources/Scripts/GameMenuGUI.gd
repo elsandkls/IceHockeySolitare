@@ -8,7 +8,7 @@ onready var GAMEMENU_CONTROL = get_node("GameMenu"); #1526 Control #TitleScreenC
 
 # Called when the node enters the scene tree for the first time.
 func _ready():  
-	print("Game Menu GUI Ready") 
+	#print("Game Menu GUI Ready") 
 	GUI  = get_node("../Gui_Scene");
 	#print(GUI); #
 	GAMEMENU = self;

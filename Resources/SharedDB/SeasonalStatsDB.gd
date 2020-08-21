@@ -14,7 +14,7 @@ func start():
 	var newLineDelim = "\n"
 		
 	## open and read files 
-	print(file_SeasonalStatsDB)
+	#print(file_SeasonalStatsDB)
 	SeasonalStatsDB = loadDB_SeasonalStatsDB(file_SeasonalStatsDB)
 	var SeasonalStatsDB_Lines = SeasonalStatsDB.split(newLineDelim, true, 0)
 	var SeasonalStatsDB_LineEntryCount = SeasonalStatsDB_Lines.size()
@@ -23,7 +23,7 @@ func start():
 		var SeasonalStatsDB_Array = SeasonalStatsDB_Lines[l].split(delim, true, 0)
 		var SeasonalStatsDB_EntryCount = SeasonalStatsDB_Array.size()
 		for n in range(SeasonalStatsDB_EntryCount):
-			print(String(l) + ":" + String(n) + ":" + SeasonalStatsDB_Array[n]) # Prints n entry
+			#print(String(l) + ":" + String(n) + ":" + SeasonalStatsDB_Array[n]) # Prints n entry
 			SeasonalStatsDB_matrix[l].append(SeasonalStatsDB_Array[n])
 	saveDB_SeasonalStatsDB(SeasonalStatsDB, file_SeasonalStatsDB)
 	 

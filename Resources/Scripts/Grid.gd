@@ -97,8 +97,8 @@ func new():
 func build_deck(): 
 	if(debug_level == 0):
 		print("Starting Build Deck in Grid.")
-		
 	my_deck = make_a_deck(); 
+	#print(my_deck)
 	shuffle_the_deck();
 	build_pile_grid_array();
 	deal_game();
@@ -438,7 +438,7 @@ func make_a_deck():
 			var card = spawn_card(i, l);
 			if(debug_level == 0):
 				print(i, " : ", l, " : Spawned : ",card)
-				temp_array.append(card);  
+			temp_array.append(card);  
 	return temp_array;
  
 func spawn_card(color, rank):
@@ -507,16 +507,19 @@ func deal_game():
 	new_path = build_path(base_path, "grid");  
 	Grid_Container = get_parent().get_node(new_path);   
 	if(debug_level == 0):
+		print("Grid_Container");
 		print(Grid_Container);
 	
 	new_path = build_path(base_path, "nogrid_node"); 
-	ActivePile_Container = get_parent().get_node(new_path);  
+	ActivePile_Container = get_node(new_path);  
 	if(debug_level == 0):
+		print("ActivePile_Container");
 		print(ActivePile_Container);
 	
 	new_path = build_path(base_path, "nogrid_sprite");
-	SpriteHolder_Container = get_parent().get_node(new_path); 
+	SpriteHolder_Container = get_node(new_path); 
 	if(debug_level == 0):
+		print("SpriteHolder_Container");
 		print(SpriteHolder_Container);
 	offset = 10;
 	
@@ -531,11 +534,14 @@ func deal_game():
 			if( i < 2):
 				if(debug_level == 0):
 					print("pile 1");
+					print(my_deck);
 				c = rand_range(0, my_deck.size()) as int;
+				#print("c");
 				card = my_deck[c]; 
+				#print(card);
 				base_path = "Tableau_1"; 
 				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_1, c);
-				
+				#print("pile 1");
 			if( i < 3):
 				if(debug_level == 0):		
 					print("pile 2");
@@ -604,7 +610,9 @@ func deal_game():
 func tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_pile, c):
 	### Do This withing the loop but after the if statements define the pile
 	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
+	#print(ActivePile_Container) 
 	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
+	#print(SpriteHolder_Container) 
 	card_handler(card,SpriteHolder_Container, offset, i, "vshift")
 	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
 

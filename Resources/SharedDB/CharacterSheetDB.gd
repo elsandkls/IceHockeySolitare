@@ -15,7 +15,7 @@ func start():
 	var newLineDelim = "\n"
 		
 	## open and read files  
-	print(file_CharacterSheetDB)
+	#print(file_CharacterSheetDB)
 	CharacterSheetDB = loadDB_CharacterSheet(file_CharacterSheetDB)
 	var CharacterSheetDB_Lines = CharacterSheetDB.split(newLineDelim, true, 0)
 	var CharacterSheetDB_LineEntryCount = CharacterSheetDB_Lines.size()
@@ -24,7 +24,7 @@ func start():
 		var CharacterSheetDB_Array = CharacterSheetDB_Lines[l].split(delim, true, 0)
 		var CharacterSheetDB_EntryCount = CharacterSheetDB_Array.size()
 		for n in range(CharacterSheetDB_EntryCount):
-			print(String(l) + ":" + String(n) + ":" + CharacterSheetDB_Array[n]) # Prints n entry
+			#print(String(l) + ":" + String(n) + ":" + CharacterSheetDB_Array[n]) # Prints n entry
 			CharacterSheetDB_matrix[l].append(CharacterSheetDB_Array[n])
 	saveDB_CharacterSheet(CharacterSheetDB, file_CharacterSheetDB)
  

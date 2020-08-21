@@ -12,7 +12,7 @@ var my_z_index = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
-	print("Draft Card GUI Ready")
+	#print("Draft Card GUI Ready")
 	GUI  = get_node("../Gui_Scene");
 	PLAYERDB = get_node("../PlayerDb") 
 	DRAFTCARD = self; 
@@ -52,7 +52,7 @@ func build_card():
 		var PlayerDB_Array = PlayerDB_matrix[l].duplicate();
 		var PlayerDB_EntryCount = PlayerDB_Array.size();
 		for n in range(PlayerDB_EntryCount):
-			print(String(l) + ":" + String(n) + ":" + PlayerDB_Array[n]) # Prints n entry 
+			#print(String(l) + ":" + String(n) + ":" + PlayerDB_Array[n]) # Prints n entry 
 			if l == 0:
 				if PlayerDB_Array[n] == "id":
 					image_column_id = n;

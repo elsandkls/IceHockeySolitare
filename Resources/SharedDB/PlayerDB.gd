@@ -13,7 +13,7 @@ func start():
 	var delim = ","
 	var newLineDelim = "\n"
 	## open and read files  
-	print(file_PlayerDB)
+	#print(file_PlayerDB)
 	PlayerDB = loadDB_PlayerDB(file_PlayerDB)
 	var PlayerDB_Lines = PlayerDB.split(newLineDelim, true, 0)
 	var PlayerDB_LineEntryCount = PlayerDB_Lines.size()
@@ -22,7 +22,7 @@ func start():
 		var PlayerDB_Array = PlayerDB_Lines[l].split(delim, true, 0)
 		var PlayerDB_EntryCount = PlayerDB_Array.size()
 		for n in range(PlayerDB_EntryCount): 
-			print(String(l) + ":" + String(n) + ":" + PlayerDB_Array[n]) # Prints n entry
+			#print(String(l) + ":" + String(n) + ":" + PlayerDB_Array[n]) # Prints n entry
 			PlayerDB_matrix[l].append(PlayerDB_Array[n])
 	saveDB_PlayerDB(PlayerDB, file_PlayerDB)
 	  

@@ -9,7 +9,7 @@ onready var TITLESCREEN_CONTROL = self.get_node("TitleScreenControl"); #1526 Con
  
 # Called when the node enters the scene tree for the first time.
 func _ready(): 
-	print("Title Screen Ready")
+	#print("Title Screen Ready")
 	#print(TITLESCREEN_NODEGUI);
 	TITLESCREEN_CONTROL = self.get_node("TitleScreenControl"); #1524 #TitleScreenControl
 	#print(TITLESCREEN_CONTROL);
@@ -26,7 +26,7 @@ func stop():
  
 func countdown_timer(seconds, _DISPLAYTIMER): 
 	#print(_DISPLAYTIMER);  		
-	print("seconds: ", seconds);	
+	#print("seconds: ", seconds);	
 	var reversal = seconds;
 	for x in range(seconds): 
 		timer_switch = true
@@ -41,47 +41,33 @@ func _process(delta):
 		else:
 			timer_switch = false;
 			#player code
-			print(timer)
+			#print(timer)
 	pass;
 
 func make_visible():   
-	print(TITLESCREEN_NODEGUI);
+#	print(TITLESCREEN_NODEGUI);
 	TITLESCREEN_NODEGUI.show();
 	TITLESCREEN_NODEGUI.set_z_index(1000)
 	my_z_index =  TITLESCREEN_NODEGUI.get_z_index()  
-
 	var check = TITLESCREEN_NODEGUI.check_visiblity(); 
 	if(check == 1):
-		print("TitleScreen set to show. ");
-	else: 
-		TITLESCREEN_NODEGUI.show();
-		var LOGO = get_node("Menu/Logo")
-		LOGO.show(); 
-		var check2 = TITLESCREEN_NODEGUI.check_visiblity(); 
-		if(check2 == 1):
-			print("TitleScreen set to show. ");	
+		print("TitleScreen set to show. "); 
 		
 func make_invisible(): 
-	print(TITLESCREEN_NODEGUI);
+	#print(TITLESCREEN_NODEGUI);
 	TITLESCREEN_NODEGUI.hide();
 	TITLESCREEN_NODEGUI.set_z_index(0)
 	my_z_index =  TITLESCREEN_NODEGUI.get_z_index()   
-	
 	var check = TITLESCREEN_NODEGUI.check_visiblity(); 
 	if(check == 0):
-		print("TitleScreen set to hide. ");
-	else: 
-		TITLESCREEN_NODEGUI.hide();
-		var check2 = TITLESCREEN_NODEGUI.check_visiblity(); 
-		if(check2 == 0):
-			print("TitleScreen set to hide. ");
+		print("TitleScreen set to hide. "); 
 
 func check_visiblity(): 
 	if TITLESCREEN_NODEGUI.visible:
-		print("TitleScreen Visible!") 
+		#print("TitleScreen Visible!") 
 		return(1)
 	else:
-		print("TitleScreen Not Visible!")
+		#print("TitleScreen Not Visible!")
 		return(0) 
 	pass;
 	

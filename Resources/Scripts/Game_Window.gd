@@ -13,45 +13,45 @@ onready var DRAFT = self.get_node("../DraftCards_Scene"); #
 var debug=0;
 
 func _ready():   
-	print("Game Window Ready")
+	#print("Game Window Ready")
 	self.set_process_input(false)
 	self.make_visible(); 
 	self.start(); 
 	
 	
 func start():
-	print("Game Window Loading Title Screen")
+	#print("Game Window Loading Title Screen")
 	Display_TitleScreen(); 
 	#Setup_SaveGame();  
-	print("Game Window Loading Game Grid")
+	#print("Game Window Loading Game Grid")
 	Display_Grid(); 
-	print("Game Window Loading Game GUI")
+	#print("Game Window Loading Game GUI")
 	Display_GUI();
-	print("Finished Game Window Load.") 
+	#print("Finished Game Window Load.") 
 	pass;
 	
 func Display_TitleScreen():
-	print("Display Title Scene (from Game_Window)");  
+	#print("Display Title Scene (from Game_Window)");  
 	TITLESCREEN = get_node("../TitleScreen_Scene")  
 	TITLESCREEN.start(); 
 	pass;
 	
 func Display_Grid():
-	print("Loadiing game grid ............... (from Game_Window)"); 
+	#print("Loadiing game grid ............... (from Game_Window)"); 
 	GRID = get_node("../Grid_Scene") 
 	#GRID.start();
-	print(GRID);
+	#print(GRID);
 	return(GRID);
 	 
 func Display_GUI():
-	print("Load GUI. (from Game_Window)");
+	#print("Load GUI. (from Game_Window)");
 	GUI = get_node("../Gui_Scene") 
 	GUI.Make_Menu_visible();
-	print(GUI);         
+	#print(GUI);         
 	return(GUI);
 	
 func Setup_SaveGame():
-	print("Load save game content: "); 	
+	#print("Load save game content: "); 	
 	var user_name = 0; 
 	var user_color = 0;  
 	var user_cash = 0;  
@@ -107,23 +107,23 @@ func savegame_system_loadfromfile(_SAVEGAME):
 	return(SaveGameContent); 
 	
 func make_visible():
-	print("Game Window: Make Visible");
+	#print("Game Window: Make Visible");
 	self.show();
-	print("Game Window should now be Visible.");
+	#print("Game Window should now be Visible.");
 	pass # Replace with function body.
 	
 func make_invisible():
-	print("Game Window: Make inVisible");
+	#print("Game Window: Make inVisible");
 	self.hide();
-	print("Game Window should now be inVisible.");
+	#print("Game Window should now be inVisible.");
 	pass # Replace with function body.
 
 func check_visiblity():
 	if self.visible:
-		print("Game Window is Visible. ");
+		#print("Game Window is Visible. ");
 		return(1);
 	else:
-		print("Game Window is not Visible. ");
+		#print("Game Window is not Visible. ");
 		return(0);
 	pass;
 

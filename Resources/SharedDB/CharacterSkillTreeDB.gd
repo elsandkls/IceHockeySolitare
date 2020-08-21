@@ -14,7 +14,7 @@ func start():
 	var newLineDelim = "\n"
 		
 	## open and read files  	
-	print(file_CharacterSkillTreeDB)
+	#print(file_CharacterSkillTreeDB)
 	CharacterSkillTreeDB = loadDB_CharacterSkillTreeDB(file_CharacterSkillTreeDB)
 	var CharacterSkillTreeDB_Lines = CharacterSkillTreeDB.split(newLineDelim, true, 0)
 	var CharacterSkillTreeDB_LineEntryCount = CharacterSkillTreeDB_Lines.size()
@@ -23,7 +23,7 @@ func start():
 		var CharacterSkillTreeDB_Array = CharacterSkillTreeDB_Lines[l].split(delim, true, 0)
 		var CharacterSkillTreeDB_EntryCount = CharacterSkillTreeDB_Array.size()
 		for n in range(CharacterSkillTreeDB_EntryCount):
-			print(String(l) + ":" + String(n) + ":" + CharacterSkillTreeDB_Array[n]) # Prints n entry
+			#print(String(l) + ":" + String(n) + ":" + CharacterSkillTreeDB_Array[n]) # Prints n entry
 			CharacterSkillTreeDB_matrix[l].append(CharacterSkillTreeDB_Array[n])
 	saveDB_CharacterSkillTreeDB(CharacterSkillTreeDB, file_CharacterSkillTreeDB)
 	

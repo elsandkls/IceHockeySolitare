@@ -10,7 +10,7 @@ var my_z_index = 0;
 func _ready(): 
 	GUI  = get_node("../Gui_Scene"); 
 	OPTIONS = self; 
-	print("Options GUI Ready")  
+	#print("Options GUI Ready")  
 	pass # Replace with function body.
 
 func start():

@@ -36,11 +36,11 @@ func build_save_content(user_name, user_color, cash, score, content):
 	### todo
 	# this function is incomplete
 	# needs to build the content to put in the file.
-	print(user_name);
-	print(user_color);
-	print(cash);
-	print(score);
-	print(content);
+	#print(user_name);
+	#print(user_color);
+	#print(cash);
+	#print(score);
+	#print(content);
 	var delim = ",";
 	var newLineDelim = "\n"; 
 	#print("Parse Flie Content: " + String(content));
