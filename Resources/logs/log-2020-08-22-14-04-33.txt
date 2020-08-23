@@ -4,6 +4,3 @@ OpenGL ES 2.0 Batching: ON
  
 **ERROR**: Cannot get path of node as it is not in a scene tree.
    At: scene/main/node.cpp:1649:get_path() - Condition "!is_inside_tree()" is true. Returned: NodePath()
-TitleScreen set to show. 
-TitleScreen set to hide. 
-TitleScreen set to hide. 

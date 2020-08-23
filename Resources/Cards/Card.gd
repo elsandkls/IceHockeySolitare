@@ -2,6 +2,7 @@ extends Node2D
  
 #var matched = false;
 # Sprite nodes for the cards 
+var Move_Tween; 
 var CARDSPRITE_ANIM  = preload("res://Resources/Cards/Sprite_Anim.gd"); 
 var CARDSPRITE_BACK  = preload("res://Resources/Cards/Sprite_BG.gd");  
 var CARDSPRITE_FACE  = preload("res://Resources/Cards/Sprite_Front.gd"); 
@@ -10,12 +11,13 @@ var CARDSPRITE_TWEEN = preload("res://Resources/Cards/Move_Tween.gd");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():  
-	pass;
+	Move_Tween = get_node("Move_Tween");
+	pass; 
 
-func move(target): 
-	var new_CARDSPRITE_TWEEN = CARDSPRITE_TWEEN.new();  
-	new_CARDSPRITE_TWEEN.interpolate_property(self, "position", position, target, .3, Tween.TRANS_SINE, Tween.EASE_OUT);
-	new_CARDSPRITE_TWEEN.start();
+func move(target):  
+	CARDSPRITE_TWEEN = Move_Tween;
+	CARDSPRITE_TWEEN.interpolate_property(self, "position", position, target, .3, Tween.TRANS_SINE, Tween.EASE_OUT);
+	CARDSPRITE_TWEEN.start();
 	pass; 
  
 func dim(): 

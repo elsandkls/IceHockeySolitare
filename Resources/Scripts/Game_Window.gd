@@ -10,7 +10,6 @@ onready var GAMEMENU = self.get_node("../GameMenu_Scene"); #
 onready var SCORES = self.get_node("../Score_Scene"); # 
 onready var OPTIONS = self.get_node("../Options_Scene"); # 
 onready var DRAFT = self.get_node("../DraftCards_Scene"); #  
-var debug=0;
 
 func _ready():   
 	#print("Game Window Ready")

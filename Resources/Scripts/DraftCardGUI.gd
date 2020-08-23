@@ -34,7 +34,6 @@ func new():
 	
 func build_card():
 	PlayerDB_matrix = PLAYERDB.get_PlayerDBMatrix(); 
-	var temp_node_name = "";
 	var temp_node_text = "";
 	var temp_textid_id = "";
 	var temp_textid_fn = "";
@@ -88,35 +87,35 @@ func build_card():
 				temp_node_name = base_node_path + "VBoxPlayer1/BG_Player_1/NinePatchRect/TexRec_PlayerImage_Slot_001";
 				temp_node_text = base_node_path + "VBoxPlayer1/BG_Player_1/RTLPlayer1"
 				#print("player node 1 connected") 
-				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_image_on_card( PlayerDB_Array, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				#print("player node 1 image loaded")
 			if l == 2:
 				temp_node_name = base_node_path + "VBoxPlayer2/BG_Player_2/NinePatchRect2/TexRec_PlayerImage_Slot_002";
 				temp_node_text = base_node_path + "VBoxPlayer2/BG_Player_2/RTLPlayer2"
 				#print("player node 2 connected") 
-				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_image_on_card( PlayerDB_Array, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				#print("player node 2 image loaded")
 			if l == 3:
 				temp_node_name = base_node_path + "VBoxPlayer3/BG_Player_3/NinePatchRect3/TexRec_PlayerImage_Slot_003";
 				temp_node_text = base_node_path + "VBoxPlayer3/BG_Player_3/RTLPlayer3"
 				#print("player node 3 connected")
-				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_image_on_card( PlayerDB_Array, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				#print("player node 3 image loaded")
 			if l == 4:
 				temp_node_name = base_node_path + "VBoxPlayer4/BG_Player_4/NinePatchRect4/TexRec_PlayerImage_Slot_004";
 				temp_node_text = base_node_path + "VBoxPlayer4/BG_Player_4/RTLPlayer4"
 				#print("player node 4 connected")
-				_swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path);
+				_swap_player_image_on_card( PlayerDB_Array, base_path);
 				_swap_player_description_on_card(temp_node_text, PlayerDB_Array, temp_textid_id, temp_textid_fn, temp_textid_ln, temp_textid_height, temp_textid_weight, temp_textid_shots, temp_textid_born, temp_textid_city, temp_textid_country);
 				#print("player node 4 image loaded")
 				
 	pass;
 
-func _swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id, base_path):
-	var PlayerCharacterCard = get_node(temp_node_name);
+func _swap_player_image_on_card(PlayerDB_Array, base_path):
+	PlayerCharacterCard = get_node(temp_node_name);
 	var new_image_location = PlayerDB_Array[image_column_id];
 	new_image_location = base_path + new_image_location;
 	var ImageNode = load(new_image_location);
@@ -126,7 +125,7 @@ func _swap_player_image_on_card(temp_node_name, PlayerDB_Array, image_column_id,
 	pass;
 	
 func _swap_player_description_on_card(temp_node_text, PlayerDB_Array, _textid_id, _textid_fn, _textid_ln, _textid_height, _textid_weight, _textid_shots, _textid_born, _textid_city, _textid_country):
-	var PlayerCharacterCard = get_node(temp_node_text)
+	PlayerCharacterCard = get_node(temp_node_text)
 	var new_card_text_message =                    "Name: "        + str( PlayerDB_Array[_textid_ln] ) ;
 	new_card_text_message = new_card_text_message + " , "          + str( PlayerDB_Array[_textid_fn] )       + '\n';   
 	new_card_text_message = new_card_text_message + "Height: "     + str( PlayerDB_Array[_textid_height] )   + '\n';   

@@ -12,20 +12,6 @@ export (int) var debug_level;
 export (int) var card_width;
 export (int) var card_height;
 
-var STOCK_SCRIPT = load("res://Resources/Scripts/Stock.gd");
-var TALON_SCRIPT = load("res://Resources/Scripts/Talon.gd");
-var TABLEAU1_SCRIPT = load("res://Resources/Scripts/Tableau_1.gd");
-var TABLEAU2_SCRIPT = load("res://Resources/Scripts/Tableau_2.gd");
-var TABLEAU3_SCRIPT = load("res://Resources/Scripts/Tableau_3.gd");
-var TABLEAU4_SCRIPT = load("res://Resources/Scripts/Tableau_4.gd");
-var TABLEAU5_SCRIPT = load("res://Resources/Scripts/Tableau_5.gd");
-var TABLEAU6_SCRIPT = load("res://Resources/Scripts/Tableau_6.gd");
-var TABLEAU7_SCRIPT = load("res://Resources/Scripts/Tableau_7.gd");
-var FOUNDATION1_SCRIPT = load("res://Resources/Scripts/Foundation_1.gd");
-var FOUNDATION2_SCRIPT = load("res://Resources/Scripts/Foundation_2.gd");
-var FOUNDATION3_SCRIPT = load("res://Resources/Scripts/Foundation_3.gd");
-var FOUNDATION4_SCRIPT = load("res://Resources/Scripts/Foundation_4.gd");
-
 onready var STOCK = get_node("YSort/Stock");
 onready var TALON = get_node("YSort/Talon");
 onready var TABLEAU1 = get_node("YSort/Tableau_1");
@@ -45,6 +31,8 @@ var possible_cards = [
 	preload("res://Resources/Cards/Card.tscn")
 	#preload("res://Resources/Cards/Card.gd")
 ];
+
+var card = possible_cards[0]; 
 
 #Two dimensional array to hold coordinates x,y plane
 #var all_pieces = [];
@@ -113,8 +101,7 @@ func undo_move(column, row, direction):
 	if(debug_level == 0):
 		print("Undo Move Function"); 
 		print(column, row, direction);  
-		
-	var card = possible_cards[0].instance();
+		 
 	card.move(pile_to_pixel(card)); 
 	pass;
 
@@ -191,8 +178,7 @@ func key_input():
 	
 func mouse_input(): 		
 	var _on_grid = false;   
-	var _mouse_moving = 0;
-	var card = possible_cards[0]; 
+	var _mouse_moving = 0; 
 	var grid_position = [];
 	var position_x = get_global_mouse_position().x; 
 	var position_y = get_global_mouse_position().y;   
@@ -435,7 +421,7 @@ func make_a_deck():
 	for i in range(4):
 		# 13 cards per color 
 		for l in range(13):   
-			var card = spawn_card(i, l);
+			card = spawn_card(i, l);
 			if(debug_level == 0):
 				print(i, " : ", l, " : Spawned : ",card)
 			temp_array.append(card);  
@@ -449,15 +435,15 @@ func spawn_card(color, rank):
 	var rand = floor(rand_range(0,possible_cards.size()));
 	#print(rand);
 	#var CARD = possible_cards[rand]; 
-	var CARD = possible_cards[rand].instance();
+	card = possible_cards[rand].instance();
 	#print(CARD);
-	add_child(CARD);
+	add_child(card);
 	var Vect2Position = card_position(Vector2(0,0), 0,"noshift"); 
-	CARD.setNodePosition(Vect2Position); 	
-	CARD.setTextureForground_CardSpec(rank);
-	CARD.setTextureBackground_FaceUp(color);
-	CARD.setTextureBackground_FaceDown(color);
-	return(CARD);
+	card.setNodePosition(Vect2Position); 	
+	card.setTextureForground_CardSpec(rank);
+	card.setTextureBackground_FaceUp(color);
+	card.setTextureBackground_FaceDown(color);
+	pass;
 
 func shuffle_the_deck(): 
 	if(debug_level == 0):
@@ -540,7 +526,7 @@ func deal_game():
 				card = my_deck[c]; 
 				#print(card);
 				base_path = "Tableau_1"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_1, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_1, c);
 				#print("pile 1");
 			if( i < 3):
 				if(debug_level == 0):		
@@ -548,7 +534,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c];
 				base_path = "Tableau_2"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_2, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_2, c);
 				
 			if( i < 4):
 				if(debug_level == 0):		
@@ -556,7 +542,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c];
 				base_path = "Tableau_3"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_3, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_3, c);
 				
 			if( i < 5):
 				if(debug_level == 0):		
@@ -564,7 +550,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_4"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_4, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_4, c);
 				
 			if( i < 6):
 				if(debug_level == 0):		
@@ -572,7 +558,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_5"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_5, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_5, c);
 				
 			if( i < 7):
 				if(debug_level == 0):		
@@ -580,7 +566,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int;
 				card = my_deck[c]; 
 				base_path = "Tableau_6"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_6, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_6, c);
 				
 			if( i < 8):
 				if(debug_level == 0):		
@@ -588,7 +574,7 @@ func deal_game():
 				c = rand_range(0, my_deck.size()) as int; 
 				card = my_deck[c]; 
 				base_path = "Tableau_7"; 
-				tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_tableau_7, c);
+				tableau_work_horse(base_path, i, pile_cards_tableau_7, c);
 				 
 		offset = offset + increment;
 	
@@ -597,41 +583,40 @@ func deal_game():
 		c = rand_range(0, my_deck.size()) as int;
 		card = my_deck[c]; 
 		base_path = "Talon";
-		talon_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_stock, c);
+		talon_work_horse(base_path, pile_cards_stock, c);
 		offset = offset + increment;
 	
 	for _n in range(my_deck.size()):
 		c = rand_range(0, my_deck.size()) as int;
 		card = my_deck[c]; 
 		base_path = "Stock"; 
-		stock_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_stock, c);
+		stock_work_horse(base_path, pile_cards_stock, c);
 
 
-func tableau_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, i, card, pile_cards_pile, c):
+func tableau_work_horse(base_path, i, pile_cards_pile, c):
 	### Do This withing the loop but after the if statements define the pile
 	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
 	#print(ActivePile_Container) 
 	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
 	#print(SpriteHolder_Container) 
-	card_handler(card,SpriteHolder_Container, offset, i, "vshift")
-	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
+	card_handler(i, "vshift")
+	move_card_to_new_container(pile_cards_pile, c);
 
-
-func stock_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_pile, c):
+func stock_work_horse(base_path, pile_cards_pile, c):
 	### Do This withing the loop but after the if statements define the pile
 	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
 	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
-	card_handler(card,SpriteHolder_Container, offset, 1, "noshift");
-	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
+	card_handler(1, "noshift");
+	move_card_to_new_container(pile_cards_pile, c);
 		
-func talon_work_horse(base_path, new_path, ActivePile_Container, SpriteHolder_Container, Grid_Container, card, pile_cards_pile, c):
+func talon_work_horse(base_path, pile_cards_pile, c):
 	### Do This withing the loop but after the if statements define the pile
 	ActivePile_Container = get_Container(base_path,"nogrid_node"); 
 	SpriteHolder_Container = get_Container(base_path,"nogrid_sprite"); 	
-	card_handler(card,SpriteHolder_Container, offset, 1, "hshift")
-	move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c);
+	card_handler(1, "hshift")
+	move_card_to_new_container(pile_cards_pile, c);
 
-func card_handler(card,SpriteHolder_Container, offset, i, shifter):
+func card_handler(i, shifter):
 	card.position = SpriteHolder_Container.get_transform().get_origin();
 	card.position = card_position(card.position, offset*i, shifter); 
 	card.move(card.position);  
@@ -643,7 +628,7 @@ func get_Container(base_path, node_def):
 	var myContainer = get_node(new_path);   
 	return(myContainer);
 
-func move_card_to_new_container(card, Grid_Container, ActivePile_Container, pile_cards_pile, c):
+func move_card_to_new_container(pile_cards_pile, c):
 	Grid_Container.remove_child(card);    
 	ActivePile_Container.add_child(card);  
 	pile_cards_pile.append(card);

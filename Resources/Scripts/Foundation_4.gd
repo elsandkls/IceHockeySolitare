@@ -48,11 +48,15 @@ func make_visible():
 	my_z_index = self.get_z_index();
 	self.set_z_index(100);
 	var check = self.check_visiblity();  
+	if check != 1:
+		 self.show()
 		
 func make_invisible(): 
 	self.hide();	 
 	self.set_z_index(my_z_index);
 	var check = self.check_visiblity();  
+	if check != 0:
+		 self.hide();
 
 func check_visiblity():
 	if self.visible:
