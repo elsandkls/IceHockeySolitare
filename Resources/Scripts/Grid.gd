@@ -102,7 +102,7 @@ func undo_move(column, row, direction):
 		print("Undo Move Function"); 
 		print(column, row, direction);  
 		 
-	card.move(pile_to_pixel(card)); 
+	card.move(SpriteHolder_Container); 
 	pass;
 
 func clear_columns():
@@ -196,7 +196,7 @@ func mouse_input():
 			#print("mouse moving");  
 			_mouse_moving = 1;
 		if status == "drop":
-			drop_card(position_x,position_y, card);
+			drop_card(position_x,position_y);
 			_mouse_moving = 0;
 	else:
 		_mouse_moving = 0;
@@ -436,19 +436,21 @@ func spawn_card(color, rank):
 	#print(rand);
 	#var CARD = possible_cards[rand]; 
 	card = possible_cards[rand].instance();
-	#print(CARD);
+	#print(card);
 	add_child(card);
 	var Vect2Position = card_position(Vector2(0,0), 0,"noshift"); 
 	card.setNodePosition(Vect2Position); 	
 	card.setTextureForground_CardSpec(rank);
 	card.setTextureBackground_FaceUp(color);
 	card.setTextureBackground_FaceDown(color);
-	pass;
+	return(card);
 
 func shuffle_the_deck(): 
 	if(debug_level == 0):
 		print("function: shuffle deck");
+	#print(my_deck)
 	my_deck.shuffle();
+	#print(my_deck)
 	pass;
 
 func build_path(base_path, path_type): 
@@ -483,8 +485,7 @@ func build_path(base_path, path_type):
 		print(get_node(new_path));
 	return new_path
 
-func deal_game():
-	var card = possible_cards[0].instance();
+func deal_game(): 
 	var c = 1; 
 	var increment = 0;
 	var new_path = "";
@@ -617,9 +618,11 @@ func talon_work_horse(base_path, pile_cards_pile, c):
 	move_card_to_new_container(pile_cards_pile, c);
 
 func card_handler(i, shifter):
+	print(SpriteHolder_Container);
+	print(card);
 	card.position = SpriteHolder_Container.get_transform().get_origin();
 	card.position = card_position(card.position, offset*i, shifter); 
-	card.move(card.position);  
+	card.move(SpriteHolder_Container);  
 	pass;
 	
 					
@@ -629,9 +632,11 @@ func get_Container(base_path, node_def):
 	return(myContainer);
 
 func move_card_to_new_container(pile_cards_pile, c):
-	Grid_Container.remove_child(card);    
-	ActivePile_Container.add_child(card);  
+	Grid_Container = card.get_parent()
+	Grid_Container.remove_child(card);     
+	ActivePile_Container.add_child(card);   
 	pile_cards_pile.append(card);
+	print(card);
 	my_deck.remove(c); 
 	
 func card_position( NewPosition, Shift_Me, Shift_Type):
@@ -889,8 +894,7 @@ func GetPileArray(piles_name_string):
 					
 	return PileArray;
 
-func pickup_card(clicked_here_x, clicked_here_y):
-	var card = possible_cards[0].instance();
+func pickup_card(clicked_here_x, clicked_here_y): 
 	var Active_Container = get_parent().get_node(grid_full_path);
 	#var Grid_Container = get_parent().get_node(grid_full_path); 
 	var piles_name_string = "";
@@ -929,7 +933,7 @@ func pickup_card(clicked_here_x, clicked_here_y):
 		pass;
 	pass;
 
-func drop_card(clicked_here_x, clicked_here_y, card):
+func drop_card(clicked_here_x, clicked_here_y):
 	var Active_Container = get_parent().get_node("Grid");
 	#var Grid_Container = get_parent().get_node("Grid");
 	var return_vars = [];
@@ -948,10 +952,10 @@ func drop_card(clicked_here_x, clicked_here_y, card):
 		print("Moved to: ", piles_name_string);
 	pass; 
 	
-func move_card(position_x, position_y, card):	 
+func move_card(position_x, position_y):	 
 	#move the card following the mouse pointer
 	card.position = Vector2(position_x, position_y)
-	card.move(card.position);
+	card.move(SpriteHolder_Container);
 	pass;
 		 
 func make_visible():

@@ -1,6 +1,0 @@
-Godot Engine v3.2.2.stable.official - https://godotengine.org
-OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) Q45/Q43 (ELK)
-OpenGL ES 2.0 Batching: ON
- 
-**ERROR**: Cannot get path of node as it is not in a scene tree.
-   At: scene/main/node.cpp:1649:get_path() - Condition "!is_inside_tree()" is true. Returned: NodePath()

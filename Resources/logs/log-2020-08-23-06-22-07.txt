@@ -1,0 +1,55 @@
+Godot Engine v3.2.2.stable.official - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) Q45/Q43 (ELK)
+OpenGL ES 2.0 Batching: ON
+ 
+**ERROR**: Cannot get path of node as it is not in a scene tree.
+   At: scene/main/node.cpp:1649:get_path() - Condition "!is_inside_tree()" is true. Returned: NodePath()
+TitleScreen set to show. 
+TitleScreen set to hide. 
+TitleScreen set to hide. 
+0 : 0 : Spawned : [Node2D:1911]
+0 : 1 : Spawned : [Node2D:1920]
+0 : 2 : Spawned : [Node2D:1929]
+0 : 3 : Spawned : [Node2D:1938]
+0 : 4 : Spawned : [Node2D:1947]
+0 : 5 : Spawned : [Node2D:1956]
+0 : 6 : Spawned : [Node2D:1965]
+0 : 7 : Spawned : [Node2D:1974]
+0 : 8 : Spawned : [Node2D:1983]
+0 : 9 : Spawned : [Node2D:1992]
+0 : 10 : Spawned : [Node2D:2001]
+0 : 11 : Spawned : [Node2D:2010]
+0 : 12 : Spawned : [Node2D:2019]
+1 : 0 : Spawned : [Node2D:2028]
+1 : 1 : Spawned : [Node2D:2037]
+1 : 2 : Spawned : [Node2D**SCRIPT ERROR**: Parse Error: Too few arguments for "move_card()" call. Expected at least 2.
+   At: res://Resources/Scripts/Grid.gd:636:GDScript::reload() - Parse Error: Too few arguments for "move_card()" call. Expected at least 2.
+**ERROR**: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:599:reload() - Method failed. Returning: ERR_PARSE_ERROR
+Node2D:2154]
+2 : 2 : Spawned : [Node2D:2163]
+2 : 3 : Spawned : [Node2D:2172]
+2 : 4 : Spawned : [Node2D:2181]
+2 : 5 : Spawned : [Node2D:2190]
+2 : 6 : Spawned : [Node2D:2199]
+2 : 7 : Spawned : [Node2D:2208]
+2 : 8 : Spawned : [Node2D:2217]
+2 : 9 : Spawned : [Node2D:2226]
+2 : 10 : Spawned : [Node2D:2235]
+2 : 11 : Spawned : [Node2D:2244]
+2 : 12 : Spawned : [Node2D:2253]
+3 : 0 : Spawned : [Node2D:2262]
+3 : 1 : Spawned : [Node2D:2271]
+3 : 2 : Spawned : [Node2D:2280]
+3 : 3 : Spawned : [Node2D:2289]
+3 : 4 : Spawned : [Node2D:2298]
+3 : 5 : Spawned : [Node2D:2307]
+3 : 6 : Spawned : [Node2D:2316]
+3 : 7 : Spawned : [Node2D:2325]
+3 : 8 : Spawned : [Node2D:2334]
+3 : 9 : Spawned : [Node2D:2343]
+3 : 10 : Spawned : [Node2D:2352]
+3 : 11 : Spawned : [Node2D:2361]
+3 : 12 : Spawned : [Node2D:2370]
+[Sprite:1276]
+[Node2D:2262]
