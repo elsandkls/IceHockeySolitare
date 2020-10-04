@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Resources/Scripts/Timer.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Background/Texture-176.jpg" type="Texture" id=2]
+[ext_resource path="res://Resources/Sounds/Pause.wav" type="AudioStream" id=3]
 [ext_resource path="res://Resources/Scripts/Game_Window.gd" type="Script" id=4]
 [ext_resource path="res://Resources/Background/purple_button_hover_mini_template.jpg" type="Texture" id=6]
 [ext_resource path="res://Resources/Background/blue_button_mini_template.jpg" type="Texture" id=7]
@@ -43,18 +44,18 @@ __meta__ = {
 }
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 300.0
+margin_right = 200.0
 margin_bottom = 90.0
-rect_min_size = Vector2( 300, 90 )
+rect_min_size = Vector2( 200, 90 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 304.0
-margin_right = 604.0
+margin_left = 204.0
+margin_right = 479.0
 margin_bottom = 90.0
-rect_min_size = Vector2( 300, 60 )
+rect_min_size = Vector2( 275, 60 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,10 +86,10 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 608.0
-margin_right = 908.0
+margin_left = 483.0
+margin_right = 777.0
 margin_bottom = 90.0
-rect_min_size = Vector2( 300, 60 )
+rect_min_size = Vector2( 275, 60 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -114,6 +115,50 @@ custom_fonts/normal_font = SubResource( 2 )
 visible_characters = 10
 tab_size = 10
 text = "0000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 781.0
+margin_right = 931.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 150, 90 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RTL_Minutes" type="RichTextLabel" parent="VBoxContainer/HBoxContainer4"]
+margin_right = 50.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 50, 60 )
+custom_fonts/normal_font = SubResource( 2 )
+tab_size = 10
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RTL_Colon" type="RichTextLabel" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 54.0
+margin_right = 79.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 25, 60 )
+custom_fonts/normal_font = SubResource( 2 )
+tab_size = 10
+text = ":"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RTL_Seconds" type="RichTextLabel" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 83.0
+margin_right = 133.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 50, 60 )
+custom_fonts/normal_font = SubResource( 2 )
+tab_size = 10
+text = "00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -243,6 +288,9 @@ text = "TITLE SCREEN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 [connection signal="pressed" from="GAMEMENU_TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="OPTIONS_TextureButton2" to="." method="_on_TextureButton2_pressed"]
 [connection signal="pressed" from="SCORES_TextureButton3" to="." method="_on_TextureButton3_pressed"]
