@@ -11,6 +11,25 @@ onready var SCORES = self.get_node("../Score_Scene"); #
 onready var OPTIONS = self.get_node("../Options_Scene"); # 
 onready var DRAFT = self.get_node("../DraftCards_Scene"); #  
 
+
+################## Audio Files ##########################
+onready var AlarmBell = preload("res://Resources/Sounds/Pause.wav")
+onready var Player = get_node("AudioStreamPlayer2D");
+#onready var sample_player = $AudioStreamPlayer
+
+################### Timer Variables ##########################
+var minutes = 20;
+var seconds = 03;
+const TIME_PERIOD = 1; # 500ms
+var time = 0;
+var status = 0;
+var timesup = 0;
+var animation_speed = 1;
+var end_buffer = 30;
+onready var RTL_MINUTES = get_node("VBoxContainer/HBoxContainer4/RTL_Minutes");
+onready var RTL_SECONDS = get_node("VBoxContainer/HBoxContainer4/RTL_Seconds");
+
+
 func _ready():   
 	#print("Game Window Ready")
 	self.set_process_input(false)
@@ -150,7 +169,6 @@ func _input(event):
 	#InputEventMouseButton : 
 	#button_index=BUTTON_LEFT,  
 	#pressed=true, 
-			
 	if event is InputEventMouseButton:
 		#print(event.as_text())
 		if event.button_index == BUTTON_LEFT:
@@ -158,10 +176,17 @@ func _input(event):
 				var MAX_NODE = check_z_index();
 				turn_on_mouse_focus(MAX_NODE, event)
 				#MAX_NODE.mouse_input(event);  
-	pass;
-		
-func _process(_delta):
-	pass; 
+	if event is InputEventKey and event.pressed:
+		if event.scancode == KEY_Q:
+			get_tree().quit();
+	pass;		
+
+func _process(delta):
+	time += delta
+	if time > TIME_PERIOD: 
+		update_timer();
+		time = 0;
+	pass
 
 func _on_TextureButton_pressed(): #menu
 	GUI._on_ReturnToMenuButton_pressed()
@@ -214,3 +239,30 @@ func turn_on_mouse_focus(ACTIVE_NODE, event):
 	ACTIVE_NODE._gui_input(event);
 	ACTIVE_NODE.accept_event( );
 	pass;
+
+func update_timer(): 
+	if timesup == 0:
+		if seconds < 1:
+			minutes = minutes - 1;
+			seconds = 59;
+		else:
+			seconds = seconds -1;
+	else:
+		seconds = seconds + 1;
+		
+	RTL_MINUTES.set_text(str(minutes).pad_zeros(2));
+	RTL_SECONDS.set_text(str(seconds).pad_zeros(2));
+		
+	if(seconds <= 00):
+		if(minutes <= 00):
+			play_alarm_bell();
+			timesup = 1;
+			
+	if(minutes <=0):
+		if(timesup == 1):
+			if(seconds >= end_buffer):
+				get_tree().quit();
+
+func play_alarm_bell(): 
+	Player.stream = AlarmBell
+	Player.play()			

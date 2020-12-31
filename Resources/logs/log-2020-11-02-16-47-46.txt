@@ -1,0 +1,245 @@
+OpenGL ES 2.0 Renderer: Quadro K2200/PCIe/SSE2
+**ERROR**: No loader found for resource: res://Resources/Pieces/Blue Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Blue Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Blue Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Blue Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Green Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Green Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Orange Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Orange Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Yellow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Yellow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Yellow Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Yellow Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Purple Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Purple Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Purple Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Purple Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Pink Bright Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Pink Bright Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Pink Bright Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Pink Bright Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Pink Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Pink Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Lite Pink Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Lite Pink Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Rainbow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Rainbow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Rainbow Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Rainbow Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Lite Orange Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Lite Orange Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Lite Green Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Lite Green Piece.png
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Grid.gd:330:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Stock.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Talon.gd:33:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_1.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_2.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_3.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_4.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_5.gd:33:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_6.gd:33:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Tableau_7.gd:33:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_1.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_2.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_3.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_4.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: Too many arguments for 'quit()' call. Expected at most 0.
+   At: res://Resources/Scripts/GUI.gd:78:GDScript::reload() - Parse Error: Too many arguments for 'quit()' call. Expected at most 0.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**ERROR**: No loader found for resource: res://Resources/Pieces/Blue Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Blue Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Blue Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Blue Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Green Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Green Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Orange Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Orange Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Yellow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Yellow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Yellow Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Yellow Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Purple Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Purple Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Purple Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Purple Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Pink Bright Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Pink Bright Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Pink Bright Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Pink Bright Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Pink Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Pink Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Lite Pink Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Lite Pink Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Rainbow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Rainbow Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Rainbow Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Rainbow Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Orange Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Lite Orange Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Lite Orange Piece.png
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/Pieces/Lite Green Piece.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/Pieces/Lite Green Piece.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/Pieces/Lite Green Piece.png
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 4.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/Top UI v 2.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/copper_coin.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin_frame_002.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin_frame_001.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 3.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 3_02.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 3_04.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin_frame_001.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/silver_coin_frame_001.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/silver_coin_frame_001.png
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/silver_coin.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/silver_coin.png
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin_frame_002.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/silver_coin_frame_002.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/silver_coin_frame_002.png
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/silver_coin.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/silver_coin.png
+**ERROR**: No loader found for resource: res://Resources/UI/silver_coin_frame_001.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/silver_coin_frame_001.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/silver_coin_frame_001.png
+**ERROR**: No loader found for resource: res://Resources/UI/copper_coin.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/copper_coin.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/copper_coin.png
+**ERROR**: No loader found for resource: res://Resources/UI/Top UI v 2.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/Top UI v 2.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/Top UI v 2.png
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 4.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/Bottom UI v 4.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/Bottom UI v 4.png
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 3.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/Bottom UI v 3.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/Bottom UI v 3.png
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 3_02.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/Bottom UI v 3_02.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/Bottom UI v 3_02.png
+**ERROR**: No loader found for resource: res://Resources/UI/Bottom UI v 3_04.png
+   At: core/io/resource_loader.cpp:285:_load() - Method/Function Failed, returning: RES()
+**WARNING**: Couldn't load external resource: res://Resources/UI/Bottom UI v 3_04.png
+   At: scene/resources/resource_format_text.cpp:175:_parse_ext_resource() - Couldn't load external resource: res://Resources/UI/Bottom UI v 3_04.png
+**ERROR**: Index p_idx=1 out of size (edited_scene.size()=1)
+   At: editor/editor_data.cpp:564:remove_scene() - Index p_idx=1 out of size (edited_scene.size()=1)
