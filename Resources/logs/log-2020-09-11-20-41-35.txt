@@ -1,0 +1,20 @@
+Godot Engine v3.2.2.stable.official - https://godotengine.org
+OpenGL ES 2.0 Renderer: Mesa DRI Intel(R) Q45/Q43 (ELK)
+OpenGL ES 2.0 Batching: ON
+ 
+**SCRIPT ERROR**: Parse Error: The function "_input" already exists in this class (at line 149).
+   At: res://Resources/Scripts/Game_Window.gd:251:GDScript::reload() - Parse Error: The function "_input" already exists in this class (at line 149).
+**ERROR**: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:599:reload() - Method failed. Returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: The identifier "time" isn't declared in the current scope.
+   At: res://Resources/Scripts/Game_Window.gd:166:GDScript::reload() - Parse Error: The identifier "time" isn't declared in the current scope.
+**ERROR**: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:599:reload() - Method failed. Returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: The identifier "start_y" isn't declared in the current scope.
+   At: res://Resources/Scripts/Game_Window.gd:248:GDScript::reload() - Parse Error: The identifier "start_y" isn't declared in the current scope.
+**ERROR**: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:599:reload() - Method failed. Returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: The identifier "start_y" isn't declared in the current scope.
+   At: res://Resources/Scripts/Game_Window.gd:248:GDScript::reload() - Parse Error: The identifier "start_y" isn't declared in the current scope.
+**ERROR**: Method failed. Returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:599:reload() - Method failed. Returning: ERR_PARSE_ERROR
