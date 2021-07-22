@@ -59,3 +59,7 @@ OpenGL ES 2.0 Renderer: Quadro K2200/PCIe/SSE2
    At: res://Resources/Scripts/GUI.gd:78:GDScript::reload() - Parse Error: Too many arguments for 'quit()' call. Expected at most 0.
 **ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
    At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**WARNING**: ObjectDB Instances still exist!
+   At: core/object.cpp:2095:cleanup() - ObjectDB Instances still exist!
+**ERROR**: There are still MemoryPool allocs in use at exit!
+   At: core/pool_vector.cpp:70:cleanup() - Condition ' allocs_used > 0 ' is true.

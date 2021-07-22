@@ -4,11 +4,27 @@ OpenGL ES 2.0 Renderer: Quadro K2200/PCIe/SSE2
 **ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
    At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
 **SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-   At: res://Resources/Scripts/Stock.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_1.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_2.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_3.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Foundation_4.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
 **ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
    At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
 **SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
    At: res://Resources/Scripts/Talon.gd:33:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
+   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
+**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
+   At: res://Resources/Scripts/Stock.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
 **ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
    At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
 **SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
@@ -37,22 +53,6 @@ OpenGL ES 2.0 Renderer: Quadro K2200/PCIe/SSE2
    At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
 **SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
    At: res://Resources/Scripts/Tableau_7.gd:33:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
-   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
-**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-   At: res://Resources/Scripts/Foundation_1.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
-   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
-**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-   At: res://Resources/Scripts/Foundation_2.gd:26:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
-   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
-**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-   At: res://Resources/Scripts/Foundation_3.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-**ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
-   At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
-**SCRIPT ERROR**: Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
-   At: res://Resources/Scripts/Foundation_4.gd:28:GDScript::reload() - Parse Error: No constructor of 'Vector2' matches the signature 'Vector2(var)'.
 **ERROR**: Method/Function Failed, returning: ERR_PARSE_ERROR
    At: modules/gdscript/gdscript.cpp:580:reload() - Method/Function Failed, returning: ERR_PARSE_ERROR
 **SCRIPT ERROR**: Parse Error: Too many arguments for 'quit()' call. Expected at most 0.
